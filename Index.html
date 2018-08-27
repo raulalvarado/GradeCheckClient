@@ -24,11 +24,11 @@
 <div class="separator">
 
 </div>
-<li><a class="waves-effect waves-light" href="Index.php"><i class="material-icons">person</i>Usuarios</a></li>
-<li><a class="waves-effect waves-light" href="faculties.php"><i class="material-icons">dashboard</i>Facultades</a></li>
+<li><a class="waves-effect waves-light" href="Index.html"><i class="material-icons">person</i>Usuarios</a></li>
+<li><a class="waves-effect waves-light" href="faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
 </ul>
 </div>
-
+<main>
 <div class="tabla">
  <table class="striped centered responsive-table">
         <thead>
@@ -40,47 +40,11 @@
               <th>Email</th>
               <th>Estado</th>
               <th>Editar</th>
+              <th>Eliminar</th>
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>75485784</td>
-            <td>someone@example.com</td>
-            <td><label>
-        <input type="checkbox" class="filled-in" disabled="disabled" checked="checked" />
-        <span></span>
-      </label></td>
-      <td><a href="#actualizarUsuario" class="modal-trigger"><i class="material-icons">mode_edit</i></a></td>
-            
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>75485784</td>
-            <td>someone@example.com</td>
-            <td><label>
-        <input type="checkbox" class="filled-in" disabled="disabled" checked="checked" />
-        <span></span>
-      </label></td>
-      <td><a href="#actualizarUsuario" class="modal-trigger"><i class="material-icons">mode_edit</i></a></td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>75485784</td>
-            <td>someone@example.com</td>
-            <td><label>
-        <input type="checkbox" class="filled-in" disabled="disabled" checked="checked" />
-        <span></span>
-      </label></td>
-      <td><a href="#actualizarUsuario" class="modal-trigger"><i class="material-icons">mode_edit</i></a></td>
-          </tr>
+        <tbody id="usersTable">
         </tbody>
       </table>
       </div>
@@ -111,42 +75,20 @@
                         <label for="apellidoUsuario">Apellido:</label>
                     </div>
                     <div class="input-field">
-                        <input id="usuario" name="username" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                        <label for="usuario">Usuario:</label>
+                            <input id="emailUsuario" name="email" type="email" maxlength="50"  required>
+                            <label for="emailUsuario">Correo:</label>
                     </div>
                     <div class="input-field">
-                        <input id="contraUsuario" name="pass" type="password" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                            <input id="telUsuario" name="phone" type="text" minlength="8" maxlength="8" required>
+                            <label for="telUsuario">Telefono</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="contraUsuario" name="pass" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                         <label for="contraUsuario">Contraseña:</label>
                     </div>
                     <div class="input-field">
-                        <input id="telUsuario" name="phone" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                        <label for="telUsuario">Telefono:</label>
-                    </div>
-                    <div class="input-field">
-                        <input id="telUsuario" name="phone" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                        <label for="telUsuario">Telefono:</label>
-                    </div>
-
-                    <div class="row">
-                        <h6 class="center">Seleccione el estado del usuario:</h6>
-                        <div class="input-field col s6 push-s1">
-                            <div class="col s12 m6 push-m5">
-                                <p>
-                                    <label>
-                                <input name="state" value="1" type="radio" checked />
-                                <span>Activo</span>
-                            </label>
-                                </p>
-                            </div>
-                            <div class="col s12 m6 push-m4">
-                                <p>
-                                    <label>
-                                <input name="state" value="0" type="radio" />
-                                <span>Inactivo</span>
-                            </label>
-                                </p>
-                            </div>
-                        </div>
+                            <input id="confimUsuario" name="passConfirm" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                            <label for="confimUsuario">Confirmar contraseña:</label>
                     </div>
                     <div class="row">
                         <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -224,19 +166,76 @@
         </div>
     </div>
 </div>
-      
-      
-
-      
-
-       
-
-
+</main>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/materialize.js"></script>
+<script type="text/javascript" src="js/server.js"></script>
+<script>
+    var table = $("#usersTable");
+    var formNuevoU = $("#frmRegUser");
+    //trying to get users from digital ocean server
+    $(document).ready(function(){
+        getStudents();
+    });
 
+    //ajax request to get students
+    function getStudents(){
+        $.ajax({
+            url: BASE_URL+STUDENTS_READ,
+            type:"GET",
+            dataType: "json",
+            success: function(result){
+                console.log(result);
+                table.empty();
+                $.each(result["student"],function(i,val){
+                    console.log(val["user"].email);
+                    var checked="<input type='checkbox' class='filled-in' disabled='disabled' checked='checked' />";
+                    table.append("<tr>"+
+                                    "<td>"+val["user"].name+"</td>"+
+                                    "<td>"+val["user"].surname+"</td>"+
+                                    "<td>"+val["user"].username+"</td>"+
+                                    "<td>"+val["user"].phone+"</td>"+
+                                    "<td>"+val["user"].email+"</td>"+
+                                    "<td>"+
+                                        "<label>"+
+                                            checked+
+                                            "<span></span>"+
+                                        "</label>"+
+                                    "</td>"+
+                                    "<td><a href='#actualizarUsuario' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>"+
+                                    "<td><a href='#actualizarUsuario' class='modal-trigger'><i class='material-icons'>delete</i></a></td>"+
+                                "</tr>");
+                });
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    }
+
+    function postUser(){
+        $.ajax({
+            url: BASE_URL+STUDENTS_CREATE,
+            type:"POST",
+            data: formNuevoU.serialize(),
+            success: function(result){
+                console.log(result);
+                getStudents();
+                $("#nuevoUsuario").modal('close');
+            },
+            error:function(e){
+                console.log(error);
+            }
+        });
+    }
+
+    formNuevoU.submit(function(e){
+        e.preventDefault();
+        postUser();
+    });
+</script>
 </body>
 </html>
