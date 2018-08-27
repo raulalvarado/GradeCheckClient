@@ -1,0 +1,45 @@
+#navprin
+{
+    background-color: #D32F2F;
+}
+
+.separator
+{
+    background-color: #D32F2F;
+    padding: 70px;
+}
+
+
+.sidebar a
+{
+    display: block;
+    padding: 10px;
+    color:black;
+}
+
+.sidebar ul
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.sidebar li
+{
+    transition: border 0.3s;
+    transition-property: border;
+    transition-duration: 0.3s;
+    outline: 1px solid #BDBDBD;
+}
+ .sidebar li:hover
+ {
+     border-left: solid #F44336;
+     background: #FFCDD2;
+ }
+
+.foot
+{
+    text-align: center;
+    background: #757575;
+    color: #FFFFFF;
+}
+
