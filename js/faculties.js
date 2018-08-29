@@ -2,6 +2,7 @@ var table = $("#facultiesTable");
 var newFacFrm = $("#frmRegFac");
 var updateFacFrm = $("#frmUpdtFac");
 var updateModalFaculty = $("#actualizarFacultad");
+var deleteModalFaculty = $("#eliminarFacultad");
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
     getFaculties();
@@ -35,7 +36,7 @@ function getFaculties() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestFaculty(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='deleteFaculty(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteFaculty(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             newFacFrm.trigger("reset");
@@ -114,16 +115,22 @@ function updateFaculty() {
             })
         },
         error: function(error) {
-            console.log(e);
+            console.log(error);
             showError(error.responseText);
         }
     });
 }
 
+//confirm delete faculty
+function confirmDeleteFaculty(id) {
+    $("#dId").val(id);
+    deleteModalFaculty.modal("open");
+}
+
 //delete user
 function deleteFaculty(id) {
     $.ajax({
-        url: BASE_URL + FACULTIES_DELETE + id,
+        url: BASE_URL + FACULTIES_DELETE + $("#dId").val(),
         type: "DELETE",
         success: function(result) {
             console.log(result);
@@ -131,6 +138,7 @@ function deleteFaculty(id) {
                 html: 'Eliminado con exito'
             })
             getFaculties();
+            $("#dId").val("");
         },
         error: function(error) {
             console.log(error.responseText);
@@ -148,14 +156,19 @@ updateFacFrm.submit(function(e) {
 //display server errors
 function showError(error) {
     switch (error) {
-        case "Cannot delete a parent row":
-            M.toast({
-                html: 'La facultad que se desea eliminar ya tiene registros asociados'
-            })
-            break;
         case "Must specify faculty name":
             M.toast({
                 html: 'Ingrese un nombre de facultad valido'
+            })
+            break;
+        case "Duplicated value. Could not complete operation":
+            M.toast({
+                html: 'No se permiten valores duplicados'
+            })
+            break;
+        case "Cannot delete record, parent row conflict":
+            M.toast({
+                html: 'La facultad que se desea eliminar ya tiene registros asociados'
             })
             break;
         default:
