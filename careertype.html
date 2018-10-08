@@ -30,14 +30,13 @@
                 <li><a class="waves-effect waves-light" href="faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
                 <li><a class="waves-effect waves-light" href="students.html"><i class="material-icons">school</i>Estudiantes</a></li>
                 <li><a class="waves-effect waves-light" href="employees.html"><i class="material-icons">assignment_ind</i>Docentes</a></li>
-                <li><a class="waves-effect waves-light" href="careertype.html"><i class="material-icons">collections_bookmark</i>Tipos de carrera</a></li>
+                <li><a class="waves-effect waves-light" href="careertype.html"><i class="material-icons">folder</i>Tipos de carrera</a></li>
                 <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
                 <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
                 <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
                 <li><div class="blokk"></div></li>
                 <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Notas</a></li>
                 <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
- 
             </ul>
         </div>
         <main>
@@ -46,69 +45,44 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Usuario</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
                             <th>Estado</th>
                             <th>Editar</th>
-                            <th>Eliminar</th>
                         </tr>
                     </thead>
 
-                    <tbody id="usersTable">
+                    <tbody id="facultiesTypeTable">
                     </tbody>
                 </table>
             </div>
 
             <div class="fixed-action-btn horizontal click-to-toggle">
-                <a href="#nuevoUsuario" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
+                <a href="#nuevoTipoCarrera" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
                     <i class="material-icons">add</i>
                 </a>
             </div>
 
-            <!--Modal de agregacion de usuarios-->
-            <div id="nuevoUsuario" class="modal">
+            <!--Modal de agregacion de tipos de facultad-->
+            <div id="nuevoTipoCarrera" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nuevo usuario</h3>
+                            <h3 class="">Nuevo tipo de carrera</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmRegUser" autocomplete="off">
+                            <form id="frmRegCarTyp" autocomplete="off">
                                 <div class="input-field">
-                                    <input id="nombreUsuario" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="nombreUsuario">Nombre:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="apellidoUsuario" name="surname" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="apellidoUsuario">Apellido:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="emailUsuario" name="email" type="email" maxlength="50" required>
-                                    <label for="emailUsuario">Correo:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="telUsuario" name="phone" type="text" minlength="8" maxlength="8" required pattern="^[267]\d{3}\d{4}" title="Ingrese un numero de telefono valido">
-                                    <label for="telUsuario">Telefono</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="contraUsuario" name="pass" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="contraUsuario">Contraseña:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="confimUsuario" name="passConfirm" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="confimUsuario">Confirmar contraseña:</label>
+                                    <input id="nombreTipoCarrera" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="nombreTipoCarrera">Nombre:</label>
                                 </div>
                                 <div class="row">
-                                    <h6 class="center">Seleccione el estado del usuario:</h6>
+                                    <h6 class="center">Seleccione el estado del tipo de carrera:</h6>
                                     <div class="input-field col s6 push-s1">
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uStateA" name="state" value="1" type="radio" />
+                                                    <input id="StateA" name="state" value="1" type="radio" />
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -116,7 +90,7 @@
                                         <div class="col s12 m6 push-m4">
                                             <p>
                                                 <label>
-                                                    <input id="uStateI" name="state" value="0" type="radio" />
+                                                    <input id="StateI" name="state" value="0" type="radio" />
                                                     <span>Inactivo</span>
                                                 </label>
                                             </p>
@@ -134,50 +108,28 @@
             </div>
 
             <!--Modal de modificacion de usuarios-->
-            <div id="actualizarUsuario" class="modal">
+            <div id="actualizarTipoFacultad" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar usuario</h3>
+                            <h3 class="">Actualizar tipo de carrera</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-
-                            <form id="frmUpdtUser" autocomplete="off">
-                                <input id="uIdUser" type="hidden" name="userId" value="">
+                            <form id="frmUpdtCarTyp" autocomplete="off">
+                                <input id="uIdCareerType" type="hidden" name="uIdCareerType" value="">
                                 <div class="input-field">
-                                    <input value=" " id="uNombreUsuario" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="uNombreUsuario">Nombre:</label>
+                                    <input value=" " id="uNombreTipoCarrera" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="uNombreTipoCarrera">Nombre:</label>
                                 </div>
-                                <div class="input-field">
-                                    <input value=" " id="uApellidoUsuario" name="surname" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="uApellidoUsuario">Apellido:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input value=" " id="uEmailUsuario" name="email" type="email" maxlength="50" required>
-                                    <label for="uEmailUsuario" class="active">Correo:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input value=" " id="uTelUsuario" name="phone" type="text" minlength="8" maxlength="8" required pattern="^[267]\d{3}\d{4}" title="Ingrese un numero de telefono valido">
-                                    <label for="uTelUsuario">Telefono</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uContraUsuario" name="pass" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras">
-                                    <label for="uContraUsuario">Contraseña: -Opcional-</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uConfimUsuario" name="passConfirm" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras">
-                                    <label for="uConfimUsuario">Confirmar contraseña: -Opcional-</label>
-                                </div>
-
                                 <div class="row">
-                                    <h6 class="center">Seleccione el estado del usuario:</h6>
+                                    <h6 class="center">Seleccione el estado del tipo de carrera:</h6>
                                     <div class="input-field col s6 push-s1">
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uStateA" name="state" value="1" type="radio"/>
+                                                    <input id="uStateA" name="state" value="1" type="radio" />
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -202,26 +154,27 @@
                 </div>
             </div>
 
-            <!-- Modal de eliminar usuario-->
-            <div id="eliminarUsuario" class="modal">
+            <!-- Modal de eliminar tipo de carrera-->
+            <div id="eliminarTipoCarrera" class="modal">
                 <div class="modal-content">
-                    <h4>Eliminar estudiante</h4>
-                    <p>¿Seguro que deseas eliminar este estudiante?</p>
-                    <input id="dIdUser" type="hidden" name="userId" value="">
+                    <h4>Eliminar facultad</h4>
+                    <p>¿Seguro que deseas eliminar esta facultad?</p>
+                    <input id="dIdCareerType" type="hidden" name="dIdCareerType" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
-                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarUsuario" onclick="deleteUser();">Eliminar</a>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarTipoCarrera" onclick="deleteFaculty();">Eliminar</a>
                </div>
             </div>
         </main>
+
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
-        <script type="text/javascript" src="js/users.js"></script>
+        <script type="text/javascript" src="js/faculties.js"></script>
 </body>
 
 </html>

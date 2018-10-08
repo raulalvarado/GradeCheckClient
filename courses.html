@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div id="navprin" class="nav-wrapper">
+                <a href="#" data-activates="slide-out" class="brand-logo center">GradeCheck</a>
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </nav>
+        </div>
+
+        <div class="sidebar">
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+                <div class="separator">
+
+                </div>
+                <li><a class="waves-effect waves-light" href="Index.html"><i class="material-icons">person</i>Usuarios</a></li>
+                <li><a class="waves-effect waves-light" href="faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
+                <li><a class="waves-effect waves-light" href="students.html"><i class="material-icons">school</i>Estudiantes</a></li>
+                <li><a class="waves-effect waves-light" href="employees.html"><i class="material-icons">assignment_ind</i>Docentes</a></li>
+                <li><a class="waves-effect waves-light" href="careertype.html"><i class="material-icons">folder</i>Tipos de carrera</a></li>
+                <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
+                <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
+                <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
+                <li><div class="blokk"></div></li>
+                <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Notas</a></li>
+                <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
+            </ul>
+        </div>
+        <main>
+            <div class="tabla">
+                <table class="striped centered responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Codigo</th>
+                            <th>Semestre</th>
+                            <th>Inter</th>
+                            <th>Laboratorio</th>
+                            <th>U.Valorativas</th>
+                            <th>Prerrequisito</th>
+                            <th>Facultad</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="usersTable">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="fixed-action-btn horizontal click-to-toggle">
+                <a href="#nuevaMateria" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left"
+                    data-delay="50">
+                    <i class="material-icons">add</i>
+                </a>
+            </div>
+
+            <!--Modal de agregacion de materias-->
+            <div id="nuevaMateria" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header row blue darken-3 white-text">
+                        <div class="col m10 s9">
+                            <h3 class="">Nueva materia</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m8 offset-m2 center-align">
+                            <form id="frmRegCourse" autocomplete="off">
+                                <div class="input-field">
+                                    <input id="nombreMateria" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$"
+                                        title="Solo se permiten números y letras" required>
+                                    <label for="nombreMateria">Nombre:</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="codigoMateria" name="code" type="text" minlength="1" maxlength="6" pattern="^[A-Z]{3}[0-9]{3}$" title="Solo se permite un formato de tres letras mayusculas seguidas de tres digitos"
+                                        required>
+                                    <label for="codigoMateria">Codigo:</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="semestreMateria" name="semester" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}$" required>
+                                    <label for="semestreMateria">Semestre:</label>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <p>
+                                        <label>
+                                            <input id="interMateria" type="checkbox" />
+                                            <span>Interciclo</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <p>
+                                        <label>
+                                            <input id="labMateria" type="checkbox" />
+                                            <span>Laboratorio</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field">
+                                    <input id="uvMateria" name="uv" type="text" minlength="1" maxlength="10" pattern="^[0-9]$"
+                                        title="Solo se permiten números" required>
+                                    <label for="uvMateria">Unidades valorativas:</label>
+                                </div>
+                                <div >
+                                        <select id="CoursePrerequisite">
+                                          <option value="" disabled selected>Seleccione el prerrequisito</option>
+                                          <option value="1">Matematica I</option>
+                                          <option value="2">Expresion Oral y Escrita</option>
+                                          <option value="3">Matematica II</option>
+                                        </select>
+                                        <label>Prerrequisito</label>
+                                      </div>
+                                      <div class="input-field">
+                                        <select id="CourseFaculty">
+                                          <option value="" disabled selected>Seleccione la facultad</option>
+                                          <option value="1">Ingenieria</option>
+                                          <option value="2">Medicina</option>
+                                          <option value="3">Derecho</option>
+                                        </select>
+                                        <label>Facultad</label>
+                                      </div>
+                                      <div class="row">
+                                            <h6 class="center">Seleccione el estado de la materia:</h6>
+                                            <div class="input-field col s6 push-s1">
+                                                <div class="col s12 m6 push-m5">
+                                                    <p>
+                                                        <label>
+                                                            <input id="SateA" name="state" value="1" type="radio"/>
+                                                            <span>Activo</span>
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                                <div class="col s12 m6 push-m4">
+                                                    <p>
+                                                        <label>
+                                                            <input id="StateI" name="state" value="0" type="radio" />
+                                                            <span>Inactivo</span>
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <div class="row">
+                                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
+                                    <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal de modificacion de usuarios-->
+            <div id="actualizarUsuario" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header row blue darken-3 white-text">
+                        <div class="col m10 s9">
+                            <h3 class="">Actualizar usuario</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m8 offset-m2 center-align">
+
+                            <form id="frmUpdtUser" autocomplete="off">
+                                <input id="uIdCourse" type="hidden" name="courseId" value="">
+                                <div class="input-field">
+                                        <input id="uNombreMateria" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$"
+                                            title="Solo se permiten números y letras" required>
+                                        <label for="uNombreMateria">Nombre:</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input id="uCodigoMateria" name="code" type="text" minlength="1" maxlength="6" pattern="^[A-Z]{3}[0-9]{3}$" title="Solo se permite un formato de tres letras mayusculas seguidas de tres digitos"
+                                            required>
+                                        <label for="uCodigoMateria">Codigo:</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input id="uSemestreMateria" name="semester" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}$" required>
+                                        <label for="uSemestreMateria">Semestre:</label>
+                                    </div>
+                                    <div class="input-field aldiv">
+                                        <p>
+                                            <label>
+                                                <input id="uInterMateria" type="checkbox" />
+                                                <span>Interciclo</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field aldiv">
+                                        <p>
+                                            <label>
+                                                <input id="uLabMateria" type="checkbox" />
+                                                <span>Laboratorio</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field">
+                                        <input id="uUvMateria" name="uv" type="text" minlength="1" maxlength="10" pattern="^[0-9]$"
+                                            title="Solo se permiten números" required>
+                                        <label for="uUvMateria">Unidades valorativas:</label>
+                                    </div>
+                                    <div class="input-field">
+                                            <select id="uCoursePrerequisite">
+                                              <option value="" disabled selected>Seleccione el prerrequisito</option>
+                                              <option value="1">Matematica I</option>
+                                              <option value="2">Expresion Oral y Escrita</option>
+                                              <option value="3">Matematica II</option>
+                                            </select>
+                                            <label>Carrera</label>
+                                          </div>
+                                          <div class="input-field">
+                                            <select id="uCourseFaculty">
+                                              <option value="" disabled selected>Seleccione la facultad</option>
+                                              <option value="1">Ingenieria</option>
+                                              <option value="2">Medicina</option>
+                                              <option value="3">Derecho</option>
+                                            </select>
+                                            <label>Facultad</label>
+                                          </div>
+                                          <div class="row">
+                                                <h6 class="center">Seleccione el estado de la materia:</h6>
+                                                <div class="input-field col s6 push-s1">
+                                                    <div class="col s12 m6 push-m5">
+                                                        <p>
+                                                            <label>
+                                                                <input id="uSateA" name="state" value="1" type="radio"/>
+                                                                <span>Activo</span>
+                                                            </label>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col s12 m6 push-m4">
+                                                        <p>
+                                                            <label>
+                                                                <input id="uStateI" name="state" value="0" type="radio" />
+                                                                <span>Inactivo</span>
+                                                            </label>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                <div class="row">
+                                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Modificar</button>
+                                    <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal de eliminar materia-->
+            <div id="eliminarmateria" class="modal">
+                <div class="modal-content">
+                    <h4>Eliminar materia</h4>
+                    <p>¿Seguro que deseas eliminar esta materia?</p>
+                    <input id="dIdCourse" type="hidden" name="courseId" value="">
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="" onclick="">Eliminar</a>
+                </div>
+            </div>
+        </main>
+
+        
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/users.js"></script>
+        <script type="text/javascript" src="js/select2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        
+</body>
+
+</html>

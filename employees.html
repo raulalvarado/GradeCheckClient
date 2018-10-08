@@ -44,59 +44,67 @@
                 <table class="striped centered responsive-table">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
+                            <th>Usuario</th>
+                            <th>Gestionar materias impartidas</th>
                             <th>Estado</th>
                             <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
 
-                    <tbody id="facultiesTable">
+                    <tbody id="usersTable">
+                        <td><a href='course_teacher.html'><i class='material-icons'>mode_edit</i></a></td>
                     </tbody>
                 </table>
             </div>
 
             <div class="fixed-action-btn horizontal click-to-toggle">
-                <a href="#nuevaFacultad" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
+                <a href="#nuevoDocente" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
                     <i class="material-icons">add</i>
                 </a>
             </div>
 
-            <!--Modal de agregacion de usuarios-->
-            <div id="nuevaFacultad" class="modal">
+            <!--Modal de agregacion de Docentes-->
+            <div id="nuevoDocente" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nueva facultad</h3>
+                            <h3 class="">Nuevo docente</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmRegFac" autocomplete="off">
-                                <div class="input-field">
-                                    <input id="nombreFacultad" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="nombreFacultad">Nombre:</label>
-                                </div>
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado de la facultad:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                    <input id="SateA" name="state" value="1" type="radio"/>
-                                                    <span>Activo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                    <input id="StateI" name="state" value="0" type="radio" />
-                                                    <span>Inactivo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <form id="frmRegEmployee" autocomplete="off">
+                                    <div class="input-field col s12">
+                                            <select id="EmployeeUser">
+                                              <option value="" disabled selected>Seleccione el usuario</option>
+                                              <option value="1">Juan Topo</option>
+                                              <option value="2">John Doe</option>
+                                              <option value="3">Jane Doe</option>
+                                            </select>
+                                            <label>Usuario</label>
+                                          </div>
+                                              <div class="row">
+                                                    <h6 class="center">Seleccione el estado del docente:</h6>
+                                                    <div class="input-field col s6 push-s1">
+                                                        <div class="col s12 m6 push-m5">
+                                                            <p>
+                                                                <label>
+                                                                    <input id="SateA" name="state" value="1" type="radio"/>
+                                                                    <span>Activo</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col s12 m6 push-m4">
+                                                            <p>
+                                                                <label>
+                                                                    <input id="StateI" name="state" value="0" type="radio" />
+                                                                    <span>Inactivo</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
                                     <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
@@ -107,29 +115,26 @@
                 </div>
             </div>
 
-            <!--Modal de modificacion de usuarios-->
-            <div id="actualizarFacultad" class="modal">
+            <!--Modal de modificacion de docente-->
+            <div id="actualizarDocente" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar facultad</h3>
+                            <h3 class="">Actualizar docente</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmUpdtFac" autocomplete="off">
-                                <input id="uId" type="hidden" name="id" value="">
-                                <div class="input-field">
-                                    <input value=" " id="uNombreFacultad" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="uNombreFacultad">Nombre:</label>
-                                </div>
+
+                            <form id="frmUpdtEmployee" autocomplete="off">
+                                    <input id="IdEmployee" type="hidden" name="employeeId" value="">
                                 <div class="row">
-                                    <h6 class="center">Seleccione el estado de la facultad:</h6>
+                                    <h6 class="center">Seleccione el estado del docente:</h6>
                                     <div class="input-field col s6 push-s1">
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uStateA" name="state" value="1" type="radio" />
+                                                    <input id="uStateA" name="state" value="1" type="radio"/>
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -154,27 +159,26 @@
                 </div>
             </div>
 
-            <!-- Modal de eliminar facultad-->
-            <div id="eliminarFacultad" class="modal">
+            <!-- Modal de eliminar docente-->
+            <div id="eliminarUsuario" class="modal">
                 <div class="modal-content">
-                    <h4>Eliminar facultad</h4>
-                    <p>¿Seguro que deseas eliminar esta facultad?</p>
-                    <input id="dId" type="hidden" name="id" value="">
+                    <h4>Eliminar docente</h4>
+                    <p>¿Seguro que deseas eliminar este docente?</p>
+                    <input id="dIdEmployee" type="hidden" name="demployeeId" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
-                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteFaculty();">Eliminar</a>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarDocente" onclick="">Eliminar</a>
                </div>
             </div>
         </main>
-
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
-        <script type="text/javascript" src="js/faculties.js"></script>
+        <script type="text/javascript" src="js/users.js"></script>
 </body>
 
 </html>
