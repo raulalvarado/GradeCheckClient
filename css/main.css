@@ -3,6 +3,20 @@
     background-color: #D32F2F;
 }
 
+#link
+{
+    color:white;
+}
+
+#link:hover
+{
+    color: blue;
+}
+
+#title
+{
+    font-weight: 400;
+}
 .separator
 {
     background-color: #D32F2F;
@@ -23,6 +37,11 @@
 {
     margin-left: 70px;
     display: inline-block;
+}
+
+.grade
+{
+    font-weight: 500;
 }
 
 .sidebar a
