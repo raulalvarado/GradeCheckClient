@@ -101,7 +101,7 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtCarTyp" autocomplete="off">
-                                <input id="uIdCareerType" type="hidden" name="careerTypeId" value="">
+                                <input id="uIdCareerType" type="hidden" name="id" value="">
                                 <div class="input-field">
                                     <input value=" " id="uNombreTipoCarrera" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uNombreTipoCarrera">Nombre:</label>
@@ -112,7 +112,7 @@
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uStateA" name="state" value="1" type="radio" />
+                                                    <input id="uStateA" name="state" value="true" type="radio" />
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -120,7 +120,7 @@
                                         <div class="col s12 m6 push-m4">
                                             <p>
                                                 <label>
-                                                    <input id="uStateI" name="state" value="0" type="radio" />
+                                                    <input id="uStateI" name="state" value="false" type="radio" />
                                                     <span>Inactivo</span>
                                                 </label>
                                             </p>

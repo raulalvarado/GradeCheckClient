@@ -1,6 +1,6 @@
 var table = $("#careerTypeTable");
 var newCarTypeFrm = $("#frmRegCarTyp");
-var updateCarFrm = $("#frmUpdtCarTyp");
+var updateCarTypeFrm = $("#frmUpdtCarTyp");
 var updateModalCareerType = $("#actualizarTipoCarrera");
 var newModalCareerType = $("#nuevoTipoCarrera");
 var deleteModalFaculty = $("#eliminarTipoCarrera");
@@ -72,7 +72,54 @@ function postCareerType() {
     });
 }
 
-//save user post
+//request one user
+function requestCareerType(id) {
+    $.ajax({
+        url: BASE_URL + CAREER_TYPES_READ + "/" + id,
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            $("#uIdCareerType").val(result.id);
+            $("#uNombreTipoCarrera").val(result.name);
+            if (result.state === true) {
+                $("#uStateA").prop("checked", true);
+            } else {
+                $("#uStateI").prop("checked", true);
+            }
+            updateModalCareerType.modal("open");
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
+
+function updateCareerType() {
+    $.ajax({
+        url: BASE_URL + CAREER_TYPES_CREATE,
+        type: "PUT",
+        data: updateCarTypeFrm.serialize(),
+        success: function(result) {
+            console.log(result);
+            getCareerTypes();
+            updateModalCareerType.modal('close');
+            M.toast({
+                html: 'Tipo de carrera actualizada'
+            })
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}
+
+updateCarTypeFrm.submit(function(e) {
+    e.preventDefault();
+    updateCareerType();
+});
+
 newCarTypeFrm.submit(function(e) {
     e.preventDefault();
     postCareerType();
