@@ -23,7 +23,7 @@ function getCareers() {
 
                 //validating if it's an active user
                 var checked = "<input type='checkbox' class='filled-in' disabled='disabled' checked='checked' />";
-                if (val.state === "false") {
+                if (val.state === false) {
                     checked = "<input type='checkbox' class='filled-in' disabled='disabled'/>";
                 }
 
@@ -38,11 +38,12 @@ function getCareers() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestSubjects(" + val.id + ")'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareer(" + val.id + ")'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
-            newFacFrm.trigger("reset");
+            newCarFrm.trigger("reset");
         },
         error: function(error) {
             console.log(error);

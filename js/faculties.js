@@ -22,7 +22,7 @@ function getFaculties() {
 
                 //validating if it's an active user
                 var checked = "<input type='checkbox' class='filled-in' disabled='disabled' checked='checked' />";
-                if (val.state === "false") {
+                if (val.state === false) {
                     checked = "<input type='checkbox' class='filled-in' disabled='disabled'/>";
                 }
 
