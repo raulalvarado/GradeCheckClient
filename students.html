@@ -55,9 +55,8 @@
                         </tr>
                     </thead>
 
-                    <tbody id="usersTable">
-                            <td><a href='career_students.html'><i class='material-icons'>mode_edit</i></a></td>
-                            <td><a href='registered_courses.html'><i class='material-icons'>mode_edit</i></a></td>
+                    <tbody id="studentsTable">
+
                     </tbody>
                 </table>
             </div>
@@ -88,15 +87,6 @@
                                             </select>
                                             <label>Usuario</label>
                                           </div>
-                                          <div class="input-field col s12">
-                                                <select id="StudentCareer">
-                                                  <option value="" disabled selected>Seleccione la carrera</option>
-                                                  <option value="1">Ingenieria Civil</option>
-                                                  <option value="2">Inspector de patas</option>
-                                                  <option value="3">Ingenieria Industrial</option>
-                                                </select>
-                                                <label>Carrera</label>
-                                              </div>
                                               <div class="row">
                                                     <h6 class="center">Seleccione el estado del estudiante:</h6>
                                                     <div class="input-field col s6 push-s1">
@@ -140,16 +130,7 @@
                         <div class="col s12 m8 offset-m2 center-align">
 
                             <form id="frmUpdtStudent" autocomplete="off">
-                                    <input id="uIdStudent" type="hidden" name="idStudent" value="">
-                                    <div class="input-field col s12">
-                                            <select id="uStudentCareer">
-                                              <option value="" disabled selected>Seleccione la carrera</option>
-                                              <option value="1">Ingenieria Civil</option>
-                                              <option value="2">Inspector de patas</option>
-                                              <option value="3">Ingenieria Industrial</option>
-                                            </select>
-                                            <label>Carrera</label>
-                                          </div>
+                                    <input id="uIdStudent" type="hidden" name="studentId" value="">
                                 <div class="row">
                                     <h6 class="center">Seleccione el estado del usuario:</h6>
                                     <div class="input-field col s6 push-s1">
@@ -200,7 +181,6 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
-        <script type="text/javascript" src="js/users.js"></script>
 </body>
 
 </html>

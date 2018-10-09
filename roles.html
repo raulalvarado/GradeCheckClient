@@ -79,31 +79,31 @@
                                 <div class="aldiv input-field">
                                 <p>
                                         <label>
-                                          <input type="checkbox" />
+                                          <input id="teach" type="checkbox" />
                                           <span>Docente</span>
                                         </label>
                                       </p>
                                       <p>
                                             <label>
-                                              <input type="checkbox" />
+                                              <input id="mng_users" type="checkbox" />
                                               <span>Gest.usuarios</span>
                                             </label>
                                           </p>
                                           <p>
                                                 <label>
-                                                  <input type="checkbox" />
+                                                  <input id="mng_students" type="checkbox" />
                                                   <span>Gest.estudiantes</span>
                                                 </label>
                                               </p>
                                               <p>
                                                     <label>
-                                                      <input type="checkbox" />
+                                                      <input id="mng_employees" type="checkbox" />
                                                       <span>Gest.Empleados</span>
                                                     </label>
                                                   </p>
                                                   <p>
                                                         <label>
-                                                          <input type="checkbox" />
+                                                          <input id="mng_faculties" type="checkbox" />
                                                           <span>Gest.Facultades</span>
                                                         </label>
                                                       </p>
@@ -112,31 +112,31 @@
                                                     
                                                     <p>
                                                             <label>
-                                                              <input type="checkbox" />
+                                                              <input id="mng_Careers" type="checkbox" />
                                                               <span>Gest.carreras</span>
                                                             </label>
                                                           </p>
                                                           <p>
                                                                 <label>
-                                                                  <input type="checkbox" />
-                                                                  <span>Gest.carreras</span>
+                                                                  <input id="mng_Roles" type="checkbox" />
+                                                                  <span>Gest.roles</span>
                                                                 </label>
                                                               </p>
                                                               <p>
                                                                     <label>
-                                                                      <input type="checkbox" />
+                                                                      <input id="mng_Courses" type="checkbox" />
                                                                       <span>Gest.materias</span>
                                                                     </label>
                                                                   </p>
                                                                   <p>
                                                                         <label>
-                                                                          <input type="checkbox" />
+                                                                          <input id="mng_Pensum" type="checkbox" />
                                                                           <span>Gest.pensum</span>
                                                                         </label>
                                                                       </p>
                                                                       <p>
                                                                             <label>
-                                                                              <input type="checkbox" />
+                                                                              <input id="mng_Evaluations" type="checkbox" />
                                                                               <span>Gest.evaluaciones</span>
                                                                             </label>
                                                                           </p>
@@ -183,6 +183,7 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtRol" autocomplete="off">
+                                    <input id="uIdRoles" type="hidden" name="rolesId" value="">
                                     <div class="input-field">
                                             <input id="uNombreRol" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                             <label for="uNombreRol">Nombre:</label>
@@ -229,25 +230,25 @@
                                                                   </p>
                                                                   <p>
                                                                         <label>
-                                                                          <input id="uMngRoles" type="checkbox" />
+                                                                          <input id="uMng_Roles" type="checkbox" />
                                                                           <span>Gest.roles</span>
                                                                         </label>
                                                                       </p>
                                                                       <p>
                                                                             <label>
-                                                                              <input id="MngCourses" type="checkbox" />
+                                                                              <input id="uMng_Courses" type="checkbox" />
                                                                               <span>Gest.materias</span>
                                                                             </label>
                                                                           </p>
                                                                           <p>
                                                                                 <label>
-                                                                                  <input id="uMngPensum" type="checkbox" />
+                                                                                  <input id="uMng_Pensum" type="checkbox" />
                                                                                   <span>Gest.pensum</span>
                                                                                 </label>
                                                                               </p>
                                                                               <p>
                                                                                     <label>
-                                                                                      <input id="uMngEvaluations" type="checkbox" />
+                                                                                      <input id="uMng_Evaluations" type="checkbox" />
                                                                                       <span>Gest.evaluaciones</span>
                                                                                     </label>
                                                                                   </p>
@@ -288,7 +289,7 @@
                 <div class="modal-content">
                     <h4>Eliminar facultad</h4>
                     <p>¿Seguro que deseas eliminar esta facultad?</p>
-                    <input id="dId" type="hidden" name="id" value="">
+                    <input id="dIdRoles" type="hidden" name="rolesId" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
@@ -303,7 +304,6 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
-        <script type="text/javascript" src="js/faculties.js"></script>
 </body>
 
 </html>

@@ -143,6 +143,7 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtCT" autocomplete="off">
+                                    <input id="uIdCTeachers" type="hidden" name="cTeachersId" value="">
                                     <div class="input-field">
                                             <input id="uAñoMateria" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                             <label for="uAñoMateria">Año:</label>
@@ -205,7 +206,7 @@
                 <div class="modal-content">
                     <h4>Eliminar facultad</h4>
                     <p>¿Seguro que deseas eliminar esta facultad?</p>
-                    <input id="dId" type="hidden" name="id" value="">
+                    <input id="dIdCTeachers" type="hidden" name="cTeachersId" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
@@ -220,7 +221,6 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
-        <script type="text/javascript" src="js/faculties.js"></script>
 </body>
 
 </html>
