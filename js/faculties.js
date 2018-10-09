@@ -17,7 +17,7 @@ function getFaculties() {
         success: function(result) {
             console.log(result);
             table.empty();
-            $.each(result["faculty"], function(i, val) {
+            $.each(result, function(i, val) {
                 console.log(val.name);
 
                 //validating if it's an active user

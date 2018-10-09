@@ -19,30 +19,30 @@ function getStudents() {
         success: function(result) {
             console.log(result);
             table.empty();
-            $.each(result["student"], function(i, val) {
-                console.log(val["user"].email);
+            $.each(result, function(i, val) {
+                console.log(val["person"].email);
 
                 //validating if it's an active user
                 var checked = "<input type='checkbox' class='filled-in' disabled='disabled' checked='checked' />";
-                if (val["user"].state === "false") {
+                if (val.state === "false") {
                     checked = "<input type='checkbox' class='filled-in' disabled='disabled'/>";
                 }
 
                 //filling table
                 table.append("<tr>" +
-                    "<td>" + val["user"].name + "</td>" +
-                    "<td>" + val["user"].surname + "</td>" +
-                    "<td>" + val["user"].username + "</td>" +
-                    "<td>" + val["user"].phone + "</td>" +
-                    "<td>" + val["user"].email + "</td>" +
+                    "<td>" + val["person"].name + "</td>" +
+                    "<td>" + val["person"].surname + "</td>" +
+                    "<td>" + val.username + "</td>" +
+                    "<td>" + val["person"].phone + "</td>" +
+                    "<td>" + val["person"].email + "</td>" +
                     "<td>" +
                     "<label>" +
                     checked +
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestUser(" + val["user"].id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteUser(" + val["user"].id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestUser(" + val.id + ")'>mode_edit</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteUser(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             formNuevoU.trigger("reset");
@@ -172,8 +172,7 @@ function showError(error) {
         M.toast({
             html: 'Por favor ingrese todos los datos solicitados'
         })
-    }
-    else {
+    } else {
         switch (error) {
             case "Given passwords do not match.":
                 M.toast({
