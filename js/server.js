@@ -18,3 +18,5 @@ var CAREER_TYPES_READ = "careerTypes"
 var COURSES_READ = "courses/faculties/prerrequisite"
 
 var STUDENTS_READ = "students/users/people"
+
+var EMPLOYEES_READ = "employees/users/people/roles"
