@@ -66,8 +66,8 @@ function postCareerType() {
             })
         },
         error: function(error) {
-            console.log(error);
-            //showError(error.responseText);
+            console.log(error.responseText);
+            showError(error.responseText);
         }
     });
 }
@@ -77,3 +77,11 @@ newCarTypeFrm.submit(function(e) {
     e.preventDefault();
     postCareerType();
 });
+
+//display server errors
+function showError(error) {
+    M.toast({
+        html: error
+    })
+
+}

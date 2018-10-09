@@ -65,7 +65,7 @@ function postFaculty() {
             })
         },
         error: function(error) {
-            console.log(error);
+            console.log(error.responseText);
             showError(error.responseText);
         }
     });
@@ -80,14 +80,14 @@ newFacFrm.submit(function(e) {
 //request one user
 function requestFaculty(id) {
     $.ajax({
-        url: BASE_URL + FACULTIES_GET + id,
+        url: BASE_URL + FACULTIES_READ + "/" + id,
         type: "GET",
         dataType: "json",
         success: function(result) {
             console.log(result);
             $("#uId").val(result.id);
             $("#uNombreFacultad").val(result.name);
-            if (result.state === "true") {
+            if (result.state === true) {
                 $("#uStateA").prop("checked", true);
             } else {
                 $("#uStateI").prop("checked", true);
@@ -103,7 +103,7 @@ function requestFaculty(id) {
 //update faculty 
 function updateFaculty() {
     $.ajax({
-        url: BASE_URL + FACULTIES_UPDATE,
+        url: BASE_URL + FACULTIES_CREATE,
         type: "PUT",
         data: updateFacFrm.serialize(),
         success: function(result) {
@@ -115,7 +115,7 @@ function updateFaculty() {
             })
         },
         error: function(error) {
-            console.log(error);
+            console.log(error.responseText);
             showError(error.responseText);
         }
     });
@@ -155,26 +155,8 @@ updateFacFrm.submit(function(e) {
 
 //display server errors
 function showError(error) {
-    switch (error) {
-        case "Must specify faculty name":
-            M.toast({
-                html: 'Ingrese un nombre de facultad valido'
-            })
-            break;
-        case "Duplicated value. Could not complete operation":
-            M.toast({
-                html: 'No se permiten valores duplicados'
-            })
-            break;
-        case "Cannot delete record, parent row conflict":
-            M.toast({
-                html: 'La facultad que se desea eliminar ya tiene registros asociados'
-            })
-            break;
-        default:
-            M.toast({
-                html: 'Ocurrio un error al procesar su peticion, contacte con el administrador'
-            })
-            break;
-    }
+    M.toast({
+        html: error
+    })
+
 }
