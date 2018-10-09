@@ -10,3 +10,5 @@ var FACULTIES_CREATE = "Faculties/create"
 var FACULTIES_GET = "Faculties/readById/"
 var FACULTIES_UPDATE = "Faculties/update"
 var FACULTIES_DELETE = "Faculties/delete/"
+
+var CAREERS_READ = "careers/full";
