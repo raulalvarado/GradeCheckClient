@@ -14,3 +14,5 @@ var FACULTIES_DELETE = "Faculties/delete/"
 var CAREERS_READ = "careers/full"
 
 var COURSES_READ = "courses/faculties/prerrequisite"
+
+var STUDENTS_READ = "students/users/people"

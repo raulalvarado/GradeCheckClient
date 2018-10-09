@@ -26,7 +26,7 @@
                 <div class="separator">
 
                 </div>
-                
+
                 <li><a class="waves-effect waves-light" href="Index.html"><i class="material-icons">person</i>Usuarios</a></li>
                 <li><a class="waves-effect waves-light" href="faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
                 <li><a class="waves-effect waves-light" href="students.html"><i class="material-icons">school</i>Estudiantes</a></li>
@@ -35,22 +35,26 @@
                 <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
                 <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
                 <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li><div class="blokk"></div></li>
+                <li>
+                    <div class="blokk"></div>
+                </li>
                 <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Notas</a></li>
                 <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
- 
+
             </ul>
         </div>
         <main>
-                <h2 class="center">Estudiantes</h2>
+            <h2 class="center">Estudiantes</h2>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
                         <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
                             <th>Usuario</th>
+                            <th>Estado</th>
                             <th>Gestionar carrera</th>
                             <th>Gestionar materias</th>
-                            <th>Estado</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -79,36 +83,36 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegStudent" autocomplete="off">
-                                    <div class="input-field col s12">
-                                            <select id="StudentUser">
+                                <div class="input-field col s12">
+                                    <select id="StudentUser">
                                               <option value="" disabled selected>Seleccione el usuario</option>
                                               <option value="1">Juan Topo</option>
                                               <option value="2">John Doe</option>
                                               <option value="3">Jane Doe</option>
                                             </select>
-                                            <label>Usuario</label>
-                                          </div>
-                                              <div class="row">
-                                                    <h6 class="center">Seleccione el estado del estudiante:</h6>
-                                                    <div class="input-field col s6 push-s1">
-                                                        <div class="col s12 m6 push-m5">
-                                                            <p>
-                                                                <label>
+                                    <label>Usuario</label>
+                                </div>
+                                <div class="row">
+                                    <h6 class="center">Seleccione el estado del estudiante:</h6>
+                                    <div class="input-field col s6 push-s1">
+                                        <div class="col s12 m6 push-m5">
+                                            <p>
+                                                <label>
                                                                     <input id="SateA" name="state" value="1" type="radio"/>
                                                                     <span>Activo</span>
                                                                 </label>
-                                                            </p>
-                                                        </div>
-                                                        <div class="col s12 m6 push-m4">
-                                                            <p>
-                                                                <label>
+                                            </p>
+                                        </div>
+                                        <div class="col s12 m6 push-m4">
+                                            <p>
+                                                <label>
                                                                     <input id="StateI" name="state" value="0" type="radio" />
                                                                     <span>Inactivo</span>
                                                                 </label>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
                                     <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
@@ -131,7 +135,7 @@
                         <div class="col s12 m8 offset-m2 center-align">
 
                             <form id="frmUpdtStudent" autocomplete="off">
-                                    <input id="uIdStudent" type="hidden" name="studentId" value="">
+                                <input id="uIdStudent" type="hidden" name="studentId" value="">
                                 <div class="row">
                                     <h6 class="center">Seleccione el estado del usuario:</h6>
                                     <div class="input-field col s6 push-s1">
@@ -164,7 +168,7 @@
             </div>
 
             <!-- Modal de eliminar usuario-->
-            <div id="eliminarUsuario" class="modal">
+            <div id="eliminarEstudiante" class="modal">
                 <div class="modal-content">
                     <h4>Eliminar estudiante</h4>
                     <p>¿Seguro que deseas eliminar este estudiante?</p>
@@ -173,7 +177,7 @@
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
                     <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarEstudiante" onclick="">Eliminar</a>
-               </div>
+                </div>
             </div>
         </main>
 
@@ -182,6 +186,7 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/students.js"></script>
 </body>
 
 </html>
