@@ -50,3 +50,30 @@ function getCareerTypes() {
         }
     });
 }
+
+//save user
+function postCareerType() {
+    $.ajax({
+        url: BASE_URL + CAREER_TYPES_CREATE,
+        type: "POST",
+        data: newCarTypeFrm.serialize(),
+        success: function(result) {
+            console.log(result);
+            getCareerTypes();
+            newModalCareerType.modal('close');
+            M.toast({
+                html: 'Tipo de carrera agregado con exito'
+            })
+        },
+        error: function(error) {
+            console.log(error);
+            //showError(error.responseText);
+        }
+    });
+}
+
+//save user post
+newCarTypeFrm.submit(function(e) {
+    e.preventDefault();
+    postCareerType();
+});
