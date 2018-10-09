@@ -85,7 +85,7 @@
                                     <label for="NombreCarrera">Nombre:</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <select id="CareerFaculty">
+                                    <select id="CareerFaculty" class="cCarrerFaculty" name="facultyId">
                                                   <option value="" disabled selected>Seleccione la facultad</option>
                                                   <option value="1">Ingenieria</option>
                                                   <option value="2">Medicina</option>
@@ -94,34 +94,13 @@
                                     <label>Facultad</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <select id="CareerTypeFaculty">
+                                    <select id="CareerTypeFaculty" class="cCareerType" name="careerTypeId">
                                                       <option value="" disabled selected>Seleccione el tipo de carrera</option>
                                                       <option value="1">Ingenieria</option>
                                                       <option value="2">Tecnico</option>
                                                       <option value="3">Maestria</option>
                                                     </select>
                                     <label>Tipo</label>
-                                </div>
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado de la carrera:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                                    <input id="SateA" name="state" value="1" type="radio"/>
-                                                                    <span>Activo</span>
-                                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                                    <input id="StateI" name="state" value="0" type="radio" />
-                                                                    <span>Inactivo</span>
-                                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -151,7 +130,7 @@
                                     <label for="uNombreCarrera">Nombre:</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <select id="uCareerFaculty">
+                                    <select id="uCareerFaculty" class="cCarrerFaculty"> 
                                                   <option value="" disabled selected>Seleccione la facultad</option>
                                                   <option value="1">Ingenieria</option>
                                                   <option value="2">Medicina</option>
@@ -160,7 +139,7 @@
                                     <label>Facultad</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <select id="uCareerTypeFaculty">
+                                    <select id="uCareerTypeFaculty" class="cCareerType">
                                                       <option value="" disabled selected>Seleccione el tipo de carrera</option>
                                                       <option value="1">Ingenieria</option>
                                                       <option value="2">Tecnico</option>
