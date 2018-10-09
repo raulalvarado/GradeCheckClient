@@ -45,105 +45,57 @@
                 <table class="striped centered responsive-table">
                     <thead>
                         <tr>
-                            <th>Rol</th>
+                            <th>Docente</th>
+                            <th>Estado de materia</th>
                             <th>Estado</th>
                             <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
 
-                    <tbody id="rolesTable">
+                    <tbody id="rCoursesTables">
                     </tbody>
                 </table>
             </div>
 
             <div class="fixed-action-btn horizontal click-to-toggle">
-                <a href="#nuevoRol" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
+                <a href="#nuevaMateriaAsig" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
                     <i class="material-icons">add</i>
                 </a>
             </div>
 
             <!--Modal de agregacion de usuarios-->
-            <div id="nuevoRol" class="modal">
+            <div id="nuevaMateriaAsig" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nuevo rol</h3>
+                            <h3 class="">Nueva materia asignada</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmRegRole" autocomplete="off">
-                                <div class="input-field">
-                                    <input id="nombreRol" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="nombreRol">Nombre:</label>
-                                </div>
-                                <div class="aldiv input-field">
-                                <p>
-                                        <label>
-                                          <input type="checkbox" />
-                                          <span>Docente</span>
-                                        </label>
-                                      </p>
-                                      <p>
-                                            <label>
-                                              <input type="checkbox" />
-                                              <span>Gest.usuarios</span>
-                                            </label>
-                                          </p>
-                                          <p>
-                                                <label>
-                                                  <input type="checkbox" />
-                                                  <span>Gest.estudiantes</span>
-                                                </label>
-                                              </p>
-                                              <p>
-                                                    <label>
-                                                      <input type="checkbox" />
-                                                      <span>Gest.Empleados</span>
-                                                    </label>
-                                                  </p>
-                                                  <p>
-                                                        <label>
-                                                          <input type="checkbox" />
-                                                          <span>Gest.Facultades</span>
-                                                        </label>
-                                                      </p>
-                                            </div>
-                                            <div class="aldiv2 input-field">
-                                                    
-                                                    <p>
-                                                            <label>
-                                                              <input type="checkbox" />
-                                                              <span>Gest.carreras</span>
-                                                            </label>
-                                                          </p>
-                                                          <p>
-                                                                <label>
-                                                                  <input type="checkbox" />
-                                                                  <span>Gest.carreras</span>
-                                                                </label>
-                                                              </p>
-                                                              <p>
-                                                                    <label>
-                                                                      <input type="checkbox" />
-                                                                      <span>Gest.materias</span>
-                                                                    </label>
-                                                                  </p>
-                                                                  <p>
-                                                                        <label>
-                                                                          <input type="checkbox" />
-                                                                          <span>Gest.pensum</span>
-                                                                        </label>
-                                                                      </p>
-                                                                      <p>
-                                                                            <label>
-                                                                              <input type="checkbox" />
-                                                                              <span>Gest.evaluaciones</span>
-                                                                            </label>
-                                                                          </p>
-                                                                </div>
+                            <form id="frmRegRC" autocomplete="off">
+                                                <div class="input-field">
+                                                    <select id="docenteMat">
+                                                        <option value="" disabled selected>Seleccione docente</option>
+                                                        <option value="1">Iris Irisita</option>
+                                                        <option value="2">Iris Irisita</option>
+                                                        <option value="3">Iris Irisita</option>
+                                                    </select>
+                                                    <label>Carrera</label>
+                                                </div>
+                                                <div class="input-field">
+                                                        <select id="estadoMat">
+                                                            <option value="" disabled selected>Seleccione estado de la materia</option>
+                                                            <option value="1">Aprobada</option>
+                                                            <option value="2">Reprobada</option>
+                                                            <option value="3">En curso</option>
+                                                            <option value="4">Retirada</option>
+                                                        </select>
+                                                        <label>Carrera</label>
+                                                    </div>
                                                                 <div class="row">
-                                                                        <h6 class="center">Seleccione el estado del rol:</h6>
+                                                                        <h6 class="center">Seleccione el estado:</h6>
                                                                         <div class="input-field col s6 push-s1">
                                                                             <div class="col s12 m6 push-m5">
                                                                                 <p>
@@ -183,78 +135,30 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmUpdtRol" autocomplete="off">
+                            <form id="frmUpdtRC" autocomplete="off">
+                                    <input id="uIdRCourses" type="hidden" name="uCoursesId" value="">
                                     <div class="input-field">
-                                            <input id="uNombreRol" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                            <label for="uNombreRol">Nombre:</label>
-                                        </div>
-                                        <div class="aldiv input-field">
-                                        <p>
-                                                <label>
-                                                  <input id="uTeach" type="checkbox" />
-                                                  <span>Docente</span>
-                                                </label>
-                                              </p>
-                                              <p>
-                                                    <label>
-                                                      <input id="uMng_users" type="checkbox" />
-                                                      <span>Gest.usuarios</span>
-                                                    </label>
-                                                  </p>
-                                                  <p>
-                                                        <label>
-                                                          <input id="uMng_students" type="checkbox" />
-                                                          <span>Gest.estudiantes</span>
-                                                        </label>
-                                                      </p>
-                                                      <p>
-                                                            <label>
-                                                              <input id="uMng_employees" type="checkbox" />
-                                                              <span>Gest.Empleados</span>
-                                                            </label>
-                                                          </p>
-                                                          <p>
-                                                                <label>
-                                                                  <input id="uMng_faculties" type="checkbox" />
-                                                                  <span>Gest.Facultades</span>
-                                                                </label>
-                                                              </p>
+                                            <div class="input-field">
+                                                    <select id="docenteMat">
+                                                        <option value="" disabled selected>Seleccione docente</option>
+                                                        <option value="1">Iris Irisita</option>
+                                                        <option value="2">Iris Irisita</option>
+                                                        <option value="3">Iris Irisita</option>
+                                                    </select>
+                                                    <label>Carrera</label>
+                                                </div>
+                                                <div class="input-field">
+                                                        <select id="estadoMat">
+                                                            <option value="" disabled selected>Seleccione estado de la materia</option>
+                                                            <option value="1">Aprobada</option>
+                                                            <option value="2">Reprobada</option>
+                                                            <option value="3">En curso</option>
+                                                            <option value="4">Retirada</option>
+                                                        </select>
+                                                        <label>Carrera</label>
                                                     </div>
-                                                    <div class="aldiv2 input-field">
-                                                            
-                                                            <p>
-                                                                    <label>
-                                                                      <input id="uMngCareers" type="checkbox" />
-                                                                      <span>Gest.carreras</span>
-                                                                    </label>
-                                                                  </p>
-                                                                  <p>
-                                                                        <label>
-                                                                          <input id="uMngRoles" type="checkbox" />
-                                                                          <span>Gest.roles</span>
-                                                                        </label>
-                                                                      </p>
-                                                                      <p>
-                                                                            <label>
-                                                                              <input id="MngCourses" type="checkbox" />
-                                                                              <span>Gest.materias</span>
-                                                                            </label>
-                                                                          </p>
-                                                                          <p>
-                                                                                <label>
-                                                                                  <input id="uMngPensum" type="checkbox" />
-                                                                                  <span>Gest.pensum</span>
-                                                                                </label>
-                                                                              </p>
-                                                                              <p>
-                                                                                    <label>
-                                                                                      <input id="uMngEvaluations" type="checkbox" />
-                                                                                      <span>Gest.evaluaciones</span>
-                                                                                    </label>
-                                                                                  </p>
-                                                                        </div>
                                                                         <div class="row">
-                                                                                <h6 class="center">Seleccione el estado del rol:</h6>
+                                                                                <h6 class="center">Seleccione el estado de la materia:</h6>
                                                                                 <div class="input-field col s6 push-s1">
                                                                                     <div class="col s12 m6 push-m5">
                                                                                         <p>
@@ -287,9 +191,9 @@
             <!-- Modal de eliminar facultad-->
             <div id="eliminarFacultad" class="modal">
                 <div class="modal-content">
-                    <h4>Eliminar facultad</h4>
-                    <p>¿Seguro que deseas eliminar esta facultad?</p>
-                    <input id="dId" type="hidden" name="id" value="">
+                    <h4>Eliminar materia</h4>
+                    <p>¿Seguro que deseas eliminar esta materia?</p>
+                    <input id="dIdRCourses" type="hidden" name="rCoursesId" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>

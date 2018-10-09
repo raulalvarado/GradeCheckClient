@@ -30,78 +30,123 @@
                 <li><a class="waves-effect waves-light" href="faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
                 <li><a class="waves-effect waves-light" href="students.html"><i class="material-icons">school</i>Estudiantes</a></li>
                 <li><a class="waves-effect waves-light" href="employees.html"><i class="material-icons">assignment_ind</i>Docentes</a></li>
-                <li><a class="waves-effect waves-light" href="careertype.html"><i class="material-icons">folder</i>Tipos de carrera</a></li>
+                <li><a class="waves-effect waves-light" href="careertype.html"><i class="material-icons">folder</i>Tipos
+                        de carrera</a></li>
                 <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
                 <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
                 <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li><div class="blokk"></div></li>
+                <li>
+                    <div class="blokk"></div>
+                </li>
                 <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Notas</a></li>
-                <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
- 
+                <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion
+                        de notas</a></li>
             </ul>
         </div>
         <main>
-                <h2 class="center">Evaluaciones</h2>
+            <h2 class="center">Evaluaciones de la materia</h2>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Usuario</th>
-                            <th>Telefono</th>
-                            <th>Email</th>
-                            <th>Estado</th>
+                            <th>Descripcion</th>
+                            <th>Porcentaje</th>
+                            <th>Periodo</th>
+                            <th>Laboratorio</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha Fin</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
                     </thead>
 
-                    <tbody id="usersTable">
+                    <tbody id="evaluationsTable">
                     </tbody>
                 </table>
             </div>
 
             <div class="fixed-action-btn horizontal click-to-toggle">
-                <a href="#nuevoUsuario" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
+                <a href="#nuevaEvaluacion" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left"
+                    data-delay="50">
                     <i class="material-icons">add</i>
                 </a>
             </div>
 
             <!--Modal de agregacion de usuarios-->
-            <div id="nuevoUsuario" class="modal">
+            <div id="nuevaEvaluacion" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nuevo usuario</h3>
+                            <h3 class="">Evaluaciones de la materia</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmRegUser" autocomplete="off">
+                            <form id="frmRegEval" autocomplete="off">
                                 <div class="input-field">
-                                    <input id="nombreUsuario" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="nombreUsuario">Nombre:</label>
+                                    <input id="nombreEvaluacion" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$"
+                                        title="Solo se permiten números y letras" required>
+                                    <label for="nombreEvaluacion">Nombre:</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="apellidoUsuario" name="surname" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="apellidoUsuario">Apellido:</label>
+                                    <textarea id="descEvaluacion" name="description" class="materialize-textarea"></textarea>
+                                    <label for="descEvaluacion">Descripcion:
+                                    </label>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <input id="porcEvaluacion" name="percentage" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$"
+                                        title="Solo se permiten números y letras" required>
+                                    <label for="porcEvaluacion">porcentaje:</label>
+                                </div>
+                                <div class="input-field aldiv2">
+                                    <select id="periodoEvaluacion">
+                                        <option value="" disabled selected>Seleccione periodo</option>
+                                        <option value="1">I</option>
+                                        <option value="2">II</option>
+                                        <option value="3">III</option>
+                                    </select>
+                                    <label>Periodo</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="emailUsuario" name="email" type="email" maxlength="50" required>
-                                    <label for="emailUsuario">Correo:</label>
+                                    <p>
+                                        <label>
+                                            <input id="labEvaluacion" type="checkbox" />
+                                            <span>Laboratorio</span>
+                                        </label>
+                                    </p>
                                 </div>
-                                <div class="input-field">
-                                    <input id="telUsuario" name="phone" type="text" minlength="8" maxlength="8" required pattern="^[267]\d{3}\d{4}" title="Ingrese un numero de telefono valido">
-                                    <label for="telUsuario">Telefono</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="contraUsuario" name="pass" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="contraUsuario">Contraseña:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="confimUsuario" name="passConfirm" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="confimUsuario">Confirmar contraseña:</label>
+                                <div class="input-field aldiv">
+                                        <input id="fechaInicio" name="start_date" type="text" class="datepicker">
+                                        <label for="fechaInicio">Fecha de inicio:
+                                        </label>
+                                    </div>
+                                    <div class="input-field aldiv2">
+                                            <input id="fechaFin" name="end_date" type="text" class="datepicker">
+                                            <label for="fechaFin">Fecha final:
+                                            </label>
+                                        </div>
+                                
+                                <div class="row">
+                                    <h6 class="center">Seleccione el estado de la evaluacion:</h6>
+                                    <div class="input-field col s6 push-s1">
+                                        <div class="col s12 m6 push-m5">
+                                            <p>
+                                                <label>
+                                                    <input id="SateA" name="state" value="1" type="radio" />
+                                                    <span>Activo</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                        <div class="col s12 m6 push-m4">
+                                            <p>
+                                                <label>
+                                                    <input id="StateI" name="state" value="0" type="radio" />
+                                                    <span>Inactivo</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -114,50 +159,67 @@
             </div>
 
             <!--Modal de modificacion de usuarios-->
-            <div id="actualizarUsuario" class="modal">
+            <div id="actualizarMateriaAsig" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar usuario</h3>
+                            <h3 class="">Actualizar materia asignada</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-
-                            <form id="frmUpdtUser" autocomplete="off">
-                                <input id="uIdUser" type="hidden" name="userId" value="">
-                                <div class="input-field">
-                                    <input value=" " id="uNombreUsuario" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="uNombreUsuario">Nombre:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input value=" " id="uApellidoUsuario" name="surname" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="uApellidoUsuario">Apellido:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input value=" " id="uEmailUsuario" name="email" type="email" maxlength="50" required>
-                                    <label for="uEmailUsuario" class="active">Correo:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input value=" " id="uTelUsuario" name="phone" type="text" minlength="8" maxlength="8" required pattern="^[267]\d{3}\d{4}" title="Ingrese un numero de telefono valido">
-                                    <label for="uTelUsuario">Telefono</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uContraUsuario" name="pass" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras">
-                                    <label for="uContraUsuario">Contraseña: -Opcional-</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uConfimUsuario" name="passConfirm" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras">
-                                    <label for="uConfimUsuario">Confirmar contraseña: -Opcional-</label>
-                                </div>
+                            <form id="frmUpdtEval" autocomplete="off">
+                                    <input id="uIdEval" type="hidden" name="evaluationsId" value="">
+                                    <div class="input-field">
+                                            <input id="uNombreEvaluacion" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$"
+                                                title="Solo se permiten números y letras" required>
+                                            <label for="uNombreEvaluacion">Nombre:</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <textarea id="uDescEvaluacion" name="description" class="materialize-textarea"></textarea>
+                                            <label for="uDescEvaluacion">Descripcion:
+                                            </label>
+                                        </div>
+                                        <div class="input-field aldiv">
+                                            <input id="uPorcEvaluacion" name="percentage" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$"
+                                                title="Solo se permiten números y letras" required>
+                                            <label for="uPorcEvaluacion">porcentaje:</label>
+                                        </div>
+                                        <div class="input-field aldiv2">
+                                            <select id="uPeriodoEvaluacion">
+                                                <option value="" disabled selected>Seleccione periodo</option>
+                                                <option value="1">I</option>
+                                                <option value="2">II</option>
+                                                <option value="3">III</option>
+                                            </select>
+                                            <label>Periodo</label>
+                                        </div>
+                                        <div class="input-field">
+                                            <p>
+                                                <label>
+                                                    <input id="uLabEvaluacion" type="checkbox" />
+                                                    <span>Laboratorio</span>
+                                                </label>
+                                            </p>
+                                        </div>
+                                        <div class="input-field aldiv">
+                                                <input id="uFechaInicio" name="start_date" type="text" class="datepicker">
+                                                <label for="uFechaInicio">Fecha de inicio:
+                                                </label>
+                                            </div>
+                                            <div class="input-field aldiv2">
+                                                    <input id="uFechaFin" name="end_date" type="text" class="datepicker">
+                                                    <label for="uFechaFin">Fecha final:
+                                                    </label>
+                                                </div>
 
                                 <div class="row">
-                                    <h6 class="center">Seleccione el estado del usuario:</h6>
+                                    <h6 class="center">Seleccione el estado de la materia:</h6>
                                     <div class="input-field col s6 push-s1">
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uStateA" name="state" value="1" type="radio"/>
+                                                    <input id="uSateA" name="state" value="1" type="radio" />
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -182,19 +244,20 @@
                 </div>
             </div>
 
-            <!-- Modal de eliminar usuario-->
-            <div id="eliminarUsuario" class="modal">
+            <!-- Modal de eliminar facultad-->
+            <div id="eliminarMateriaCarr" class="modal">
                 <div class="modal-content">
-                    <h4>Eliminar estudiante</h4>
-                    <p>¿Seguro que deseas eliminar este estudiante?</p>
-                    <input id="dIdUser" type="hidden" name="userId" value="">
+                    <h4>Eliminar evaluacion</h4>
+                    <p>¿Seguro que deseas eliminar esta evaluacion?</p>
+                    <input id="dIdEval" type="hidden" name="evaluationsId" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
-                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarUsuario" onclick="deleteUser();">Eliminar</a>
-               </div>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteFaculty();">Eliminar</a>
+                </div>
             </div>
         </main>
+
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>

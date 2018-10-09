@@ -40,46 +40,78 @@
             </ul>
         </div>
         <main>
-                <h2 class="center">Facultades</h2>
+                <h2 class="center">Materias de la carrera</h2>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
+                            <th>Materia</th>
+                            <th>Plan</th>
+                            <th>Año de la carrera</th>
+                            <th>Ciclo</th>
                             <th>Estado</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
                     </thead>
 
-                    <tbody id="facultiesTable">
+                    <tbody id="cCoursesTable">
                     </tbody>
                 </table>
             </div>
 
             <div class="fixed-action-btn horizontal click-to-toggle">
-                <a href="#nuevaFacultad" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
+                <a href="#nuevaMateriaCarr" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
                     <i class="material-icons">add</i>
                 </a>
             </div>
 
             <!--Modal de agregacion de usuarios-->
-            <div id="nuevaFacultad" class="modal">
+            <div id="nuevaMateriaCarr" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nueva facultad</h3>
+                            <h3 class="">Nueva materia del pensum</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmRegFac" autocomplete="off">
-                                <div class="input-field">
-                                    <input id="nombreFacultad" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="nombreFacultad">Nombre:</label>
-                                </div>
+                            <form id="frmRegCC" autocomplete="off">
+                                    <div class="input-field">
+                                            <select id="materiaCarr">
+                                              <option value="" disabled selected>Seleccione materia</option>
+                                              <option value="1">Matematica I</option>
+                                              <option value="2">Inspeccion de patas I</option>
+                                              <option value="3">Expresion Oral y Escrita</option>
+                                            </select>
+                                            <label>Materia</label>
+                                          </div>
+                                          <div class="input-field">
+                                                <input id="añoPlan" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                                <label for="añoPlan">Año del plan:</label>
+                                            </div>
+                                            <div class="input-field">
+                                                    <select id="añoCarr">
+                                                      <option value="" disabled selected>Seleccione año de la carrera</option>
+                                                      <option value="1">I</option>
+                                                      <option value="2">II</option>
+                                                      <option value="3">III</option>
+                                                      <option value="4">IV</option>
+                                                      <option value="5">V</option>
+                                                    </select>
+                                                    <label>Materia</label>
+                                                  </div>
+                                          <div class="input-field">
+                                                <select id="cicloMateriaCarr">
+                                                  <option value="" disabled selected>Seleccione ciclo</option>
+                                                  <option value="1">I</option>
+                                                  <option value="2">II</option>
+                                                </select>
+                                                <label>Materia</label>
+                                              </div>
+                                          
                                 <div class="row">
-                                    <h6 class="center">Seleccione el estado de la facultad:</h6>
+                                    <h6 class="center">Seleccione el estado de la materia:</h6>
                                     <div class="input-field col s6 push-s1">
                                         <div class="col s12 m6 push-m5">
                                             <p>
@@ -110,28 +142,57 @@
             </div>
 
             <!--Modal de modificacion de usuarios-->
-            <div id="actualizarFacultad" class="modal">
+            <div id="actualizarMateriaAsig" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar facultad</h3>
+                            <h3 class="">Actualizar materia asignada</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmUpdtFac" autocomplete="off">
-                                <input id="uId" type="hidden" name="id" value="">
-                                <div class="input-field">
-                                    <input value=" " id="uNombreFacultad" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="uNombreFacultad">Nombre:</label>
-                                </div>
+                            <form id="frmUpdtCC" autocomplete="off">
+                                    <input id="uIdCCourses" type="hidden" name="cCoursesId" value="">
+                                    <div class="input-field">
+                                            <select id="uMateriaCarr">
+                                              <option value="" disabled selected>Seleccione materia</option>
+                                              <option value="1">Matematica I</option>
+                                              <option value="2">Inspeccion de patas I</option>
+                                              <option value="3">Expresion Oral y Escrita</option>
+                                            </select>
+                                            <label>Materia</label>
+                                          </div>
+                                          <div class="input-field">
+                                                <input id="uAñoPlan" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                                <label for="uAñoPlan">Año del plan:</label>
+                                            </div>
+                                            <div class="input-field">
+                                                    <select id="uMateriaProf">
+                                                      <option value="" disabled selected>Seleccione año de la carrera</option>
+                                                      <option value="1">I</option>
+                                                      <option value="2">II</option>
+                                                      <option value="3">III</option>
+                                                      <option value="4">IV</option>
+                                                      <option value="5">V</option>
+                                                    </select>
+                                                    <label>Materia</label>
+                                                  </div>
+                                          <div class="input-field">
+                                                <select id="uCicloMateriaCarr">
+                                                  <option value="" disabled selected>Seleccione ciclo</option>
+                                                  <option value="1">I</option>
+                                                  <option value="2">II</option>
+                                                </select>
+                                                <label>Materia</label>
+                                              </div>
+                                          
                                 <div class="row">
-                                    <h6 class="center">Seleccione el estado de la facultad:</h6>
+                                    <h6 class="center">Seleccione el estado de la materia:</h6>
                                     <div class="input-field col s6 push-s1">
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uStateA" name="state" value="1" type="radio" />
+                                                    <input id="uSateA" name="state" value="1" type="radio"/>
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -157,11 +218,11 @@
             </div>
 
             <!-- Modal de eliminar facultad-->
-            <div id="eliminarFacultad" class="modal">
+            <div id="eliminarMateriaCarr" class="modal">
                 <div class="modal-content">
-                    <h4>Eliminar facultad</h4>
-                    <p>¿Seguro que deseas eliminar esta facultad?</p>
-                    <input id="dId" type="hidden" name="id" value="">
+                    <h4>Eliminar materia</h4>
+                    <p>¿Seguro que deseas eliminar esta materia?</p>
+                    <input id="dIdCCourses" type="hidden" name="cCoursesId" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
@@ -176,7 +237,6 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
-        <script type="text/javascript" src="js/faculties.js"></script>
 </body>
 
 </html>
