@@ -1,17 +1,18 @@
-var table = $("#facultiesTable");
-var newFacFrm = $("#frmRegFac");
-var updateFacFrm = $("#frmUpdtFac");
-var updateModalFaculty = $("#actualizarFacultad");
-var deleteModalFaculty = $("#eliminarFacultad");
+var table = $("#careerTypeTable");
+var newCarTypeFrm = $("#frmRegCarTyp");
+var updateCarTypeFrm = $("#frmUpdtCarTyp");
+var updateModalCareerType = $("#actualizarTipoCarrera");
+var newModalCareerType = $("#nuevoTipoCarrera");
+var deleteModalFaculty = $("#eliminarTipoCarrera");
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
-    getFaculties();
+    getCareerTypes();
 });
 
 //ajax request to get faculties
-function getFaculties() {
+function getCareerTypes() {
     $.ajax({
-        url: BASE_URL + FACULTIES_READ,
+        url: BASE_URL + CAREER_TYPES_READ,
         type: "GET",
         dataType: "json",
         success: function(result) {
@@ -35,11 +36,11 @@ function getFaculties() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestFaculty(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteFaculty(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareerType(" + val.id + ")'>mode_edit</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCareerType(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
-            newFacFrm.trigger("reset");
+            newCarTypeFrm.trigger("reset");
         },
         error: function(error) {
             console.log(error);
@@ -50,18 +51,18 @@ function getFaculties() {
     });
 }
 
-//save faculty
-function postFaculty() {
+//save user
+function postCareerType() {
     $.ajax({
-        url: BASE_URL + FACULTIES_CREATE,
+        url: BASE_URL + CAREER_TYPES_CREATE,
         type: "POST",
-        data: newFacFrm.serialize(),
+        data: newCarTypeFrm.serialize(),
         success: function(result) {
             console.log(result);
-            getFaculties();
-            $("#nuevaFacultad").modal('close');
+            getCareerTypes();
+            newModalCareerType.modal('close');
             M.toast({
-                html: 'Facultad agregada con exito'
+                html: 'Tipo de carrera agregado con exito'
             })
         },
         error: function(error) {
@@ -71,28 +72,22 @@ function postFaculty() {
     });
 }
 
-//save faculty post
-newFacFrm.submit(function(e) {
-    e.preventDefault();
-    postFaculty();
-});
-
 //request one user
-function requestFaculty(id) {
+function requestCareerType(id) {
     $.ajax({
-        url: BASE_URL + FACULTIES_READ + "/" + id,
+        url: BASE_URL + CAREER_TYPES_READ + "/" + id,
         type: "GET",
         dataType: "json",
         success: function(result) {
             console.log(result);
-            $("#uId").val(result.id);
-            $("#uNombreFacultad").val(result.name);
+            $("#uIdCareerType").val(result.id);
+            $("#uNombreTipoCarrera").val(result.name);
             if (result.state === true) {
                 $("#uStateA").prop("checked", true);
             } else {
                 $("#uStateI").prop("checked", true);
             }
-            updateModalFaculty.modal("open");
+            updateModalCareerType.modal("open");
         },
         error: function(error) {
             showError(error.responseText);
@@ -100,18 +95,17 @@ function requestFaculty(id) {
     });
 }
 
-//update faculty 
-function updateFaculty() {
+function updateCareerType() {
     $.ajax({
-        url: BASE_URL + FACULTIES_CREATE,
+        url: BASE_URL + CAREER_TYPES_CREATE,
         type: "PUT",
-        data: updateFacFrm.serialize(),
+        data: updateCarTypeFrm.serialize(),
         success: function(result) {
             console.log(result);
-            getFaculties();
-            updateModalFaculty.modal('close');
+            getCareerTypes();
+            updateModalCareerType.modal('close');
             M.toast({
-                html: 'Facultad actualizada'
+                html: 'Tipo de carrera actualizada'
             })
         },
         error: function(error) {
@@ -121,36 +115,14 @@ function updateFaculty() {
     });
 }
 
-//confirm delete faculty
-function confirmDeleteFaculty(id) {
-    $("#dId").val(id);
-    deleteModalFaculty.modal("open");
-}
-
-//delete user
-function deleteFaculty(id) {
-    $.ajax({
-        url: BASE_URL + FACULTIES_DELETE + $("#dId").val(),
-        type: "DELETE",
-        success: function(result) {
-            console.log(result);
-            M.toast({
-                html: 'Eliminado con exito'
-            })
-            getFaculties();
-            $("#dId").val("");
-        },
-        error: function(error) {
-            console.log(error.responseText);
-            showError(error.responseText);
-        }
-    });
-}
-
-//update user post
-updateFacFrm.submit(function(e) {
+updateCarTypeFrm.submit(function(e) {
     e.preventDefault();
-    updateFaculty();
+    updateCareerType();
+});
+
+newCarTypeFrm.submit(function(e) {
+    e.preventDefault();
+    postCareerType();
 });
 
 //display server errors

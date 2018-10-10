@@ -7,13 +7,13 @@ var deleteUModal = $("#eliminarUsuario");
 
 //trying to get users from digital ocean server
 $(document).ready(function() {
-    getStudents();
+    getUsers();
 });
 
 //ajax request to get students
-function getStudents() {
+function getUsers() {
     $.ajax({
-        url: BASE_URL + STUDENTS_READ,
+        url: BASE_URL + USERS_READ,
         type: "GET",
         dataType: "json",
         success: function(result) {
@@ -24,7 +24,7 @@ function getStudents() {
 
                 //validating if it's an active user
                 var checked = "<input type='checkbox' class='filled-in' disabled='disabled' checked='checked' />";
-                if (val.state === "false") {
+                if (val.state === false) {
                     checked = "<input type='checkbox' class='filled-in' disabled='disabled'/>";
                 }
 
