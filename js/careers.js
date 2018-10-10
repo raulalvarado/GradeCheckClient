@@ -1,7 +1,7 @@
 var table = $("#careersTable");
 var newCarFrm = $("#frmRegCareer");
 var updateCarFrm = $("#frmUpdtCarrers");
-var updateModalCareer = $("#actualizarFacultad");
+var updateModalCareer = $("#actualizarCarreras");
 var newModalCareer = $("#nuevaCarrera");
 var deleteModalFaculty = $("#eliminarCarrera");
 var faculties = $(".cCarrerFaculty");
@@ -32,7 +32,7 @@ function getCareers() {
 
                 //filling table
                 table.append("<tr>" +
-                    "<td>" + val.name + "</td>" +
+                    "<td>" + val.name + val.id + "</td>" +
                     "<td>" + val['faculty'].name + "</td>" +
                     "<td>" + val['careerType'].name + "</td>" +
                     "<td>" +
@@ -47,6 +47,7 @@ function getCareers() {
                     "</tr>");
             });
             newCarFrm.trigger("reset");
+            updateCarFrm.trigger("reset");
             getFaculties();
             getCareerTypes();
         },
@@ -110,6 +111,33 @@ function getCareerTypes() {
     });
 }
 
+//request one user
+function requestCareer(id) {
+    $.ajax({
+        url: BASE_URL + CAREERS_CREATE + "/" + id + "/full",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            $("#uIdCareer").val(result.id);
+            $("#uNombreCarrera").val(result.name);
+            $('#uCareerFaculty option[value="' + result["faculty"].id + '"]').prop('selected', true)
+            $('#uCareerTypeFaculty option[value="' + result["careerType"].id + '"]').prop('selected', true)
+            $("#uCareerTypeFaculty").formSelect();
+            $('#uCareerFaculty').formSelect();
+            if (result.state === true) {
+                $("#uStateA").prop("checked", true);
+            } else {
+                $("#uStateI").prop("checked", true);
+            }
+            updateModalCareer.modal("open");
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
+
 //save career
 function postCareer() {
     $.ajax({
@@ -143,4 +171,37 @@ function showError(error) {
         html: error
     })
 
+}
+
+function updateCareer() {
+    $.ajax({
+        url: BASE_URL + CAREERS_CREATE,
+        type: "PUT",
+        data: updateCarFrm.serialize(),
+        success: function(result) {
+
+            console.log(result);
+            getCareers();
+            updateModalCareer.modal('close');
+            M.toast({
+                html: 'Carrera actualizada'
+            })
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}
+
+updateCarFrm.submit(function(e) {
+    e.preventDefault();
+    updateCareer();
+});
+
+//display server errors
+function showError(error) {
+    M.toast({
+        html: error
+    })
 }

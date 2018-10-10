@@ -158,5 +158,4 @@ function showError(error) {
     M.toast({
         html: error
     })
-
 }

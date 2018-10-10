@@ -124,13 +124,13 @@
                         <div class="col s12 m8 offset-m2 center-align">
 
                             <form id="frmUpdtCarrers" autocomplete="off">
-                                <input id="uIdCareer" type="hidden" name="idCareer" value="">
+                                <input id="uIdCareer" type="hidden" name="id" value="">
                                 <div class="input-field">
                                     <input value=" " id="uNombreCarrera" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uNombreCarrera">Nombre:</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <select id="uCareerFaculty" class="cCarrerFaculty"> 
+                                    <select id="uCareerFaculty" class="cCarrerFaculty" name="facultyId"> 
                                                   <option value="" disabled selected>Seleccione la facultad</option>
                                                   <option value="1">Ingenieria</option>
                                                   <option value="2">Medicina</option>
@@ -139,7 +139,7 @@
                                     <label>Facultad</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <select id="uCareerTypeFaculty" class="cCareerType">
+                                    <select id="uCareerTypeFaculty" class="cCareerType" name="careerTypeId">
                                                       <option value="" disabled selected>Seleccione el tipo de carrera</option>
                                                       <option value="1">Ingenieria</option>
                                                       <option value="2">Tecnico</option>
@@ -153,7 +153,7 @@
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                                    <input id="uSateA" name="state" value="1" type="radio"/>
+                                                                    <input id="uStateA" name="state" value="true" type="radio"/>
                                                                     <span>Activo</span>
                                                                 </label>
                                             </p>
@@ -161,7 +161,7 @@
                                         <div class="col s12 m6 push-m4">
                                             <p>
                                                 <label>
-                                                                    <input id="uStateI" name="state" value="0" type="radio" />
+                                                                    <input id="uStateI" name="state" value="false" type="radio" />
                                                                     <span>Inactivo</span>
                                                                 </label>
                                             </p>
