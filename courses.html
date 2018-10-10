@@ -38,7 +38,9 @@
                 <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
                 <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
                 <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li><div class="blokk"></div></li>
+                <li>
+                    <div class="blokk"></div>
+                </li>
                 <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
                 <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
             </ul>
@@ -154,14 +156,10 @@
                         <div class="col s12 m8 offset-m2 center-align">
 
                             <form id="frmUpdtCourse" autocomplete="off">
-                                <input id="uIdCourse" type="hidden" name="courseId" value="">
+                                <input id="uIdCourse" type="hidden" name="id" value="">
                                 <div class="input-field">
                                     <input id="uNombreMateria" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uNombreMateria">Nombre:</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uCodigoMateria" name="code" type="text" minlength="1" maxlength="6" pattern="^[A-Z]{3}[0-9]{3}$" title="Solo se permite un formato de tres letras mayusculas seguidas de tres digitos" required>
-                                    <label for="uCodigoMateria">Codigo:</label>
                                 </div>
                                 <div class="input-field">
                                     <input id="uSemestreMateria" name="semester" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}$" required>
@@ -170,7 +168,7 @@
                                 <div class="input-field aldiv">
                                     <p>
                                         <label>
-                                                <input id="uInterMateria" type="checkbox" />
+                                                <input id="uInterMateria" name="inter" type="checkbox" value="true"/>
                                                 <span>Interciclo</span>
                                             </label>
                                     </p>
@@ -178,7 +176,7 @@
                                 <div class="input-field aldiv">
                                     <p>
                                         <label>
-                                                <input id="uLabMateria" type="checkbox" />
+                                                <input id="uLabMateria" name="laboratory" type="checkbox" value="true"/>
                                                 <span>Laboratorio</span>
                                             </label>
                                     </p>
@@ -188,7 +186,7 @@
                                     <label for="uUvMateria">Unidades valorativas:</label>
                                 </div>
                                 <div class="input-field">
-                                    <select id="uCoursePrerequisite" class="cCoursePrerequisite">
+                                    <select id="uCoursePrerequisite" class="cCoursePrerequisite" name="prerrequisiteId">
                                               <option value="" disabled selected>Seleccione el prerrequisito</option>
                                               <option value="1">Matematica I</option>
                                               <option value="2">Expresion Oral y Escrita</option>
@@ -197,7 +195,7 @@
                                     <label>Carrera</label>
                                 </div>
                                 <div class="input-field">
-                                    <select id="uCourseFaculty" class="cCourseFaculty">
+                                    <select id="uCourseFaculty" class="cCourseFaculty" name="facultyId">
                                               <option value="" disabled selected>Seleccione la facultad</option>
                                               <option value="1">Ingenieria</option>
                                               <option value="2">Medicina</option>
@@ -211,7 +209,7 @@
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                                <input id="uStateA" name="state" value="1" type="radio"/>
+                                                                <input id="uStateA" name="state" value="true" type="radio"/>
                                                                 <span>Activo</span>
                                                             </label>
                                             </p>
@@ -219,7 +217,7 @@
                                         <div class="col s12 m6 push-m4">
                                             <p>
                                                 <label>
-                                                                <input id="uStateI" name="state" value="0" type="radio" />
+                                                                <input id="uStateI" name="state" value="false" type="radio" />
                                                                 <span>Inactivo</span>
                                                             </label>
                                             </p>

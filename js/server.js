@@ -20,8 +20,9 @@ var CAREER_TYPES_READ_ACTIVE = "careerTypes/active";
 var CAREER_TYPES_CREATE = "careerTypes"
 
 var COURSES_READ = "courses/faculties/prerrequisite"
-var COURSES_READ_ACTIVE ="courses/faculties/prerrequisite/active"
-var COURSES_CREATE="courses"
+var COURSES_READ_ACTIVE = "courses/faculties/prerrequisite/active"
+var COURSES_CREATE = "courses"
+var COURSE_SINGLE = "courses"
 
 var STUDENTS_READ = "students/users/people"
 

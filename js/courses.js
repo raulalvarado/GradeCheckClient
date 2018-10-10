@@ -1,7 +1,7 @@
 var table = $("#coursesTable");
 var newCourseFrm = $("#frmRegCourse");
-var updateCarFrm = $("#frmUpdtCourse");
-var updateModalCareer = $("#actualizarMateria");
+var updateCourseFrm = $("#frmUpdtCourse");
+var updateModalCourse = $("#actualizarMateria");
 var newModalCourse = $("#nuevaMateria");
 var deleteModalFaculty = $("#eliminarMateria");
 var faculties = $(".cCourseFaculty");
@@ -71,13 +71,14 @@ function getCourses() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestEvaluations(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourses(" + val.id + ")'>mode_edit</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val.id + ")'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCourse(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             getFaculties();
             getActiveCarreers();
             newCourseFrm.trigger("reset");
+            updateCourseFrm.trigger("reset");
         },
         error: function(error) {
             console.log(error);
@@ -171,6 +172,69 @@ function postCourse() {
 newCourseFrm.submit(function(e) {
     e.preventDefault();
     postCourse();
+});
+
+//request one user
+function requestCourse(id) {
+    $.ajax({
+        url: BASE_URL + COURSE_SINGLE + "/" + id + "/faculties/prerrequisite",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            var idPre = "0"
+            if (result["course"] != null) {
+                idPre = result["course"].id;
+            }
+            $("#uIdCourse").val(result.id);
+            $("#uNombreMateria").val(result.name);
+            $("#uSemestreMateria").val(result.semester);
+            $("#uInterMateria").prop('checked', result.inter);
+            $("#uLabMateria").prop('checked', result.laboratory);
+            $("#uUvMateria").val(result.uv);
+            $('#uCoursePrerequisite option[value="' + idPre + '"]').prop('selected', true)
+            $('#uCourseFaculty option[value="' + result["faculty"].id + '"]').prop('selected', true)
+            $("#uCoursePrerequisite").formSelect();
+            $('#uCourseFaculty').formSelect();
+            if (result.state === true) {
+                $("#uStateA").prop("checked", true);
+            } else {
+                $("#uStateI").prop("checked", true);
+            }
+            updateModalCourse.modal("open");
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
+
+function updateCourse() {
+    var formData = updateCourseFrm.serializeArray();
+    formData.push({ name: "inter", value: $('#uInterMateria').is(':checked') });
+    formData.push({ name: "laboratory", value: $('#uLabMateria').is(':checked') });
+    $.ajax({
+        url: BASE_URL + COURSES_CREATE,
+        type: "PUT",
+        data: formData,
+        success: function(result) {
+            console.log(result);
+            getCourses();
+            updateModalCourse.modal('close');
+            M.toast({
+                html: 'Curso actualizado'
+            })
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}
+
+updateCourseFrm.submit(function(e) {
+    e.preventDefault();
+    updateCourse();
 });
 
 //display server errors
