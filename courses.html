@@ -91,17 +91,13 @@
                                     <label for="nombreMateria">Nombre:</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="codigoMateria" name="code" type="text" minlength="1" maxlength="6" pattern="^[A-Z]{3}[0-9]{3}$" title="Solo se permite un formato de tres letras mayusculas seguidas de tres digitos" required>
-                                    <label for="codigoMateria">Codigo:</label>
-                                </div>
-                                <div class="input-field">
                                     <input id="semestreMateria" name="semester" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}$" required>
                                     <label for="semestreMateria">Semestre:</label>
                                 </div>
                                 <div class="input-field aldiv">
                                     <p>
                                         <label>
-                                            <input id="interMateria" type="checkbox" />
+                                            <input id="interMateria" type="checkbox" name="inter" value="true"/>
                                             <span>Interciclo</span>
                                         </label>
                                     </p>
@@ -109,7 +105,7 @@
                                 <div class="input-field aldiv">
                                     <p>
                                         <label>
-                                            <input id="labMateria" type="checkbox" />
+                                            <input id="labMateria" type="checkbox" name="laboratory" value="true"/>
                                             <span>Laboratorio</span>
                                         </label>
                                     </p>
@@ -119,7 +115,7 @@
                                     <label for="uvMateria">Unidades valorativas:</label>
                                 </div>
                                 <div>
-                                    <select id="CoursePrerequisite">
+                                    <select id="CoursePrerequisite" class="cCoursePrerequisite" name="prerrequisiteId">
                                           <option value="" disabled selected>Seleccione el prerrequisito</option>
                                           <option value="1">Matematica I</option>
                                           <option value="2">Expresion Oral y Escrita</option>
@@ -128,34 +124,13 @@
                                     <label>Prerrequisito</label>
                                 </div>
                                 <div class="input-field">
-                                    <select id="CourseFaculty">
+                                    <select id="CourseFaculty" class="cCourseFaculty" name="facultyId">
                                           <option value="" disabled selected>Seleccione la facultad</option>
                                           <option value="1">Ingenieria</option>
                                           <option value="2">Medicina</option>
                                           <option value="3">Derecho</option>
                                         </select>
                                     <label>Facultad</label>
-                                </div>
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado de la materia:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                            <input id="SateA" name="state" value="1" type="radio"/>
-                                                            <span>Activo</span>
-                                                        </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                            <input id="StateI" name="state" value="0" type="radio" />
-                                                            <span>Inactivo</span>
-                                                        </label>
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -213,7 +188,7 @@
                                     <label for="uUvMateria">Unidades valorativas:</label>
                                 </div>
                                 <div class="input-field">
-                                    <select id="uCoursePrerequisite">
+                                    <select id="uCoursePrerequisite" class="cCoursePrerequisite">
                                               <option value="" disabled selected>Seleccione el prerrequisito</option>
                                               <option value="1">Matematica I</option>
                                               <option value="2">Expresion Oral y Escrita</option>
@@ -222,7 +197,7 @@
                                     <label>Carrera</label>
                                 </div>
                                 <div class="input-field">
-                                    <select id="uCourseFaculty">
+                                    <select id="uCourseFaculty" class="cCourseFaculty">
                                               <option value="" disabled selected>Seleccione la facultad</option>
                                               <option value="1">Ingenieria</option>
                                               <option value="2">Medicina</option>
@@ -236,7 +211,7 @@
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                                <input id="uSateA" name="state" value="1" type="radio"/>
+                                                                <input id="uStateA" name="state" value="1" type="radio"/>
                                                                 <span>Activo</span>
                                                             </label>
                                             </p>
