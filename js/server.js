@@ -2,8 +2,7 @@ var BASE_URL = "http://localhost:8084/POOSistema_NotasAPI/";
 var USERS_READ = "users/people"
 var USERS_CREATE = "users"
 var USERS_GET = "users/"
-var STUDENTS_UPDATE = "Students/update"
-var STUDENTS_DELETE = "Students/delete/"
+
 
 var FACULTIES_READ = "faculties"
 var FACULTIES_READ_ACTIVE = "faculties/active"
@@ -25,5 +24,8 @@ var COURSES_CREATE = "courses"
 var COURSE_SINGLE = "courses"
 
 var STUDENTS_READ = "students/users/people"
+var STUDENTS_CREATE = "students";
+var STUDENTS_READ_SINGLE = "students"
+var STUDENTS_READ_AVAILABLE = "users/people/noStudent";
 
 var EMPLOYEES_READ = "employees/users/people/roles"
