@@ -46,6 +46,7 @@ function getUsers() {
                     "</tr>");
             });
             formNuevoU.trigger("reset");
+            formUdapteU.trigger("reset");
         },
         error: function(error) {
             console.log(error);
@@ -60,21 +61,23 @@ function getUsers() {
 //request one user
 function requestUser(id) {
     $.ajax({
-        url: BASE_URL + STUDENTS_GET + id,
+        url: BASE_URL + USERS_GET + id + "/people",
         type: "GET",
         dataType: "json",
         success: function(result) {
-            console.log(result);
-            var tempUser = result["user"];
-            $("#uIdUser").val(tempUser.id);
+            console.log(result.id);
+            var tempUser = result["person"];
+            $("#uIdUser").val(result.id);
             $("#uNombreUsuario").val(tempUser.name);
             $("#uApellidoUsuario").val(tempUser.surname);
             $("#uEmailUsuario").val(tempUser.email);
             $("#uTelUsuario").val(tempUser.phone);
-            if (tempUser.state === "true") {
-                $("#uStateA").prop("checked", true);
+            $("#uDireccionUsuario").val(tempUser.address);
+            $("#uDuiUsuario").val(tempUser.dui);
+            if (result.state == true) {
+                $("#updateStateA").prop("checked", true);
             } else {
-                $("#uStateI").prop("checked", true);
+                $("#updateStateI").prop("checked", true);
             }
             updateUModal.modal("open");
         },
@@ -113,12 +116,12 @@ function deleteUser() {
 //save user
 function postUser() {
     $.ajax({
-        url: BASE_URL + STUDENTS_CREATE,
+        url: BASE_URL + USERS_CREATE,
         type: "POST",
         data: formNuevoU.serialize(),
         success: function(result) {
             console.log(result);
-            getStudents();
+            getUsers();
             $("#nuevoUsuario").modal('close');
             M.toast({
                 html: 'Usuario agregado con exito'
@@ -140,18 +143,16 @@ formNuevoU.submit(function(e) {
 //update user 
 function updateUser() {
     $.ajax({
-        url: BASE_URL + STUDENTS_UPDATE,
+        url: BASE_URL + USERS_CREATE,
         type: "PUT",
         data: formUdapteU.serialize(),
         success: function(result) {
             console.log(result);
-            getStudents();
+            getUsers();
             updateUModal.modal('close');
             M.toast({
                 html: 'Usuario actualizado'
             })
-            $("#uContraUsuario").val("");
-            $("#uConfimUsuario").val("");
         },
         error: function(error) {
             console.log(error);

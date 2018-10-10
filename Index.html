@@ -34,13 +34,15 @@
                 <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
                 <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
                 <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li><div class="blokk"></div></li>
+                <li>
+                    <div class="blokk"></div>
+                </li>
                 <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
                 <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
- 
+
             </ul>
         </div>
-        <main> 
+        <main>
             <h2 class="center">Usuarios</h2>
             <div class="tabla">
                 <table class="striped centered responsive-table">
@@ -96,6 +98,14 @@
                                     <label for="telUsuario">Telefono</label>
                                 </div>
                                 <div class="input-field">
+                                    <input id="direccionUsuario" name="address" type="text" required pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,100}$" title="Ingrese una direccion">
+                                    <label for="direccionUsuario">Direccion</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="duiUsuario" name="dui" type="text" minlength="10" maxlength="10" required pattern="^\d{8}-\d" title="Ingrese un numero de dui valido">
+                                    <label for="duiUsuario">DUI</label>
+                                </div>
+                                <div class="input-field">
                                     <input id="contraUsuario" name="pass" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="contraUsuario">Contraseña:</label>
                                 </div>
@@ -146,7 +156,7 @@
                         <div class="col s12 m8 offset-m2 center-align">
 
                             <form id="frmUpdtUser" autocomplete="off">
-                                <input id="uIdUser" type="hidden" name="userId" value="">
+                                <input id="uIdUser" type="hidden" name="id" value="">
                                 <div class="input-field">
                                     <input value=" " id="uNombreUsuario" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uNombreUsuario">Nombre:</label>
@@ -164,6 +174,14 @@
                                     <label for="uTelUsuario">Telefono</label>
                                 </div>
                                 <div class="input-field">
+                                    <input id="uDireccionUsuario" name="address" type="text" required pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,100}$" title="Ingrese una direccion">
+                                    <label for="uDireccionUsuario">Direccion</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="uDuiUsuario" name="dui" type="text" minlength="10" maxlength="10" required pattern="^\d{8}-\d" title="Ingrese un numero de dui valido">
+                                    <label for="uDuiUsuario">DUI</label>
+                                </div>
+                                <div class="input-field">
                                     <input id="uContraUsuario" name="pass" type="password" minlength="7" maxlength="10" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras">
                                     <label for="uContraUsuario">Contraseña: -Opcional-</label>
                                 </div>
@@ -178,7 +196,7 @@
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uStateA" name="state" value="1" type="radio"/>
+                                                    <input id="updateStateA" name="state" value="1" type="radio"/>
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -186,7 +204,7 @@
                                         <div class="col s12 m6 push-m4">
                                             <p>
                                                 <label>
-                                                    <input id="uStateI" name="state" value="0" type="radio" />
+                                                    <input id="updateStateI" name="state" value="0" type="radio" />
                                                     <span>Inactivo</span>
                                                 </label>
                                             </p>
@@ -213,7 +231,7 @@
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
                     <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarUsuario" onclick="deleteUser();">Eliminar</a>
-               </div>
+                </div>
             </div>
         </main>
 

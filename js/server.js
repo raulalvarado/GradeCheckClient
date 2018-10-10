@@ -1,7 +1,7 @@
 var BASE_URL = "http://localhost:8084/POOSistema_NotasAPI/";
 var USERS_READ = "users/people"
-var STUDENTS_CREATE = "Students/create"
-var STUDENTS_GET = "Students/readByUser/"
+var USERS_CREATE = "users"
+var USERS_GET = "users/"
 var STUDENTS_UPDATE = "Students/update"
 var STUDENTS_DELETE = "Students/delete/"
 
