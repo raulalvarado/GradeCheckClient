@@ -70,7 +70,7 @@ function getCourses() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestEvaluations(" + val.id + ")'>mode_edit</i></a></td>" +
+                    "<td><a href='" + 'evaluations.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val.id + ")'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCourse(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
