@@ -42,7 +42,7 @@ function getStudents() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='career_students.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourses(" + val.id + ")'>mode_edit</i></a></td>" +
+                    "<td><a href='registered_courses.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestStudent(" + val.id + ")'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteStudent(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");

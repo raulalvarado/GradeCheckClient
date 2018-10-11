@@ -40,3 +40,10 @@ var EVALUATIONS_CREATE = "evaluations"
 
 var CAREER_STUDENTS_READ = "careerStudents/byStudent/"
 var CAREER_STUDENTS_CREATE = "careerStudents"
+
+var REGISTERED_COURSES_READ = "registeredCourses/byStudent/"
+var AVAILABLE_COURSES = "courses/byStudent/"
+var REGISTERED_COURSES_CREATE = "registeredCourses"
+
+var COURSE_TEACHERS_READ_AVAILABLE = "courseTeachers/byCourse/"
+var COURSE_TEACHERS_CREATE = "courseTeachers";
