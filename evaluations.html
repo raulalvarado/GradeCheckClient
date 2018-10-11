@@ -55,6 +55,7 @@
                             <th>Laboratorio</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha Fin</th>
+                            <th>Estado</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -143,8 +144,7 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtEval" autocomplete="off">
-                                <input type="hidden" name="courseId" class="courseId">
-                                <input id="uIdEval" type="hidden" name="evaluationsId" value="">
+                                <input id="uIdEval" type="hidden" name="id" value="">
                                 <div class="input-field">
                                     <input id="uNombreEvaluacion" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uNombreEvaluacion">Nombre:</label>
@@ -159,8 +159,7 @@
                                     <label for="uPorcEvaluacion">porcentaje:</label>
                                 </div>
                                 <div class="input-field aldiv2">
-                                    <select id="uPeriodoEvaluacion">
-                                                <option value="" disabled selected>Seleccione periodo</option>
+                                    <select id="uPeriodoEvaluacion" name="period">
                                                 <option value="1">I</option>
                                                 <option value="2">II</option>
                                                 <option value="3">III</option>
@@ -170,18 +169,18 @@
                                 <div class="input-field">
                                     <p>
                                         <label>
-                                                    <input id="uLabEvaluacion" type="checkbox" />
+                                                    <input id="uLabEvaluacion" type="checkbox" value="true" name="laboratory"/>
                                                     <span>Laboratorio</span>
                                                 </label>
                                     </p>
                                 </div>
                                 <div class="input-field aldiv">
-                                    <input id="uFechaInicio" name="start_date" type="text" class="datepicker">
+                                    <input id="uFechaInicio" name="startDate" type="text" class="datepicker">
                                     <label for="uFechaInicio">Fecha de inicio:
                                                 </label>
                                 </div>
                                 <div class="input-field aldiv2">
-                                    <input id="uFechaFin" name="end_date" type="text" class="datepicker">
+                                    <input id="uFechaFin" name="endDate" type="text" class="datepicker">
                                     <label for="uFechaFin">Fecha final:
                                                     </label>
                                 </div>
@@ -192,7 +191,7 @@
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uSateA" name="state" value="1" type="radio" />
+                                                    <input id="uStateA" name="state" value="true" type="radio" />
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -200,7 +199,7 @@
                                         <div class="col s12 m6 push-m4">
                                             <p>
                                                 <label>
-                                                    <input id="uStateI" name="state" value="0" type="radio" />
+                                                    <input id="uStateI" name="state" value="false" type="radio" />
                                                     <span>Inactivo</span>
                                                 </label>
                                             </p>
