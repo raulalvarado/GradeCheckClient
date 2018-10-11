@@ -13,6 +13,7 @@ var FACULTIES_DELETE = "Faculties/delete/"
 
 var CAREERS_READ = "careers/full"
 var CAREERS_CREATE = "careers"
+var CAREERS_READ_ACTIVE = "careers/full/active"
 
 var CAREER_TYPES_READ = "careerTypes"
 var CAREER_TYPES_READ_ACTIVE = "careerTypes/active";
@@ -36,3 +37,6 @@ var ROLES_READ_ACTIVE = "roles/active"
 
 var EVALUATIONS_READ = "evaluations/byCourse/"
 var EVALUATIONS_CREATE = "evaluations"
+
+var CAREER_STUDENTS_READ = "careerStudents/byStudent/"
+var CAREER_STUDENTS_CREATE = "careerStudents"
