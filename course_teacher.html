@@ -29,18 +29,20 @@
                 <li><a class="waves-effect waves-light" href="Index.html"><i class="material-icons">person</i>Usuarios</a></li>
                 <li><a class="waves-effect waves-light" href="faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
                 <li><a class="waves-effect waves-light" href="students.html"><i class="material-icons">school</i>Estudiantes</a></li>
-                <li><a class="waves-effect waves-light" href="employees.html"><i class="material-icons">assignment_ind</i>Docentes</a></li>
+                <li><a class="waves-effect waves-light" href="employees.html"><i class="material-icons">assignment_ind</i>Empleados</a></li>
                 <li><a class="waves-effect waves-light" href="careertype.html"><i class="material-icons">folder</i>Tipos de carrera</a></li>
                 <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
                 <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
                 <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li><div class="blokk"></div></li>
+                <li>
+                    <div class="blokk"></div>
+                </li>
                 <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
                 <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
             </ul>
         </div>
         <main>
-                <h2 class="center">Materias de docente</h2>
+            <h2 class="center">Materias de docente</h2>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
@@ -78,32 +80,32 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegCT" autocomplete="off">
-                                    <div class="input-field">
-                                            <input id="añoMateria" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                            <label for="añoMateria">Año:</label>
-                                        </div>
-                                    <div class="input-field">
-                                            <select id="materiaProf">
+                                <div class="input-field">
+                                    <input id="añoMateria" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="añoMateria">Año:</label>
+                                </div>
+                                <div class="input-field">
+                                    <select id="materiaProf">
                                               <option value="" disabled selected>Seleccione materia</option>
                                               <option value="1">Matematica I</option>
                                               <option value="2">Inspeccion de patas I</option>
                                               <option value="3">Expresion Oral y Escrita</option>
                                             </select>
-                                            <label>Materia</label>
-                                          </div>
-                                          <div class="input-field">
-                                                <select id="cicloMateria">
+                                    <label>Materia</label>
+                                </div>
+                                <div class="input-field">
+                                    <select id="cicloMateria">
                                                   <option value="" disabled selected>Seleccione ciclo</option>
                                                   <option value="1">I</option>
                                                   <option value="2">II</option>
                                                 </select>
-                                                <label>Materia</label>
-                                              </div>
-                                              <div class="input-field">
-                                                    <input id="cupoMateria" name="class_count" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                                    <label for="cupoMateria">Cupo:</label>
-                                                </div>
-                                          
+                                    <label>Materia</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="cupoMateria" name="class_count" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="cupoMateria">Cupo:</label>
+                                </div>
+
                                 <div class="row">
                                     <h6 class="center">Seleccione el estado de la materia:</h6>
                                     <div class="input-field col s6 push-s1">
@@ -146,33 +148,33 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtCT" autocomplete="off">
-                                    <input id="uIdCTeachers" type="hidden" name="cTeachersId" value="">
-                                    <div class="input-field">
-                                            <input id="uAñoMateria" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                            <label for="uAñoMateria">Año:</label>
-                                        </div>
-                                    <div class="input-field">
-                                            <select id="uMateriaProf">
+                                <input id="uIdCTeachers" type="hidden" name="cTeachersId" value="">
+                                <div class="input-field">
+                                    <input id="uAñoMateria" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="uAñoMateria">Año:</label>
+                                </div>
+                                <div class="input-field">
+                                    <select id="uMateriaProf">
                                               <option value="" disabled selected>Seleccione materia</option>
                                               <option value="1">Matematica I</option>
                                               <option value="2">Inspeccion de patas I</option>
                                               <option value="3">Expresion Oral y Escrita</option>
                                             </select>
-                                            <label>Materia</label>
-                                          </div>
-                                          <div class="input-field">
-                                                <select id="uCicloMateria">
+                                    <label>Materia</label>
+                                </div>
+                                <div class="input-field">
+                                    <select id="uCicloMateria">
                                                   <option value="" disabled selected>Seleccione ciclo</option>
                                                   <option value="1">I</option>
                                                   <option value="2">II</option>
                                                 </select>
-                                                <label>Materia</label>
-                                              </div>
-                                              <div class="input-field">
-                                                    <input id="uCupoMateria" name="class_count" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                                    <label for="uCupoMateria">Cupo:</label>
-                                                </div>
-                                          
+                                    <label>Materia</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="uCupoMateria" name="class_count" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="uCupoMateria">Cupo:</label>
+                                </div>
+
                                 <div class="row">
                                     <h6 class="center">Seleccione el estado de la materia:</h6>
                                     <div class="input-field col s6 push-s1">
@@ -214,7 +216,7 @@
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
                     <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteFaculty();">Eliminar</a>
-               </div>
+                </div>
             </div>
         </main>
 
