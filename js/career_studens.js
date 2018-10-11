@@ -116,3 +116,52 @@ function showError(error) {
         html: error
     })
 }
+
+function requestCareer(id) {
+    $.ajax({
+        url: BASE_URL + CAREER_STUDENTS_CREATE + "/" + id + "/careers",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result.careerState);
+            $("#uIdCStudents").val(result.id);
+            $('#uEstadoCarrera option[value="' + result.careerState + '"]').prop('selected', true)
+            updateModalCar.modal("open");
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
+
+function updateCareer() {
+    $.ajax({
+        url: BASE_URL + CAREER_STUDENTS_CREATE,
+        type: "PUT",
+        data: updateCarFrm.serialize(),
+        success: function(result) {
+            console.log(result);
+            getCareers();
+            updateModalCar.modal('close');
+            M.toast({
+                html: 'Carrera actualizada'
+            })
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}
+
+updateCarFrm.submit(function(e) {
+    e.preventDefault();
+    updateCareer();
+});
+
+
+function showError(error) {
+    M.toast({
+        html: error
+    })
+}
