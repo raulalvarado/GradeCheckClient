@@ -35,3 +35,4 @@ var EMPLOYEES_READ_AVAILABLE = "users/people/noEmployee";
 var ROLES_READ_ACTIVE = "roles/active"
 
 var EVALUATIONS_READ = "evaluations/byCourse/"
+var EVALUATIONS_CREATE = "evaluations"

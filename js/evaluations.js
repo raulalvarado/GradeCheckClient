@@ -5,15 +5,18 @@ var updateEvaFrm = $("#frmUpdtEval");
 var newModalEva = $("#nuevaEvaluacion");
 var updateModalEva = $("#actualizarEvaluacion");
 var deleteModalEva = $("#eliminarEvaluacion");
+var courseId = $(".courseId");
+
 $(document).ready(function() {
     let params = new URLSearchParams(window.location.search)
     careerId = params.get("id");
-    getEvaluations(careerId);
-    console.log(careerId)
+    courseId.val(careerId);
+    getEvaluations();
+    $('.datepicker').datepicker({ format: "yyyy-mm-dd" });
 });
 
 
-function getEvaluations(careerId) {
+function getEvaluations() {
     $.ajax({
         url: BASE_URL + EVALUATIONS_READ + careerId,
         type: "GET",
@@ -70,4 +73,39 @@ function getEvaluations(careerId) {
             })
         }
     });
+}
+
+function postEvaluation() {
+    var formData = newEvaFrm.serializeArray();
+    console.log(formData);
+    formData.push({ name: "laboratory", value: $('#labEvaluacion').is(':checked') });
+    $.ajax({
+        url: BASE_URL + EVALUATIONS_CREATE,
+        type: "POST",
+        data: formData,
+        success: function(result) {
+            console.log(result);
+            getEvaluations();
+            newModalEva.modal('close');
+            M.toast({
+                html: 'Evaluacion agregada con exito'
+            })
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}
+
+//save career post
+newEvaFrm.submit(function(e) {
+    e.preventDefault();
+    postEvaluation();
+});
+
+function showError(error) {
+    M.toast({
+        html: error
+    })
 }
