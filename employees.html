@@ -34,7 +34,9 @@
                 <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
                 <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
                 <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li><div class="blokk"></div></li>
+                <li>
+                    <div class="blokk"></div>
+                </li>
                 <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
                 <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
             </ul>
@@ -62,7 +64,7 @@
             </div>
 
             <div class="fixed-action-btn horizontal click-to-toggle">
-                <a href="#nuevoDocente" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
+                <a href="#nuevoEmpleado" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
                     <i class="material-icons">add</i>
                 </a>
             </div>
@@ -72,14 +74,14 @@
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nuevo docente</h3>
+                            <h3 class="">Nuevo Empleado</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegEmployee" autocomplete="off">
                                 <div class="input-field col s12">
-                                    <select id="EmployeeUser">
+                                    <select id="EmployeeUser" name="userId" class="users">
                                               <option value="" disabled selected>Seleccione el usuario</option>
                                               <option value="1">Juan Topo</option>
                                               <option value="2">John Doe</option>
@@ -87,26 +89,14 @@
                                             </select>
                                     <label>Usuario</label>
                                 </div>
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado del docente:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                                    <input id="SateA" name="state" value="1" type="radio"/>
-                                                                    <span>Activo</span>
-                                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                                    <input id="StateI" name="state" value="0" type="radio" />
-                                                                    <span>Inactivo</span>
-                                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div class="input-field col s12">
+                                    <select id="EmployeeRole" name="roleId" class="roles">
+                                              <option value="" disabled selected>Seleccione el usuario</option>
+                                              <option value="1">Juan Topo</option>
+                                              <option value="2">John Doe</option>
+                                              <option value="3">Jane Doe</option>
+                                            </select>
+                                    <label>Roles</label>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -130,14 +120,23 @@
                         <div class="col s12 m8 offset-m2 center-align">
 
                             <form id="frmUpdtEmployee" autocomplete="off">
-                                <input id="uIdEmployee" type="hidden" name="employeeId" value="">
+                                <input id="uIdEmployee" type="hidden" name="id" value="">
                                 <div class="row">
+                                    <div class="input-field col s12">
+                                        <select id="EmployeeRoleU" name="roleId" class="roles">
+                                                          <option value="" disabled selected>Seleccione el usuario</option>
+                                                          <option value="1">Juan Topo</option>
+                                                          <option value="2">John Doe</option>
+                                                          <option value="3">Jane Doe</option>
+                                                        </select>
+                                        <label>Roles</label>
+                                    </div>
                                     <h6 class="center">Seleccione el estado del docente:</h6>
                                     <div class="input-field col s6 push-s1">
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                    <input id="uStateA" name="state" value="1" type="radio"/>
+                                                    <input id="uStateA" name="state" value="true" type="radio"/>
                                                     <span>Activo</span>
                                                 </label>
                                             </p>
@@ -145,7 +144,7 @@
                                         <div class="col s12 m6 push-m4">
                                             <p>
                                                 <label>
-                                                    <input id="uStateI" name="state" value="0" type="radio" />
+                                                    <input id="uStateI" name="state" value="false" type="radio" />
                                                     <span>Inactivo</span>
                                                 </label>
                                             </p>
