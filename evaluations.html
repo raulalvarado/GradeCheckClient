@@ -89,12 +89,12 @@
                                     <label for="nombreEvaluacion">Nombre:</label>
                                 </div>
                                 <div class="input-field">
-                                    <textarea id="descEvaluacion" name="description" class="materialize-textarea"></textarea>
+                                    <textarea id="descEvaluacion" name="description" minlength="1" class="materialize-textarea"></textarea>
                                     <label for="descEvaluacion">Descripcion:
                                     </label>
                                 </div>
                                 <div class="input-field aldiv">
-                                    <input id="porcEvaluacion" name="percentage" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <input id="porcEvaluacion" name="percentage" type="number" min="1" max="100"  pattern="^[0-9]$" title="Solo se permiten números y el porcentaje no puede ser mayor que 100" required>
                                     <label for="porcEvaluacion">porcentaje:</label>
                                 </div>
                                 <div class="input-field aldiv2">
@@ -155,7 +155,7 @@
                                             </label>
                                 </div>
                                 <div class="input-field aldiv">
-                                    <input id="uPorcEvaluacion" name="percentage" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <input id="uPorcEvaluacion" name="percentage" type="number" min="1" max="100"  pattern="^[0-9]$" title="Solo se permiten números y el porcentaje no puede ser mayor de 100" required>
                                     <label for="uPorcEvaluacion">porcentaje:</label>
                                 </div>
                                 <div class="input-field aldiv2">
