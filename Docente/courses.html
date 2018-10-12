@@ -22,25 +22,13 @@
         </div>
 
         <div class="sidebar">
+
             <ul id="slide-out" class="sidenav sidenav-fixed">
                 <div class="separator">
 
                 </div>
-                <li><a class="waves-effect waves-light" href="../Index.html"><i class="material-icons">person</i>Usuarios</a></li>
-                <li><a class="waves-effect waves-light" href="../faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
-                <li><a class="waves-effect waves-light" href="../students.html"><i class="material-icons">school</i>Estudiantes</a></li>
-                <li><a class="waves-effect waves-light" href="../employees.html"><i class="material-icons">assignment_ind</i>Docentes</a></li>
-                <li><a class="waves-effect waves-light" href="../careertype.html"><i class="material-icons">folder</i>Tipos
-                        de carrera</a></li>
-                <li><a class="waves-effect waves-light" href="../careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
-                <li><a class="waves-effect waves-light" href="../courses.html"><i class="material-icons">book</i>Materias</a></li>
-                <li><a class="waves-effect waves-light" href="../roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li>
-                    <div class="blokk"></div>
-                </li>
-                <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
-                <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion
-                        de notas</a></li>
+                <li><a class="waves-effect waves-light" href="../Docente/courses.html"><i class="material-icons">assignment_ind</i>Docentes</a></li>
+                <li><a class="waves-effect waves-light" href="#" onclick="logoutTeacher();"><i class="material-icons">arrow_back</i>Cerrar sesion</a></li>
             </ul>
         </div>
         <main>
@@ -69,7 +57,7 @@
                 </table>
             </div>
 
-              <!--Modal de agregacion de usuarios
+            <!--Modal de agregacion de usuarios
               <div id="verMateria" class="modal">
                     <div class="modal-content">
                         <div class="modal-header row blue darken-3 white-text">
@@ -159,93 +147,93 @@
                         </div>
                     </div>
                 </div>-->
-                <div id="visualizarMateria" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header row blue darken-3 white-text">
-                            <div class="col m10 s9">
-                                <h3 class="">Visualizar materia</h3>
-                            </div>
+            <div id="visualizarMateria" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header row blue darken-3 white-text">
+                        <div class="col m10 s9">
+                            <h3 class="">Visualizar materia</h3>
                         </div>
-                        <div class="row">
-                            <div class="col s12 m8 offset-m2 center-align">
-    
-                                <form id="frmUpdtCourse" autocomplete="off">
-                                    <input id="uIdCourse" type="hidden" name="id" value="">
-                                    <div class="input-field">
-                                        <input value=" "  id="uNombreMateria" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" disabled>
-                                        <label class="active" for="uNombreMateria">Nombre:</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <input value=" " id="uSemestreMateria" name="semester" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}$" disabled>
-                                        <label class="active" for="uSemestreMateria">Semestre:</label>
-                                    </div>
-                                    <div class="input-field aldiv">
-                                        <p>
-                                            <label>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m8 offset-m2 center-align">
+
+                            <form id="frmUpdtCourse" autocomplete="off">
+                                <input id="uIdCourse" type="hidden" name="id" value="">
+                                <div class="input-field">
+                                    <input value=" " id="uNombreMateria" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" disabled>
+                                    <label class="active" for="uNombreMateria">Nombre:</label>
+                                </div>
+                                <div class="input-field">
+                                    <input value=" " id="uSemestreMateria" name="semester" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}$" disabled>
+                                    <label class="active" for="uSemestreMateria">Semestre:</label>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <p>
+                                        <label>
                                                     <input id="uInterMateria" name="inter" type="checkbox" value="true" disabled/>
                                                     <span>Interciclo</span>
                                                 </label>
-                                        </p>
-                                    </div>
-                                    <div class="input-field aldiv">
-                                        <p>
-                                            <label>
+                                    </p>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <p>
+                                        <label>
                                                     <input id="uLabMateria" name="laboratory" type="checkbox" value="true" disabled/>
                                                     <span>Laboratorio</span>
                                                 </label>
-                                        </p>
-                                    </div>
-                                    <div class="input-field">
-                                        <input value=" " id="uUvMateria" name="uv" type="text" minlength="1" maxlength="10" pattern="^[0-9]$" title="Solo se permiten números" disabled>
-                                        <label class="active" for="uUvMateria">Unidades valorativas:</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <select id="uCoursePrerequisite" class="cCoursePrerequisite" name="prerrequisiteId" disabled>
+                                    </p>
+                                </div>
+                                <div class="input-field">
+                                    <input value=" " id="uUvMateria" name="uv" type="text" minlength="1" maxlength="10" pattern="^[0-9]$" title="Solo se permiten números" disabled>
+                                    <label class="active" for="uUvMateria">Unidades valorativas:</label>
+                                </div>
+                                <div class="input-field">
+                                    <select id="uCoursePrerequisite" class="cCoursePrerequisite" name="prerrequisiteId" disabled>
                                                   <option value="" disabled selected>Seleccione el prerrequisito</option>
                                                   <option value="1">Matematica I</option>
                                                   <option value="2">Expresion Oral y Escrita</option>
                                                   <option value="3">Matematica II</option>
                                                 </select>
-                                        <label>Carrera</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <select id="uCourseFaculty" class="cCourseFaculty" name="facultyId" disabled>
+                                    <label>Carrera</label>
+                                </div>
+                                <div class="input-field">
+                                    <select id="uCourseFaculty" class="cCourseFaculty" name="facultyId" disabled>
                                                   <option value="" disabled selected>Seleccione la facultad</option>
                                                   <option value="1">Ingenieria</option>
                                                   <option value="2">Medicina</option>
                                                   <option value="3">Derecho</option>
                                                 </select>
-                                        <label>Facultad</label>
-                                    </div>
-                                    <div class="row">
-                                        <h6 class="center">Estado de la materia:</h6>
-                                        <div class="input-field col s6 push-s1">
-                                            <div class="col s12 m6 push-m5">
-                                                <p>
-                                                    <label>
+                                    <label>Facultad</label>
+                                </div>
+                                <div class="row">
+                                    <h6 class="center">Estado de la materia:</h6>
+                                    <div class="input-field col s6 push-s1">
+                                        <div class="col s12 m6 push-m5">
+                                            <p>
+                                                <label>
                                                                     <input id="uStateA" name="state" value="true" type="radio" disabled/>
                                                                     <span>Activo</span>
                                                                 </label>
-                                                </p>
-                                            </div>
-                                            <div class="col s12 m6 push-m4">
-                                                <p>
-                                                    <label>
+                                            </p>
+                                        </div>
+                                        <div class="col s12 m6 push-m4">
+                                            <p>
+                                                <label>
                                                                     <input id="uStateI" name="state" value="false" type="radio" disabled/>
                                                                     <span>Inactivo</span>
                                                                 </label>
-                                                </p>
-                                            </div>
+                                            </p>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-               
+            </div>
 
-                  </main>
+
+        </main>
 
 
         <script type="text/javascript" src="../js/jquery.min.js"></script>

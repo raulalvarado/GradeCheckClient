@@ -1,14 +1,20 @@
 var table = $("#mycoursesTable");
-var id = 3;
+var id;
 var updateModalCourse = $("#visualizarMateria");
 $(document).ready(function() {
+    try {
+        id = JSON.parse(sessionStorage["logedUser"]).id
+        console.log(id + "goli")
+    } catch (error) {
+        location.replace("../login.html")
+    }
     getCourses();
 });
 
 //ajax request to get faculties
 function getCourses() {
     $.ajax({
-        url: BASE_URL + COURSE_TEACHERS_BYEMPLOYEE+id +"/courses/active",
+        url: BASE_URL + COURSE_TEACHERS_BYEMPLOYEE + id + "/courses/active",
         type: "GET",
         dataType: "json",
         success: function(result) {
@@ -30,7 +36,7 @@ function getCourses() {
                     "<td>" + val.semester + "</td>" +
                     "<td>" + val.classCount + "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val["course"].id + ")'>remove_red_eye</i></a></td>" +
-                    "<td><a href='students_courses.html?id="+val.id+"' class='modal-trigger'><i class='material-icons'>person</i></a></td>" +
+                    "<td><a href='students_courses.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>person</i></a></td>" +
                     "</tr>");
             });
             //newFacFrm.trigger("reset");

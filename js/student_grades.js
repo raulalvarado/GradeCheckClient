@@ -3,9 +3,16 @@ var table = $("#content")
 var updateEvaFrm = $("#frmCalificar");
 var updateEvaModal = $("#calificarEvaluacion")
 $(document).ready(function() {
+    try {
+        id = JSON.parse(sessionStorage["logedUser"]).id
+        console.log(id + "goli")
+    } catch (error) {
+        location.replace("../login.html")
+    }
     let params = new URLSearchParams(window.location.search)
     registeredId = params.get("id");
     console.log(registeredId);
+
     getEvaluations();
 });
 
