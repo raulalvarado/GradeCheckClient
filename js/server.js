@@ -1,4 +1,6 @@
 var BASE_URL = "http://localhost:8084/POOSistema_NotasAPI/";
+var EMPLOYEES_LOGIN = "employees/login"
+
 var USERS_READ = "users/people"
 var USERS_CREATE = "users"
 var USERS_GET = "users/"
