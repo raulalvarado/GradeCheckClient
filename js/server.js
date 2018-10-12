@@ -1,4 +1,6 @@
-var BASE_URL = "http://localhost:8080/POOSistema_NotasAPI/";
+var BASE_URL = "http://localhost:8084/POOSistema_NotasAPI/";
+var EMPLOYEES_LOGIN = "employees/login"
+
 var USERS_READ = "users/people"
 var USERS_CREATE = "users"
 var USERS_GET = "users/"
@@ -29,6 +31,7 @@ var COURSE_SINGLE = "courses"
 
 var STUDENTS_READ = "students/users/people"
 var STUDENTS_CREATE = "students";
+var STUDENTS_BYCOURSETEACHER = "students/byCourseTeacher/";
 var STUDENTS_READ_SINGLE = "students"
 var STUDENTS_READ_AVAILABLE = "users/people/noStudent";
 
@@ -47,7 +50,10 @@ var CAREER_STUDENTS_CREATE = "careerStudents"
 var REGISTERED_COURSES_READ = "registeredCourses/byStudent/"
 var AVAILABLE_COURSES = "courses/byStudent/"
 var REGISTERED_COURSES_CREATE = "registeredCourses"
+var REGISTERED_COURSES_BYTEACHER ="registeredCourses/byCourseTeacher/"
 
 var COURSE_TEACHERS_READ_AVAILABLE = "courseTeachers/byCourse/"
 var COURSE_TEACHERS_CREATE = "courseTeachers";
 var COURSE_TEACHERS_BYEMPLOYEE = "courseTeachers/byEmployee/";
+
+var EVALUATIONS_BYREGISTEREDCOURSE ="evaluations/byRegisteredCourse/"

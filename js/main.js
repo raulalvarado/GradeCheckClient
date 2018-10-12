@@ -4,3 +4,8 @@ $(document).ready(function() {
     $('select').formSelect();
     $('.datepicker').datepicker();
 });
+
+function logout() {
+    sessionStorage["logedUser"] = null;
+    window.location.replace("login.html")
+}
