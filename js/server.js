@@ -1,8 +1,11 @@
-var BASE_URL = "http://localhost:8084/POOSistema_NotasAPI/";
+var BASE_URL = "http://localhost:8080/POOSistema_NotasAPI/";
 var USERS_READ = "users/people"
 var USERS_CREATE = "users"
 var USERS_GET = "users/"
 
+var CAREER_COURSES_PLAN = "careerCourses/planByCareer/"
+var CAREER_COURSES_BY_CAREER = "careerCourses/byCareer/"
+var CAREER_COURSES_CREATE = "careerCourses"
 
 var FACULTIES_READ = "faculties"
 var FACULTIES_READ_ACTIVE = "faculties/active"

@@ -42,18 +42,13 @@
             </ul>
         </div>
         <main>
-            <h2 class="center">Materias de la carrera</h2>
+            <h2 id="title" class="center">Planes de la carrera</h2>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
                         <tr>
-                            <th>Materia</th>
                             <th>Plan</th>
-                            <th>Año de la carrera</th>
-                            <th>Ciclo</th>
-                            <th>Estado</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
+                            <th>Ver</th>
                         </tr>
                     </thead>
 
@@ -63,78 +58,28 @@
             </div>
 
             <div class="fixed-action-btn horizontal click-to-toggle">
-                <a href="#nuevaMateriaCarr" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
+                <a href="#nuevoPlan" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
                     <i class="material-icons">add</i>
                 </a>
             </div>
 
-            <!--Modal de agregacion de usuarios-->
-            <div id="nuevaMateriaCarr" class="modal">
+            <!--Modal para 'crear' un nuevo plan-->
+            <div id="nuevoPlan" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nueva materia del pensum</h3>
+                            <h3 class="">Nuevo plan</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmRegCC" autocomplete="off">
+                            <form id="frmPlan" autocomplete="off">
                                 <div class="input-field">
-                                    <select id="materiaCarr">
-                                              <option value="" disabled selected>Seleccione materia</option>
-                                              <option value="1">Matematica I</option>
-                                              <option value="2">Inspeccion de patas I</option>
-                                              <option value="3">Expresion Oral y Escrita</option>
-                                            </select>
-                                    <label>Materia</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="añoPlan" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="añoPlan">Año del plan:</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="añoCarr">
-                                                      <option value="" disabled selected>Seleccione año de la carrera</option>
-                                                      <option value="1">I</option>
-                                                      <option value="2">II</option>
-                                                      <option value="3">III</option>
-                                                      <option value="4">IV</option>
-                                                      <option value="5">V</option>
-                                                    </select>
-                                    <label>Materia</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="cicloMateriaCarr">
-                                                  <option value="" disabled selected>Seleccione ciclo</option>
-                                                  <option value="1">I</option>
-                                                  <option value="2">II</option>
-                                                </select>
-                                    <label>Materia</label>
-                                </div>
-
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado de la materia:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                    <input id="SateA" name="state" value="1" type="radio"/>
-                                                    <span>Activo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                    <input id="StateI" name="state" value="0" type="radio" />
-                                                    <span>Inactivo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    <input id="anoPlan" name="year" type="number" required>
+                                    <label for="anoPlan">Año del plan:</label>
                                 </div>
                                 <div class="row">
-                                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
+                                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Siguiente</button>
                                     <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
                                 </div>
                             </form>
@@ -142,95 +87,7 @@
                     </div>
                 </div>
             </div>
-
-            <!--Modal de modificacion de usuarios-->
-            <div id="actualizarMateriaAsig" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header row blue darken-3 white-text">
-                        <div class="col m10 s9">
-                            <h3 class="">Actualizar materia asignada</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m8 offset-m2 center-align">
-                            <form id="frmUpdtCC" autocomplete="off">
-                                <input id="uIdCCourses" type="hidden" name="cCoursesId" value="">
-                                <div class="input-field">
-                                    <select id="uMateriaCarr">
-                                              <option value="" disabled selected>Seleccione materia</option>
-                                              <option value="1">Matematica I</option>
-                                              <option value="2">Inspeccion de patas I</option>
-                                              <option value="3">Expresion Oral y Escrita</option>
-                                            </select>
-                                    <label>Materia</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uAñoPlan" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="uAñoPlan">Año del plan:</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="uMateriaProf">
-                                                      <option value="" disabled selected>Seleccione año de la carrera</option>
-                                                      <option value="1">I</option>
-                                                      <option value="2">II</option>
-                                                      <option value="3">III</option>
-                                                      <option value="4">IV</option>
-                                                      <option value="5">V</option>
-                                                    </select>
-                                    <label>Materia</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="uCicloMateriaCarr">
-                                                  <option value="" disabled selected>Seleccione ciclo</option>
-                                                  <option value="1">I</option>
-                                                  <option value="2">II</option>
-                                                </select>
-                                    <label>Materia</label>
-                                </div>
-
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado de la materia:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                    <input id="uSateA" name="state" value="1" type="radio"/>
-                                                    <span>Activo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                    <input id="uStateI" name="state" value="0" type="radio" />
-                                                    <span>Inactivo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Modificar</button>
-                                    <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal de eliminar facultad-->
-            <div id="eliminarMateriaCarr" class="modal">
-                <div class="modal-content">
-                    <h4>Eliminar materia</h4>
-                    <p>¿Seguro que deseas eliminar esta materia?</p>
-                    <input id="dIdCCourses" type="hidden" name="cCoursesId" value="">
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
-                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteFaculty();">Eliminar</a>
-                </div>
-            </div>
+            
         </main>
 
 
@@ -239,6 +96,7 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/career_courses.js"></script>
 </body>
 
 </html>
