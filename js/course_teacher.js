@@ -169,3 +169,30 @@ function showError(error) {
         html: error
     })
 }
+
+//confirm delete user
+function confirmDeleteCareer(id) {
+    $("#dIdCTeachers").val(id);
+    deleteModalCt.modal("open");
+}
+
+//delete user
+function deleteCareer() {
+    console.log(BASE_URL + COURSE_TEACHERS_CREATE + "/" + $("#dIdCTeachers").val())
+    $.ajax({
+        url: BASE_URL + COURSE_TEACHERS_CREATE + "/" + $("#dIdCTeachers").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getCareers();
+            $("#dIdCTeachers").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}

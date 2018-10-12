@@ -3,7 +3,7 @@ var newCarFrm = $("#frmRegCareer");
 var updateCarFrm = $("#frmUpdtCarrers");
 var updateModalCareer = $("#actualizarCarreras");
 var newModalCareer = $("#nuevaCarrera");
-var deleteModalFaculty = $("#eliminarCarrera");
+var deleteModalCareer = $("#eliminarCarrera");
 var faculties = $(".cCarrerFaculty");
 var career_type = $(".cCareerType");
 
@@ -32,7 +32,7 @@ function getCareers() {
 
                 //filling table
                 table.append("<tr>" +
-                    "<td>" + val.name + val.id + "</td>" +
+                    "<td>" + val.name + "</td>" +
                     "<td>" + val['faculty'].name + "</td>" +
                     "<td>" + val['careerType'].name + "</td>" +
                     "<td>" +
@@ -204,4 +204,31 @@ function showError(error) {
     M.toast({
         html: error
     })
+}
+
+//confirm delete user
+function confirmDeleteCareer(id) {
+    $("#dIdCareer").val(id);
+    deleteModalCareer.modal("open");
+}
+
+//delete user
+function deleteCareer() {
+    console.log(BASE_URL + CAREERS_CREATE + "/" + $("#dIdCareer").val())
+    $.ajax({
+        url: BASE_URL + CAREERS_CREATE + "/" + $("#dIdCareer").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getCareers();
+            $("#dIdCareer").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
 }

@@ -163,3 +163,30 @@ function showError(error) {
         html: error
     })
 }
+
+//confirm delete user
+function confirmDeleteStudent(id) {
+    $("#dIdStudent").val(id);
+    deleteEModal.modal("open");
+}
+
+//delete user
+function deleteUser() {
+    console.log(BASE_URL + STUDENTS_CREATE + "/" + $("#dIdStudent").val())
+    $.ajax({
+        url: BASE_URL + STUDENTS_CREATE + "/" + $("#dIdStudent").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getStudents();
+            $("#dIdStudent").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}

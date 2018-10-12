@@ -199,3 +199,30 @@ function showError(error) {
         html: error
     })
 }
+
+//confirm delete user
+function confirmDeleteEmployee(id) {
+    $("#dIdEmployee").val(id);
+    deleteUModal.modal("open");
+}
+
+//delete user
+function deleteEmployee() {
+    console.log(BASE_URL + EMPLOYEES_CREATE + "/" + $("#dIdEmployee").val())
+    $.ajax({
+        url: BASE_URL + EMPLOYEES_CREATE + "/" + $("#dIdEmployee").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getEmployees();
+            $("#dIdEmployee").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}
