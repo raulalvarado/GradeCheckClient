@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/select2-materialize.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -160,13 +161,15 @@
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmCareerCourse" autocomplete="off">
                                 <div class="row">
-                                    <select id="course" class="cCourse" name="courseId">
-                                        <option value="" disabled selected>Seleccione una materia</option>
-                                        <option value="1">Matematica I</option>
-                                        <option value="2">Expresion Oral y Escrita</option>
-                                        <option value="3">Matematica II</option>
-                                    </select>
-                                    <label>Materia</label>
+                                    <div class="input-field">
+                                        <label for="course">Materia</label><br/><br/>
+                                        <select id="course" class="cCourse" name="courseId">
+                                            <option value="" disabled selected>Seleccione una materia</option>
+                                            <option value="1">Matematica I</option>
+                                            <option value="2">Expresion Oral y Escrita</option>
+                                            <option value="3">Matematica II</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <input type="hidden" id="careerId" name="careerId"/>
                                 <input type="hidden" id="plan" name="plan"/>
@@ -209,6 +212,7 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/select2.min.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
         <script type="text/javascript" src="js/pensum.js"></script>
 </body>

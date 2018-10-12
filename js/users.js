@@ -4,6 +4,7 @@ var formNuevoU = $("#frmRegUser");
 var formUdapteU = $("#frmUpdtUser");
 var updateUModal = $("#actualizarUsuario");
 var deleteUModal = $("#eliminarUsuario");
+var updLabels = $(".updLabel");
 
 //trying to get users from digital ocean server
 $(document).ready(function() {
@@ -80,6 +81,7 @@ function requestUser(id) {
                 $("#updateStateI").prop("checked", true);
             }
             updateUModal.modal("open");
+            updLabels.addClass("active");
         },
         error: function(error) {
             showError(error.responseText);

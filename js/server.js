@@ -1,4 +1,4 @@
-var BASE_URL = "http://localhost:8084/POOSistema_NotasAPI/";
+var BASE_URL = "http://localhost:8080/POOSistema_NotasAPI/";
 var EMPLOYEES_LOGIN = "employees/login"
 
 var USERS_READ = "users/people"

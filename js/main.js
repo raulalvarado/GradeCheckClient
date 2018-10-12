@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('.sidenav').sidenav();
     $('.modal').modal();
-    $('select').formSelect();
+   // $('select').formSelect();
     $('.datepicker').datepicker();
 });
 

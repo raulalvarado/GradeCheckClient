@@ -27,6 +27,14 @@ function showError(error) {
 
 }
 
+//Initialize course selects as select2
+function coursesSelect2() {
+    $("#course").select2({
+        dropdownParent: newCarCrsModal,
+        width: "100%"
+    });
+}
+
 //ajax request to get faculties
 function getCareerName() {
     $.ajax({
@@ -116,7 +124,8 @@ function getCourses() {
                 //filling table
                 courses.append("<option value=" + val.id + ">" + val.name + " (" + val.courseCode + ")</option>");
             });
-            courses.formSelect();
+            //courses.formSelect();
+            coursesSelect2()
 
             requestCourse();
         },

@@ -6,11 +6,39 @@ var newModalCareer = $("#nuevaCarrera");
 var deleteModalCareer = $("#eliminarCarrera");
 var faculties = $(".cCarrerFaculty");
 var career_type = $(".cCareerType");
+var updLabels = $(".updLabel");
+
 
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
     getCareers();
 });
+
+//Initialize faculty selects as select2
+function facultiesSelect2() {
+    $("#CareerFaculty").select2({
+        dropdownParent: newModalCareer,
+        width: "100%"
+    });
+    
+    $("#uCareerFaculty").select2({
+        dropdownParent: updateModalCareer,
+        width: "100%"
+    });
+}
+
+//Initialize careerType selects as select2
+function careerTypesSelect2() {
+    $("#CareerTypeFaculty").select2({
+        dropdownParent: newModalCareer,
+        width: "100%"
+    });
+    
+    $("#uCareerTypeFaculty").select2({
+        dropdownParent: updateModalCareer,
+        width: "100%"
+    });
+}
 
 //ajax request to get faculties
 function getCareers() {
@@ -75,7 +103,9 @@ function getFaculties() {
                 //filling table
                 faculties.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            faculties.formSelect();
+            //faculties.formSelect();
+            facultiesSelect2();
+            
         },
         error: function(error) {
             console.log(error);
@@ -100,7 +130,8 @@ function getCareerTypes() {
                 //filling table
                 career_type.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            career_type.formSelect();
+            //career_type.formSelect();
+            careerTypesSelect2()
         },
         error: function(error) {
             console.log(error);
@@ -123,14 +154,17 @@ function requestCareer(id) {
             $("#uNombreCarrera").val(result.name);
             $('#uCareerFaculty option[value="' + result["faculty"].id + '"]').prop('selected', true)
             $('#uCareerTypeFaculty option[value="' + result["careerType"].id + '"]').prop('selected', true)
-            $("#uCareerTypeFaculty").formSelect();
-            $('#uCareerFaculty').formSelect();
+            
+            facultiesSelect2();
+            careerTypesSelect2()
+            
             if (result.state === true) {
                 $("#uStateA").prop("checked", true);
             } else {
                 $("#uStateI").prop("checked", true);
             }
             updateModalCareer.modal("open");
+            updLabels.addClass("active");
         },
         error: function(error) {
             showError(error.responseText);
