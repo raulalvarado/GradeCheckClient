@@ -94,8 +94,11 @@
                                     <label for="añoMateria">Año:</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="semestreMateria" name="semester" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="semestreMateria">Semestre:</label>
+                                    <select id="CicloMateria" name="semester">
+                                        <option value="1">I</option>
+                                        <option value="2">II</option>
+                                        <option value="Interciclo">Interciclo</option>
+                                      </select>
                                 </div>
                                 <div class="input-field">
                                     <input id="cupoMateria" name="classCount" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
