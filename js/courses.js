@@ -3,7 +3,7 @@ var newCourseFrm = $("#frmRegCourse");
 var updateCourseFrm = $("#frmUpdtCourse");
 var updateModalCourse = $("#actualizarMateria");
 var newModalCourse = $("#nuevaMateria");
-var deleteModalFaculty = $("#eliminarMateria");
+var deleteModalCourse = $("#eliminarMateria");
 var faculties = $(".cCourseFaculty");
 var prerequisite = $(".cCoursePrerequisite");
 //trying to get faculties from digital ocean server
@@ -242,4 +242,31 @@ function showError(error) {
     M.toast({
         html: error
     })
+}
+
+//confirm delete user
+function confirmDeleteCourse(id) {
+    $("#dIdCourse").val(id);
+    deleteModalCourse.modal("open");
+}
+
+//delete user
+function deleteCourse() {
+    console.log(BASE_URL + COURSES_CREATE + "/" + $("#dIdCourse").val())
+    $.ajax({
+        url: BASE_URL + COURSES_CREATE + "/" + $("#dIdCourse").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getCourses();
+            $("#dIdCourse").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
 }

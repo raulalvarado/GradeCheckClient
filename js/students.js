@@ -41,8 +41,8 @@ function getStudents() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareer(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourses(" + val.id + ")'>mode_edit</i></a></td>" +
+                    "<td><a href='career_students.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
+                    "<td><a href='registered_courses.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestStudent(" + val.id + ")'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteStudent(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
@@ -162,4 +162,31 @@ function showError(error) {
     M.toast({
         html: error
     })
+}
+
+//confirm delete user
+function confirmDeleteStudent(id) {
+    $("#dIdStudent").val(id);
+    deleteEModal.modal("open");
+}
+
+//delete user
+function deleteUser() {
+    console.log(BASE_URL + STUDENTS_CREATE + "/" + $("#dIdStudent").val())
+    $.ajax({
+        url: BASE_URL + STUDENTS_CREATE + "/" + $("#dIdStudent").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getStudents();
+            $("#dIdStudent").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
 }

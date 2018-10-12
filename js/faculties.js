@@ -130,7 +130,7 @@ function confirmDeleteFaculty(id) {
 //delete user
 function deleteFaculty(id) {
     $.ajax({
-        url: BASE_URL + FACULTIES_DELETE + $("#dId").val(),
+        url: BASE_URL + FACULTIES_CREATE + "/" + $("#dId").val(),
         type: "DELETE",
         success: function(result) {
             console.log(result);

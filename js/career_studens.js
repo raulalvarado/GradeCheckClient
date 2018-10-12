@@ -1,28 +1,31 @@
-var table = $("#careersTable");
-var newCarFrm = $("#frmRegCareer");
-var updateCarFrm = $("#frmUpdtCarrers");
-var updateModalCareer = $("#actualizarCarreras");
-var newModalCareer = $("#nuevaCarrera");
-var deleteModalCareer = $("#eliminarCarrera");
-var faculties = $(".cCarrerFaculty");
-var career_type = $(".cCareerType");
+var studentId;
+var table = $("#cStudentsTable");
+var newCarFrm = $("#frmRegCS");
+var updateCarFrm = $("#frmUpdtCS");
+var newModalCar = $("#nuevaCarreraAsig");
+var updateModalCar = $("#actualizarCarreraAsig");
+var deleteModalCar = $("#eliminarCarreraAsig");
+var studentIdForm = $(".studentId");
+var careerActive = $("#carreraEst");
 
-//trying to get faculties from digital ocean server
 $(document).ready(function() {
+    let params = new URLSearchParams(window.location.search)
+    studentId = params.get("id");
+    studentIdForm.val(studentId);
     getCareers();
+    $('.datepicker').datepicker({ format: "yyyy-mm-dd" });
 });
 
-//ajax request to get faculties
 function getCareers() {
     $.ajax({
-        url: BASE_URL + CAREERS_READ,
+        url: BASE_URL + CAREER_STUDENTS_READ + studentId + "/full",
         type: "GET",
         dataType: "json",
         success: function(result) {
             console.log(result);
             table.empty();
             $.each(result, function(i, val) {
-                console.log(val.name);
+                console.log(val["career"].name);
 
                 //validating if it's an active user
                 var checked = "<input type='checkbox' class='filled-in' disabled='disabled' checked='checked' />";
@@ -32,24 +35,21 @@ function getCareers() {
 
                 //filling table
                 table.append("<tr>" +
-                    "<td>" + val.name + "</td>" +
-                    "<td>" + val['faculty'].name + "</td>" +
-                    "<td>" + val['careerType'].name + "</td>" +
+                    "<td>" + val["career"].name + "</td>" +
+                    "<td>" + val.incomeYear + "</td>" +
+                    "<td>" + val.careerState + "</td>" +
                     "<td>" +
                     "<label>" +
                     checked +
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='" + 'career_courses.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareer(" + val.id + ")'>mode_edit</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
+            getActiveCareers();
             newCarFrm.trigger("reset");
-            updateCarFrm.trigger("reset");
-            getFaculties();
-            getCareerTypes();
         },
         error: function(error) {
             console.log(error);
@@ -60,22 +60,21 @@ function getCareers() {
     });
 }
 
-//ajax request to get faculties
-function getFaculties() {
+function getActiveCareers() {
     $.ajax({
-        url: BASE_URL + FACULTIES_READ_ACTIVE,
+        url: BASE_URL + CAREERS_READ_ACTIVE,
         type: "GET",
         dataType: "json",
         success: function(result) {
             console.log(result);
-            faculties.empty();
+            careerActive.empty();
             $.each(result, function(i, val) {
                 console.log(val.name);
 
                 //filling table
-                faculties.append("<option value=" + val.id + ">" + val.name + "</option>");
+                careerActive.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            faculties.formSelect();
+            careerActive.formSelect();
         },
         error: function(error) {
             console.log(error);
@@ -86,68 +85,15 @@ function getFaculties() {
     });
 }
 
-//ajax request to get faculties
-function getCareerTypes() {
-    $.ajax({
-        url: BASE_URL + CAREER_TYPES_READ_ACTIVE,
-        type: "GET",
-        dataType: "json",
-        success: function(result) {
-            console.log(result);
-            career_type.empty();
-            $.each(result, function(i, val) {
-                console.log(val.name);
-                //filling table
-                career_type.append("<option value=" + val.id + ">" + val.name + "</option>");
-            });
-            career_type.formSelect();
-        },
-        error: function(error) {
-            console.log(error);
-            M.toast({
-                html: 'Error al solicitar todas las facultades'
-            })
-        }
-    });
-}
-
-//request one user
-function requestCareer(id) {
-    $.ajax({
-        url: BASE_URL + CAREERS_CREATE + "/" + id + "/full",
-        type: "GET",
-        dataType: "json",
-        success: function(result) {
-            console.log(result);
-            $("#uIdCareer").val(result.id);
-            $("#uNombreCarrera").val(result.name);
-            $('#uCareerFaculty option[value="' + result["faculty"].id + '"]').prop('selected', true)
-            $('#uCareerTypeFaculty option[value="' + result["careerType"].id + '"]').prop('selected', true)
-            $("#uCareerTypeFaculty").formSelect();
-            $('#uCareerFaculty').formSelect();
-            if (result.state === true) {
-                $("#uStateA").prop("checked", true);
-            } else {
-                $("#uStateI").prop("checked", true);
-            }
-            updateModalCareer.modal("open");
-        },
-        error: function(error) {
-            showError(error.responseText);
-        }
-    });
-}
-
-//save career
 function postCareer() {
     $.ajax({
-        url: BASE_URL + CAREERS_CREATE,
+        url: BASE_URL + CAREER_STUDENTS_CREATE,
         type: "POST",
         data: newCarFrm.serialize(),
         success: function(result) {
             console.log(result);
             getCareers();
-            newModalCareer.modal('close');
+            newModalCar.modal('close');
             M.toast({
                 html: 'Carrera agregada con exito'
             })
@@ -159,7 +105,6 @@ function postCareer() {
     });
 }
 
-//save career post
 newCarFrm.submit(function(e) {
     e.preventDefault();
     postCareer();
@@ -170,19 +115,34 @@ function showError(error) {
     M.toast({
         html: error
     })
+}
 
+function requestCareer(id) {
+    $.ajax({
+        url: BASE_URL + CAREER_STUDENTS_CREATE + "/" + id + "/careers",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result.careerState);
+            $("#uIdCStudents").val(result.id);
+            $('#uEstadoCarrera option[value="' + result.careerState + '"]').prop('selected', true)
+            updateModalCar.modal("open");
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
 }
 
 function updateCareer() {
     $.ajax({
-        url: BASE_URL + CAREERS_CREATE,
+        url: BASE_URL + CAREER_STUDENTS_CREATE,
         type: "PUT",
         data: updateCarFrm.serialize(),
         success: function(result) {
-
             console.log(result);
             getCareers();
-            updateModalCareer.modal('close');
+            updateModalCar.modal('close');
             M.toast({
                 html: 'Carrera actualizada'
             })
@@ -199,7 +159,7 @@ updateCarFrm.submit(function(e) {
     updateCareer();
 });
 
-//display server errors
+
 function showError(error) {
     M.toast({
         html: error
@@ -208,15 +168,15 @@ function showError(error) {
 
 //confirm delete user
 function confirmDeleteCareer(id) {
-    $("#dIdCareer").val(id);
-    deleteModalCareer.modal("open");
+    $("#dIdCStudents").val(id);
+    deleteModalCar.modal("open");
 }
 
 //delete user
-function deleteCareer() {
-    console.log(BASE_URL + CAREERS_CREATE + "/" + $("#dIdCareer").val())
+function deleteCStudent() {
+    console.log(BASE_URL + CAREER_STUDENTS_CREATE + "/" + $("#dIdCStudents").val())
     $.ajax({
-        url: BASE_URL + CAREERS_CREATE + "/" + $("#dIdCareer").val(),
+        url: BASE_URL + CAREER_STUDENTS_CREATE + "/" + $("#dIdCStudents").val(),
         type: "DELETE",
         success: function(result) {
             console.log(result);
@@ -224,7 +184,7 @@ function deleteCareer() {
                 html: 'Eliminado con exito'
             })
             getCareers();
-            $("#dIdCareer").val("");
+            $("#dIdCStudents").val("");
         },
         error: function(error) {
             console.log(error.responseText);

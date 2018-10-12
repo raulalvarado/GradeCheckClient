@@ -3,7 +3,7 @@ var newCarTypeFrm = $("#frmRegCarTyp");
 var updateCarTypeFrm = $("#frmUpdtCarTyp");
 var updateModalCareerType = $("#actualizarTipoCarrera");
 var newModalCareerType = $("#nuevoTipoCarrera");
-var deleteModalFaculty = $("#eliminarTipoCarrera");
+var deleteModalCareerType = $("#eliminarTipoCarrera");
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
     getCareerTypes();
@@ -130,5 +130,31 @@ function showError(error) {
     M.toast({
         html: error
     })
+}
 
+//confirm delete user
+function confirmDeleteCareerType(id) {
+    $("#dIdCareerType").val(id);
+    deleteModalCareerType.modal("open");
+}
+
+//delete user
+function deleteCareerType() {
+    console.log(BASE_URL + CAREER_TYPES_CREATE + "/" + $("#dIdCareerType").val())
+    $.ajax({
+        url: BASE_URL + CAREER_TYPES_CREATE + "/" + $("#dIdCareerType").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getCareerTypes();
+            $("#dIdCareerType").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
 }

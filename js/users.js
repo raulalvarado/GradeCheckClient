@@ -95,15 +95,16 @@ function confirmDeleteUser(id) {
 
 //delete user
 function deleteUser() {
+    console.log(BASE_URL + USERS_CREATE + "/" + $("#dIdUser").val())
     $.ajax({
-        url: BASE_URL + STUDENTS_DELETE + $("#dIdUser").val(),
+        url: BASE_URL + USERS_CREATE + "/" + $("#dIdUser").val(),
         type: "DELETE",
         success: function(result) {
             console.log(result);
             M.toast({
                 html: 'Eliminado con exito'
             })
-            getStudents();
+            getUsers();
             $("#dIdUser").val("");
         },
         error: function(error) {
@@ -169,37 +170,7 @@ formUdapteU.submit(function(e) {
 
 //display server errors
 function showError(error) {
-    if (error.includes("Must specify following parameters:")) {
-        M.toast({
-            html: 'Por favor ingrese todos los datos solicitados'
-        })
-    } else {
-        switch (error) {
-            case "Given passwords do not match.":
-                M.toast({
-                    html: 'Las claves no coinciden'
-                })
-                break;
-            case "Duplicated value. Could not complete operation":
-                M.toast({
-                    html: 'Uno de los datos ingresados ya está siendo usado'
-                })
-                break;
-            case "Must specify both pass and passConfirm, or not specify any of them.":
-                M.toast({
-                    html: 'Deben especificarse ambas contraseñas o ninguna de ellas'
-                })
-                break;
-            case "Cannot delete record, parent row conflict":
-                M.toast({
-                    html: 'El usuario que se desea eliminar ya tiene registros asociados'
-                })
-                break;
-            default:
-                M.toast({
-                    html: 'Ocurrio un error al procesar su peticion, contacte con el administrador'
-                })
-                break;
-        }
-    }
+    M.toast({
+        html: error
+    })
 }

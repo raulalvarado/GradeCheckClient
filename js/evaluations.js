@@ -75,6 +75,36 @@ function getEvaluations() {
     });
 }
 
+function requestEvaluation(id) {
+    $.ajax({
+        url: BASE_URL + EVALUATIONS_CREATE + "/" + id,
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            var startDate = new Date(result.startDate);
+            var endDate = new Date(result.endDate);
+            $("#uIdEval").val(result.id);
+            $("#uNombreEvaluacion").val(result.name);
+            $("#uDescEvaluacion").val(result.description);
+            $("#uPorcEvaluacion").val(result.percentage);
+            $('#uPeriodoEvaluacion option[value="' + result.period + '"]').prop('selected', true)
+            $("#uLabEvaluacion").prop("checked", result.laboratory);
+            $("#uFechaInicio").val(startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate())
+            $("#uFechaFin").val(endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate())
+            if (result.state === true) {
+                $("#uStateA").prop("checked", true);
+            } else {
+                $("#uStateI").prop("checked", true);
+            }
+            updateModalEva.modal("open");
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
+
 function postEvaluation() {
     var formData = newEvaFrm.serializeArray();
     console.log(formData);
@@ -104,8 +134,62 @@ newEvaFrm.submit(function(e) {
     postEvaluation();
 });
 
+function updateEvaluation() {
+    var formData = updateEvaFrm.serializeArray();
+    formData.push({ name: "laboratory", value: $('#uLabEvaluacion').is(':checked') });
+    $.ajax({
+        url: BASE_URL + EVALUATIONS_CREATE,
+        type: "PUT",
+        data: formData,
+        success: function(result) {
+            console.log(result);
+            getEvaluations();
+            updateModalEva.modal('close');
+            M.toast({
+                html: 'Evaluacion actualizada'
+            })
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}
+
+updateEvaFrm.submit(function(e) {
+    e.preventDefault();
+    updateEvaluation();
+});
+
 function showError(error) {
     M.toast({
         html: error
     })
+}
+
+//confirm delete user
+function confirmDeleteEvaluation(id) {
+    $("#dIdEval").val(id);
+    deleteModalEva.modal("open");
+}
+
+//delete user
+function deleteEvaluation() {
+    console.log(BASE_URL + EVALUATIONS_CREATE + "/" + $("#dIdEval").val())
+    $.ajax({
+        url: BASE_URL + EVALUATIONS_CREATE + "/" + $("#dIdEval").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getEvaluations();
+            $("#dIdEval").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
 }

@@ -31,7 +31,7 @@ function getEmployees() {
                     checked = "<input type='checkbox' class='filled-in' disabled='disabled'/>";
                 }
 
-                var courses = "<a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourses(" + val.id + ")'>mode_edit</i></a>";
+                var courses = "<a href='course_teacher.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a>";
                 if (val["role"].teach === false) {
                     courses = "";
                 }
@@ -198,4 +198,31 @@ function showError(error) {
     M.toast({
         html: error
     })
+}
+
+//confirm delete user
+function confirmDeleteEmployee(id) {
+    $("#dIdEmployee").val(id);
+    deleteUModal.modal("open");
+}
+
+//delete user
+function deleteEmployee() {
+    console.log(BASE_URL + EMPLOYEES_CREATE + "/" + $("#dIdEmployee").val())
+    $.ajax({
+        url: BASE_URL + EMPLOYEES_CREATE + "/" + $("#dIdEmployee").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getEmployees();
+            $("#dIdEmployee").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
 }

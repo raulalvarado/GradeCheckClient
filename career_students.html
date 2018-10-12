@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Carreras de estudiante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
@@ -38,7 +38,7 @@
                 <li>
                     <div class="blokk"></div>
                 </li>
-                <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
+                <li><a class="waves-effect waves-light" href="Docente/grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
                 <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion
                         de notas</a></li>
             </ul>
@@ -74,56 +74,21 @@
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nueva materia asignada</h3>
+                            <h3 class="">Nueva carrera asignada</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegCS" autocomplete="off">
                                 <div class="input-field">
-                                    <select id="carreraEst">
+                                    <input type="hidden" name="studentId" class="studentId">
+                                    <select id="carreraEst" name="careerId">
                                         <option value="" disabled selected>Seleccione carrera</option>
                                         <option value="1">Ingenieria en Ciencias de la Computacion</option>
                                         <option value="2">Inspeccion de patas</option>
                                         <option value="3">Ingenieria Industrial</option>
                                     </select>
                                     <label>Carrera</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="añoIngreso" name="income_year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="añoIngreso">Año:</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="estadoCarrera">
-                                        <option value="" disabled selected>Seleccione estado de la carrera</option>
-                                        <option value="1">En curso</option>
-                                        <option value="2">Egresado</option>
-                                        <option value="3">Abandonado</option>
-                                    </select>
-                                    <label>Carrera</label>
-                                </div>
-
-
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado de la carrera:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                    <input id="SateA" name="state" value="1" type="radio" />
-                                                    <span>Activa</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                    <input id="StateI" name="state" value="0" type="radio" />
-                                                    <span>Inactivo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -136,60 +101,24 @@
             </div>
 
             <!--Modal de modificacion de rol-->
-            <div id="actualizarFacultad" class="modal">
+            <div id="actualizarCarreraAsig" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar facultad</h3>
+                            <h3 class="">Actualizar carrera</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtCS" autocomplete="off">
-                                <input id="uIdCStudents" type="hidden" name="cStudentsId" value="">
+                                <input id="uIdCStudents" type="hidden" name="id" value="">
                                 <div class="input-field">
-                                    <select id="uCarreraEst">
-                                        <option value="" disabled selected>Seleccione carrera</option>
-                                        <option value="1">Ingenieria en Ciencias de la Computacion</option>
-                                        <option value="2">Inspeccion de patas</option>
-                                        <option value="3">Ingenieria Industrial</option>
+                                    <select id="uEstadoCarrera" name="careerState">
+                                        <option value="En curso">En curso</option>
+                                        <option value="Egresado">Egresado</option>
+                                        <option value="Abandonado">Abandonado</option>
                                     </select>
-                                    <label>Carrera</label>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uAñoIngreso" name="income_year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="añoIngreso">Año:</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="uEstadoCarrera">
-                                        <option value="" disabled selected>Seleccione estado de la carrera</option>
-                                        <option value="1">En curso</option>
-                                        <option value="2">Egresado</option>
-                                        <option value="3">Abandonado</option>
-                                    </select>
-                                    <label>Carrera</label>
-                                </div>
-
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado del rol:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                    <input id="uSateA" name="state" value="1" type="radio" />
-                                                    <span>Activo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                    <input id="uStateI" name="state" value="0" type="radio" />
-                                                    <span>Inactivo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    <label>Estado de carrera</label>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Modificar</button>
@@ -202,15 +131,15 @@
             </div>
 
             <!-- Modal de eliminar facultad-->
-            <div id="eliminarCarreraEst" class="modal">
+            <div id="eliminarCarreraAsig" class="modal">
                 <div class="modal-content">
                     <h4>Eliminar Carrera de estudiante</h4>
                     <p>¿Seguro que deseas eliminar esta carrera?</p>
-                    <input id="dIdCStudents" type="hidden" name="cStudentsId" value="">
+                    <input id="dIdCStudents" type="hidden" name="id" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
-                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteFaculty();">Eliminar</a>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteCStudent();">Eliminar</a>
                 </div>
             </div>
         </main>
@@ -221,6 +150,7 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/career_studens.js"></script>
 </body>
 
 </html>

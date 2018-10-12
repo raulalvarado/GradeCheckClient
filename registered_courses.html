@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Materias del estudiante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
@@ -37,7 +37,7 @@
                 <li>
                     <div class="blokk"></div>
                 </li>
-                <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
+                <li><a class="waves-effect waves-light" href="Docente/grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
                 <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
             </ul>
         </div>
@@ -47,7 +47,8 @@
                 <table class="striped centered responsive-table">
                     <thead>
                         <tr>
-                            <th>Docente</th>
+                            <th>Materia</th>
+                            <th>Codigo</th>
                             <th>Estado de materia</th>
                             <th>Estado</th>
                             <th>Editar</th>
@@ -61,13 +62,13 @@
             </div>
 
             <div class="fixed-action-btn horizontal click-to-toggle">
-                <a href="#nuevaMateriaAsig" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
+                <a href="#nuevoCursoAsig" class="btn-floating btn-large blue darken-3 waves-effect waves-light modal-trigger" data-position="left" data-delay="50">
                     <i class="material-icons">add</i>
                 </a>
             </div>
 
             <!--Modal de agregacion de usuarios-->
-            <div id="nuevaMateriaAsig" class="modal">
+            <div id="nuevoCursoAsig" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
@@ -77,45 +78,21 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegRC" autocomplete="off">
+                                <input type="hidden" name="studentId" class="studentId">
                                 <div class="input-field">
-                                    <select id="docenteMat">
-                                                        <option value="" disabled selected>Seleccione docente</option>
-                                                        <option value="1">Iris Irisita</option>
-                                                        <option value="2">Iris Irisita</option>
-                                                        <option value="3">Iris Irisita</option>
-                                                    </select>
-                                    <label>Carrera</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="estadoMat">
-                                                            <option value="" disabled selected>Seleccione estado de la materia</option>
-                                                            <option value="1">Aprobada</option>
-                                                            <option value="2">Reprobada</option>
-                                                            <option value="3">En curso</option>
-                                                            <option value="4">Retirada</option>
+                                    <select id="materias">
+                                                            <option value="" disabled selected>Seleccione una materia</option>
+                                                            <option value="1">Iris Irisita</option>
+                                                            <option value="2">Iris Irisita</option>
+                                                            <option value="3">Iris Irisita</option>
                                                         </select>
-                                    <label>Carrera</label>
+                                    <label>Materias</label>
                                 </div>
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                                                        <input id="SateA" name="state" value="1" type="radio"/>
-                                                                                        <span>Activo</span>
-                                                                                    </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                                                        <input id="StateI" name="state" value="0" type="radio" />
-                                                                                        <span>Inactivo</span>
-                                                                                    </label>
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div class="input-field">
+                                    <select id="docenteMat" name="courseTeacherId" required>
+                                                        <option value="" disabled selected>Seleccione docente</option>
+                                        </select>
+                                    <label>Docentes</label>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -128,88 +105,56 @@
             </div>
 
             <!--Modal de modificacion de rol-->
-            <div id="actualizarFacultad" class="modal">
+            <div id="actualizarCursoAsig" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar facultad</h3>
+                            <h3 class="">Actualizar curso</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtRC" autocomplete="off">
-                                <input id="uIdRCourses" type="hidden" name="uCoursesId" value="">
+                                <input id="uIdRCourses" type="hidden" name="id" value="">
+
                                 <div class="input-field">
-                                    <div class="input-field">
-                                        <select id="docenteMat">
-                                                        <option value="" disabled selected>Seleccione docente</option>
-                                                        <option value="1">Iris Irisita</option>
-                                                        <option value="2">Iris Irisita</option>
-                                                        <option value="3">Iris Irisita</option>
-                                                    </select>
-                                        <label>Carrera</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <select id="estadoMat">
-                                                            <option value="" disabled selected>Seleccione estado de la materia</option>
-                                                            <option value="1">Aprobada</option>
-                                                            <option value="2">Reprobada</option>
-                                                            <option value="3">En curso</option>
-                                                            <option value="4">Retirada</option>
-                                                        </select>
-                                        <label>Carrera</label>
-                                    </div>
-                                    <div class="row">
-                                        <h6 class="center">Seleccione el estado de la materia:</h6>
-                                        <div class="input-field col s6 push-s1">
-                                            <div class="col s12 m6 push-m5">
-                                                <p>
-                                                    <label>
-                                                                                                <input id="uSateA" name="state" value="1" type="radio"/>
-                                                                                                <span>Activo</span>
-                                                                                            </label>
-                                                </p>
-                                            </div>
-                                            <div class="col s12 m6 push-m4">
-                                                <p>
-                                                    <label>
-                                                                                                <input id="uStateI" name="state" value="0" type="radio" />
-                                                                                                <span>Inactivo</span>
-                                                                                            </label>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Modificar</button>
-                                        <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
-                                    </div>
+                                    <select id="estadoMat" name="courseState">
+                                            <option value="En curso">En curso</option>
+                                            <option value="Retirada">Retirada</option>
+                                        </select>
+                                    <label>Carrera</label>
+                                </div>
+                                <div class="row">
+                                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Modificar</button>
+                                    <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
+                                </div>
                             </form>
-                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Modal de eliminar facultad-->
-                <div id="eliminarFacultad" class="modal">
-                    <div class="modal-content">
-                        <h4>Eliminar materia</h4>
-                        <p>¿Seguro que deseas eliminar esta materia?</p>
-                        <input id="dIdRCourses" type="hidden" name="rCoursesId" value="">
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
-                        <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteFaculty();">Eliminar</a>
-                    </div>
+            </div>
+            <!-- Modal de eliminar facultad-->
+            <div id="eliminarCursoAsi" class="modal">
+                <div class="modal-content">
+                    <h4>Eliminar materia</h4>
+                    <p>¿Seguro que deseas eliminar esta materia?</p>
+                    <input id="dIdRCourses" type="hidden" name="id" value="">
                 </div>
+                <div class="modal-footer">
+                    <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteRC();">Eliminar</a>
+                </div>
+            </div>
+
         </main>
 
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/registered_courses.js"></script>
 </body>
 
 </html>
