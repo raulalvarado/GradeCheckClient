@@ -109,50 +109,50 @@
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar facultad</h3>
+                            <h3 class="">Actualizar curso</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtRC" autocomplete="off">
                                 <input id="uIdRCourses" type="hidden" name="id" value="">
+
                                 <div class="input-field">
-                                    <div class="input-field">
-                                        <select id="estadoMat" name="courseState">
-                                                            <option value="En curso">En curso</option>
-                                                            <option value="Retirada">Retirada</option>
-                                                        </select>
-                                        <label>Carrera</label>
-                                    </div>
-                                    <div class="row">
-                                        <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Modificar</button>
-                                        <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
-                                    </div>
+                                    <select id="estadoMat" name="courseState">
+                                            <option value="En curso">En curso</option>
+                                            <option value="Retirada">Retirada</option>
+                                        </select>
+                                    <label>Carrera</label>
+                                </div>
+                                <div class="row">
+                                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Modificar</button>
+                                    <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
+                                </div>
                             </form>
-                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Modal de eliminar facultad-->
-                <div id="eliminarCursoAsig" class="modal">
-                    <div class="modal-content">
-                        <h4>Eliminar materia</h4>
-                        <p>¿Seguro que deseas eliminar esta materia?</p>
-                        <input id="dIdRCourses" type="hidden" name="rCoursesId" value="">
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
-                        <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteFaculty();">Eliminar</a>
-                    </div>
+            </div>
+            <!-- Modal de eliminar facultad-->
+            <div id="eliminarCursoAsi" class="modal">
+                <div class="modal-content">
+                    <h4>Eliminar materia</h4>
+                    <p>¿Seguro que deseas eliminar esta materia?</p>
+                    <input id="dIdRCourses" type="hidden" name="id" value="">
                 </div>
+                <div class="modal-footer">
+                    <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteRC();">Eliminar</a>
+                </div>
+            </div>
+
         </main>
 
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
         <script type="text/javascript" src="js/registered_courses.js"></script>
 </body>

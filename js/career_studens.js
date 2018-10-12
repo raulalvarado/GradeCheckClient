@@ -165,3 +165,30 @@ function showError(error) {
         html: error
     })
 }
+
+//confirm delete user
+function confirmDeleteCareer(id) {
+    $("#dIdCStudents").val(id);
+    deleteModalCar.modal("open");
+}
+
+//delete user
+function deleteCStudent() {
+    console.log(BASE_URL + CAREER_STUDENTS_CREATE + "/" + $("#dIdCStudents").val())
+    $.ajax({
+        url: BASE_URL + CAREER_STUDENTS_CREATE + "/" + $("#dIdCStudents").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getCareers();
+            $("#dIdCStudents").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}

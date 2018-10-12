@@ -166,3 +166,30 @@ function showError(error) {
         html: error
     })
 }
+
+//confirm delete user
+function confirmDeleteEvaluation(id) {
+    $("#dIdEval").val(id);
+    deleteModalEva.modal("open");
+}
+
+//delete user
+function deleteEvaluation() {
+    console.log(BASE_URL + EVALUATIONS_CREATE + "/" + $("#dIdEval").val())
+    $.ajax({
+        url: BASE_URL + EVALUATIONS_CREATE + "/" + $("#dIdEval").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getEvaluations();
+            $("#dIdEval").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
+}

@@ -4,7 +4,7 @@ var newRcFrm = $("#frmRegRC");
 var updateRcFrm = $("#frmUpdtRC");
 var newModalRc = $("#nuevoCursoAsig");
 var updateModalRc = $("#actualizarCursoAsig");
-var deleteModalRc = $("#eliminarCursoAsig");
+var deleteModal = $("#eliminarCursoAsi")
 var studentIdForm = $(".studentId");
 var courses = $("#materias");
 var teachers = $("#docenteMat");
@@ -46,7 +46,7 @@ function getRegisteredCourses() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCourse(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteRC(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             newRcFrm.trigger("reset");
@@ -69,17 +69,11 @@ function getCourses() {
         success: function(result) {
             console.log(result.length);
             courses.empty();
-            if (result.length === 0) {
-                $(".fixed-action-btn").css("visibility", "hidden")
-                M.toast({
-                    html: 'No hay mas materias por agregar'
-                })
-            }
             courses.append("<option value='0'>Seleccione una materia</option>");
             $.each(result, function(i, val) {
                 console.log(val.name);
                 //filling table
-                courses.append("<option value=" + val.id + ">" + val.name + "</option>");
+                courses.append("<option value='" + val.id + "'>" + val.name + "</option>");
             });
             courses.formSelect();
         },
@@ -105,12 +99,6 @@ function getTeachers(id) {
         success: function(result) {
             console.log(result.length);
             teachers.empty();
-            if (result.length === 0) {
-                $(".fixed-action-btn").css("visibility", "hidden")
-                M.toast({
-                    html: 'No hay mas materias por agregar'
-                })
-            }
             $.each(result, function(i, val) {
                 console.log(val.name);
                 //filling table
@@ -204,4 +192,31 @@ function showError(error) {
     M.toast({
         html: error
     })
+}
+
+//confirm delete user
+function confirmDeleteRC(id) {
+    $("#dIdRCourses").val(id);
+    deleteModal.modal("open");
+}
+
+//delete user
+function deleteRC() {
+    console.log(BASE_URL + REGISTERED_COURSES_CREATE + "/" + $("#dIdRCourses").val())
+    $.ajax({
+        url: BASE_URL + REGISTERED_COURSES_CREATE + "/" + $("#dIdRCourses").val(),
+        type: "DELETE",
+        success: function(result) {
+            console.log(result);
+            M.toast({
+                html: 'Eliminado con exito'
+            })
+            getRegisteredCourses();
+            $("#dIdRCourses").val("");
+        },
+        error: function(error) {
+            console.log(error.responseText);
+            showError(error.responseText);
+        }
+    });
 }
