@@ -1,5 +1,5 @@
 var table = $("#mycoursesTable");
-var id = 2;
+var id = 3;
 var updateModalCourse = $("#visualizarMateria");
 $(document).ready(function() {
     getCourses();
