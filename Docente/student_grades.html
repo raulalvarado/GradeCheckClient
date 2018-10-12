@@ -44,179 +44,180 @@
             </ul>
         </div>
         <main>
-            <h3 class="center">Juan Topo</h3>
-                    <div class="row">
-                            <div class="col s12">
-                              <div class="card">
-                                <div class="card-content">
-                                  <span id="title" class="card-title">Trabajo de investigacion</span>
-                                  <p>Los estudiantes investigaran los tipos de funciones trigonometricas</p>
-                                </div>
-                                <div class="card-action red white-text">
-                                        <div class="col s9 aldiv">
-                                                <a id="link" class='modal-trigger' href='#verEvaluacion'>Ver</a>
-                                                <a id="link" class='modal-trigger' href="#calificarEvaluacion">Calificar</a>
-                                              </div>
-                                                <div class="aldiv">
-                                                    <span>CALIFICADA: <span class="grade">6.4</span></span>
-                                                </div>
-                                </div>
-                              </div>
+            <h3 class="center">Evaluaciones</h3>
+            <div id="content">
+                <div class='row'>
+                    <div class='col s12'>
+                        <div class='card'>
+                            <div class='card-content'>
+                                <span id='title' class='card-title'>Trabajo de investigacion</span>
+                                <p>Los estudiantes investigaran los tipos de funciones trigonometricas</p>
                             </div>
-                          </div>
-
-                          <div class="row">
-                                <div class="col s12">
-                                  <div class="card">
-                                    <div class="card-content">
-                                      <span id="title" class="card-title">Examen corto</span>
-                                      <p>Examen corto que cubre los temas vistos en las primeras dos semanas de clase</p>
-                                    </div>
-                                    <div class="card-action red white-text">
-                                        <div class="col s9 aldiv">
-                                      <a id="link" class='modal-trigger' href='#verEvaluacion'>Ver</a>
-                                      <a id="link" class='modal-trigger' href="#calificarEvaluacion">Calificar</a>
-                                    </div>
-                                      <div class="aldiv">
-                                          <span>NO CALIFICADA</span>
-                                      </div>
-                                    </div>
-                                  </div>
+                            <div class='card-action red white-text'>
+                                <div class='col s9 aldiv'>
+                                    <a id='link' class='modal-trigger' href='#verEvaluacion'>Ver</a>
+                                    <a id='link' class='modal-trigger' href='#calificarEvaluacion'>Calificar</a>
                                 </div>
-                              </div>
-                                    
-                        
-
-              <!--Modal de agregacion de usuarios-->
-              <div id="verEvaluacion" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header row blue darken-3 white-text">
-                            <div class="col m10 s9">
-                                <h3 class="">Ver evaluacion</h3>
+                                <div class='aldiv'>
+                                    <span>CALIFICADA: <span class='grade'>6.4</span></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                                <div class="col s12 m8 offset-m2 center-align">
-                                    <form id="frmVerEval" autocomplete="off">
-                                        <div class="input-field">
-                                            <input disabled value="Trabajo de investigacion" id="nombreEvaluacion" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$"
-                                                title="Solo se permiten números y letras" required>
-                                            <label for="nombreEvaluacion">Nombre:</label>
-                                        </div>
-                                        <div class="input-field">
-                                            <textarea disabled id="descEvaluacion" name="description" class="materialize-textarea">Los estudiantes investigaran los tipos de funciones trigonometricas</textarea>
-                                            <label for="descEvaluacion">Descripcion:
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <span id="title" class="card-title">Examen corto</span>
+                                <p>Examen corto que cubre los temas vistos en las primeras dos semanas de clase</p>
+                            </div>
+                            <div class="card-action red white-text">
+                                <div class="col s9 aldiv">
+                                    <a id="link" class='modal-trigger' href='#verEvaluacion'>Ver</a>
+                                    <a id="link" class='modal-trigger' href="#calificarEvaluacion">Calificar</a>
+                                </div>
+                                <div class="aldiv">
+                                    <span>NO CALIFICADA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Modal de agregacion de usuarios-->
+            <div id="verEvaluacion" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header row blue darken-3 white-text">
+                        <div class="col m10 s9">
+                            <h3 class="">Ver evaluacion</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m8 offset-m2 center-align">
+                            <form id="frmVerEval" autocomplete="off">
+                                <div class="input-field">
+                                    <input disabled value="Trabajo de investigacion" id="nombreEvaluacion" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="nombreEvaluacion">Nombre:</label>
+                                </div>
+                                <div class="input-field">
+                                    <textarea disabled id="descEvaluacion" name="description" class="materialize-textarea">Los estudiantes investigaran los tipos de funciones trigonometricas</textarea>
+                                    <label for="descEvaluacion">Descripcion:
                                             </label>
-                                        </div>
-                                        <div class="input-field aldiv">
-                                            <input disabled value="15" id="porcEvaluacion" name="percentage" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$"
-                                                title="Solo se permiten números y letras" required>
-                                            <label for="porcEvaluacion">porcentaje:</label>
-                                        </div>
-                                        <div class="input-field aldiv2">
-                                            <select disabled id="periodoEvaluacion">
+                                </div>
+                                <div class="input-field aldiv">
+                                    <input disabled value="15" id="porcEvaluacion" name="percentage" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="porcEvaluacion">porcentaje:</label>
+                                </div>
+                                <div class="input-field aldiv2">
+                                    <select disabled id="periodoEvaluacion">
                                                 <option value="">Seleccione periodo</option>
                                                 <option selected value="1">I</option>
                                                 <option value="2">II</option>
                                                 <option value="3">III</option>
                                             </select>
-                                            <label>Periodo</label>
-                                        </div>
-                                        <div class="input-field">
-                                            <p>
-                                                <label>
+                                    <label>Periodo</label>
+                                </div>
+                                <div class="input-field">
+                                    <p>
+                                        <label>
                                                     <input disabled id="labEvaluacion" type="checkbox" />
                                                     <span>Laboratorio</span>
                                                 </label>
-                                            </p>
-                                        </div>
-                                        <div class="input-field aldiv">
-                                                <input disabled value="Oct 9, 2018" id="fechaInicio" name="start_date" type="text" class="datepicker">
-                                                <label for="fechaInicio">Fecha de inicio:
+                                    </p>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <input disabled value="Oct 9, 2018" id="fechaInicio" name="start_date" type="text" class="datepicker">
+                                    <label for="fechaInicio">Fecha de inicio:
                                                 </label>
-                                            </div>
-                                            <div class="input-field aldiv2">
-                                                    <input disabled value="Oct 13, 2018" id="fechaFin" name="end_date" type="text" class="datepicker">
-                                                    <label for="fechaFin">Fecha final:
+                                </div>
+                                <div class="input-field aldiv2">
+                                    <input disabled value="Oct 13, 2018" id="fechaFin" name="end_date" type="text" class="datepicker">
+                                    <label for="fechaFin">Fecha final:
                                                     </label>
-                                                </div>
-        
-                                                    
-                                        
-                                        <div class="row">
-                                            <h6 class="center">Seleccione el estado de la evaluacion:</h6>
-                                            <div class="input-field col s6 push-s1">
-                                                <div class="col s12 m6 push-m5">
-                                                    <p>
-                                                        <label>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <h6 class="center">Seleccione el estado de la evaluacion:</h6>
+                                    <div class="input-field col s6 push-s1">
+                                        <div class="col s12 m6 push-m5">
+                                            <p>
+                                                <label>
                                                             <input disabled checked id="SateA" name="state" value="1" type="radio" />
                                                             <span>Activo</span>
                                                         </label>
-                                                    </p>
-                                                </div>
-                                                <div class="col s12 m6 push-m4">
-                                                    <p>
-                                                        <label>
+                                            </p>
+                                        </div>
+                                        <div class="col s12 m6 push-m4">
+                                            <p>
+                                                <label>
                                                             <input disabled id="StateI" name="state" value="0" type="radio" />
                                                             <span>Inactivo</span>
                                                         </label>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <button  type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
-                                            <button id="cancel" type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-    
-                <!--Modal de modificacion de usuarios-->
-                <div id="calificarEvaluacion" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header row blue darken-3 white-text">
-                            <div class="col m10 s9">
-                                <h3 class="">Calificar evaluacion</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m8 offset-m2 center-align">
-                                <form id="frmCalificar" autocomplete="off">
-                                        <div class="col s6 input-field">
-                                                <input id="notaEvaluacion" name="#" type="number" min="0" max="10" pattern="^[0-9]{1}[.]{1}[0-9]{1,2}$"
-                                                    title="Solo se permiten números y dos decimales" required>
-                                                <label for="notaEvaluacion">Nota:</label>
-                                            </div>
-                                            <div class="col s12 input-field">
-                                                <textarea id="obsEcaluacion" name="#" class="materialize-textarea"></textarea>
-                                                <label for="obsEcaluacion">Observacion:
-                                                </label>
-                                            </div>
-                                           
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                            <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Calificar</button>
-                                            <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
-                                        </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="row">
+                                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
+                                    <button id="cancel" type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-    
+            </div>
 
-                  </main>
+            <!--Modal de modificacion de usuarios-->
+            <div id="calificarEvaluacion" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header row blue darken-3 white-text">
+                        <div class="col m10 s9">
+                            <h3 class="">Calificar evaluacion</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m8 offset-m2 center-align">
+                            <form id="frmCalificar" autocomplete="off">
+                                <input type="hidden" name="registeredCourseId" id="registeredCourseId">
+                                <input type="hidden" name="evaluationId" id="evaluationId">
+                                <div class="col s6 input-field">
+                                    <input value="0" id="notaEvaluacion" name="grade" type="number" min="0" max="10" pattern="^[0-9]{1}[.]{1}[0-9]{1,2}$" title="Solo se permiten números y dos decimales" required>
+                                    <label class="active" for="notaEvaluacion">Nota:</label>
+                                </div>
+                                <div class="col s12 input-field">
+                                    <input value=" " type="text" id="obsEcaluacion" name="observations" class="materialize-textarea"></textarea>
+                                    <label class="active" for="obsEcaluacion">Observacion:
+                                                </label>
+                                </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Calificar</button>
+                        <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+    </div>
 
 
-        <script type="text/javascript" src="../js/jquery.min.js"></script>
-        <script type="text/javascript" src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/main.js"></script>
-        <script type="text/javascript" src="../js/materialize.js"></script>
-        <script type="text/javascript" src="../js/server.js"></script>
+    </main>
+
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/materialize.js"></script>
+    <script type="text/javascript" src="../js/server.js"></script>
+    <script type="text/javascript" src="../js/student_grades.js"></script>
 </body>
 
 </html>
