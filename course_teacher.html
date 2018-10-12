@@ -50,9 +50,8 @@
                             <th>Materia</th>
                             <th>Año</th>
                             <th>Ciclo</th>
-                            <th>Cupo</th>
+                            <th>Cantidad de sesiones</th>
                             <th>Estado</th>
-                            <th>Gestionar evaluaciones</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -80,12 +79,9 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegCT" autocomplete="off">
+                                <input type="hidden" name="employeeId" class="employeeId">
                                 <div class="input-field">
-                                    <input id="añoMateria" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="añoMateria">Año:</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="materiaProf">
+                                    <select id="materiaProf" name="courseId">
                                               <option value="" disabled selected>Seleccione materia</option>
                                               <option value="1">Matematica I</option>
                                               <option value="2">Inspeccion de patas I</option>
@@ -94,38 +90,16 @@
                                     <label>Materia</label>
                                 </div>
                                 <div class="input-field">
-                                    <select id="cicloMateria">
-                                                  <option value="" disabled selected>Seleccione ciclo</option>
-                                                  <option value="1">I</option>
-                                                  <option value="2">II</option>
-                                                </select>
-                                    <label>Materia</label>
+                                    <input id="añoMateria" name="courseYear" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="añoMateria">Año:</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="cupoMateria" name="class_count" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="cupoMateria">Cupo:</label>
+                                    <input id="semestreMateria" name="semester" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="semestreMateria">Semestre:</label>
                                 </div>
-
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado de la materia:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                    <input id="SateA" name="state" value="1" type="radio"/>
-                                                    <span>Activo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                    <input id="StateI" name="state" value="0" type="radio" />
-                                                    <span>Inactivo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div class="input-field">
+                                    <input id="cupoMateria" name="classCount" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="cupoMateria">Cupo:</label>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -148,53 +122,22 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmUpdtCT" autocomplete="off">
-                                <input id="uIdCTeachers" type="hidden" name="cTeachersId" value="">
+                                <input id="uIdCTeachers" type="hidden" name="id" value="">
                                 <div class="input-field">
-                                    <input id="uAñoMateria" name="year" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <input id="uAñoMateria" name="courseYear" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uAñoMateria">Año:</label>
                                 </div>
                                 <div class="input-field">
-                                    <select id="uMateriaProf">
-                                              <option value="" disabled selected>Seleccione materia</option>
-                                              <option value="1">Matematica I</option>
-                                              <option value="2">Inspeccion de patas I</option>
-                                              <option value="3">Expresion Oral y Escrita</option>
-                                            </select>
-                                    <label>Materia</label>
-                                </div>
-                                <div class="input-field">
-                                    <select id="uCicloMateria">
-                                                  <option value="" disabled selected>Seleccione ciclo</option>
+                                    <select id="uCicloMateria" name="semester">
                                                   <option value="1">I</option>
                                                   <option value="2">II</option>
+                                                  <option value="Interciclo">Interciclo</option>
                                                 </select>
                                     <label>Materia</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="uCupoMateria" name="class_count" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <input id="uCupoMateria" name="classCount" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uCupoMateria">Cupo:</label>
-                                </div>
-
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado de la materia:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                    <input id="uSateA" name="state" value="1" type="radio"/>
-                                                    <span>Activo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                    <input id="uStateI" name="state" value="0" type="radio" />
-                                                    <span>Inactivo</span>
-                                                </label>
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Modificar</button>
@@ -207,7 +150,7 @@
             </div>
 
             <!-- Modal de eliminar facultad-->
-            <div id="eliminarFacultad" class="modal">
+            <div id="eliminarMateriaAsig" class="modal">
                 <div class="modal-content">
                     <h4>Eliminar facultad</h4>
                     <p>¿Seguro que deseas eliminar esta facultad?</p>
@@ -226,6 +169,7 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/course_teacher.js"></script>
 </body>
 
 </html>

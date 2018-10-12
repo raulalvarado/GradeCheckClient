@@ -47,3 +47,4 @@ var REGISTERED_COURSES_CREATE = "registeredCourses"
 
 var COURSE_TEACHERS_READ_AVAILABLE = "courseTeachers/byCourse/"
 var COURSE_TEACHERS_CREATE = "courseTeachers";
+var COURSE_TEACHERS_BYEMPLOYEE = "courseTeachers/byEmployee/";

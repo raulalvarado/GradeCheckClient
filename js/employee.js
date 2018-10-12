@@ -31,7 +31,7 @@ function getEmployees() {
                     checked = "<input type='checkbox' class='filled-in' disabled='disabled'/>";
                 }
 
-                var courses = "<a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourses(" + val.id + ")'>mode_edit</i></a>";
+                var courses = "<a href='course_teacher.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a>";
                 if (val["role"].teach === false) {
                     courses = "";
                 }
