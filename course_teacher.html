@@ -90,7 +90,7 @@
                                     <label>Materia</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="añoMateria" name="courseYear" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <input id="añoMateria" name="courseYear" type="number" min="2018" pattern="^[0-9]{4,50}$" title="Solo se permiten números un año mayor o igual al actual" required>
                                     <label for="añoMateria">Año:</label>
                                 </div>
                                 <div class="input-field">
@@ -101,7 +101,7 @@
                                       </select>
                                 </div>
                                 <div class="input-field">
-                                    <input id="cupoMateria" name="classCount" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <input id="cupoMateria" name="classCount" type="number" min="1" pattern="^[0-9]{4,50}$" title="Solo se permiten números" required>
                                     <label for="cupoMateria">Cupo:</label>
                                 </div>
                                 <div class="row">
@@ -127,7 +127,7 @@
                             <form id="frmUpdtCT" autocomplete="off">
                                 <input id="uIdCTeachers" type="hidden" name="id" value="">
                                 <div class="input-field">
-                                    <input id="uAñoMateria" name="courseYear" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <input id="uAñoMateria" name="courseYear" type="number" min="1" pattern="^[0-9]{4,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uAñoMateria">Año:</label>
                                 </div>
                                 <div class="input-field">
