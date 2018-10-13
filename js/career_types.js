@@ -6,6 +6,10 @@ var newModalCareerType = $("#nuevoTipoCarrera");
 var deleteModalCareerType = $("#eliminarTipoCarrera");
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     getCareerTypes();
 });
 
@@ -37,7 +41,7 @@ function getCareerTypes() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareerType(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCareerType(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCareerType(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             newCarTypeFrm.trigger("reset");

@@ -9,6 +9,10 @@ var delCarCrsModal = $("#eliminarCareerCourse");
 
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     careerId = params.get("id");
     plan = params.get("plan");

@@ -9,8 +9,21 @@ var availableUsers = $(".availableStudents");
 
 //trying to get users from digital ocean server
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     getStudents();
 });
+
+//Initialize user selects as select2
+function usersSelect2() {
+    //Cuando un select2 está dentro de un modal, es necesario especificarlo
+    $("#StudentUser").select2({
+        dropdownParent: newModal,
+        width: "100%"
+    });
+}
 
 //ajax request to get students
 function getStudents() {
@@ -41,10 +54,10 @@ function getStudents() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='career_students.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
-                    "<td><a href='registered_courses.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
+                    "<td><a href='career_students.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons green-text'>school</i></a></td>" +
+                    "<td><a href='registered_courses.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons green-text'>book</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestStudent(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteStudent(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteStudent(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             formNuevoEst.trigger("reset");
@@ -73,7 +86,7 @@ function getAvailableStudents() {
                 //filling table
                 availableUsers.append("<option value=" + val.id + ">" + val["person"].name + " " + val["person"].surname + "</option>");
             });
-            availableUsers.formSelect();
+            usersSelect2();
         },
         error: function(error) {
             console.log(error);

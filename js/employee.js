@@ -10,8 +10,33 @@ var users = $(".users");
 
 //trying to get users from digital ocean server
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     getEmployees();
 });
+
+//Initialize user selects as select2
+function usersSelect2() {
+    $("#EmployeeUser").select2({
+        dropdownParent: newEModal,
+        width: "100%"
+    });
+}
+
+//Initialize role selects as select2
+function rolesSelect2() {
+    $("#EmployeeRole").select2({
+        dropdownParent: newEModal,
+        width: "100%"
+    });
+    
+    $("#EmployeeRoleU").select2({
+        dropdownParent: updateEModal,
+        width: "100%"
+    });
+}
 
 //ajax request to get students
 function getEmployees() {
@@ -31,7 +56,7 @@ function getEmployees() {
                     checked = "<input type='checkbox' class='filled-in' disabled='disabled'/>";
                 }
 
-                var courses = "<a href='course_teacher.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a>";
+                var courses = "<a href='course_teacher.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons green-text'>book</i></a>";
                 if (val["role"].teach === false) {
                     courses = "";
                 }
@@ -49,7 +74,7 @@ function getEmployees() {
                     "</td>" +
                     "<td>" + courses + "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestEmployee(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteEmployee(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteEmployee(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             formNuevoE.trigger("reset");
@@ -80,7 +105,7 @@ function getRoles() {
                 //filling table
                 roles.append("<option value=" + val.id + ">" + val.role + "</option>");
             });
-            roles.formSelect();
+            rolesSelect2();
         },
         error: function(error) {
             console.log(error);
@@ -106,7 +131,7 @@ function getUsers() {
                 //filling table
                 users.append("<option value=" + val.id + ">" + val["person"].name + "</option>");
             });
-            users.formSelect();
+            usersSelect2();
         },
         error: function(error) {
             console.log(error);
@@ -153,7 +178,7 @@ function requestEmployee(id) {
             console.log(result);
             $("#uIdEmployee").val(result.id);
             $('#EmployeeRoleU option[value="' + result["role"].id + '"]').prop('selected', true)
-            $("#EmployeeRoleU").formSelect();
+            rolesSelect2();
             if (result.state === true) {
                 $("#uStateA").prop("checked", true);
             } else {

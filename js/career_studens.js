@@ -7,14 +7,48 @@ var updateModalCar = $("#actualizarCarreraAsig");
 var deleteModalCar = $("#eliminarCarreraAsig");
 var studentIdForm = $(".studentId");
 var careerActive = $("#carreraEst");
+var title = $("#title");
 
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     studentId = params.get("id");
     studentIdForm.val(studentId);
     getCareers();
+    getStudentName();
     $('.datepicker').datepicker({ format: "yyyy-mm-dd" });
+
+    //Inicializando select de modificar carrera
+    $("#uEstadoCarrera").formSelect();
 });
+
+//Initialize career selects as select2
+function careersSelect2() {
+    //Cuando un select2 está dentro de un modal, es necesario especificarlo
+    $("#carreraEst").select2({
+        dropdownParent: newModalCar,
+        width: "100%"
+    });
+}
+
+//ajax request to get student
+function getStudentName() {
+    $.ajax({
+        url: BASE_URL + STUDENTS_CREATE + "/" + studentId + "/users/people",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Carreras de " + result.user.person.name + " " + result.user.person.surname);
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
 
 function getCareers() {
     $.ajax({
@@ -45,7 +79,7 @@ function getCareers() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareer(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             getActiveCareers();
@@ -74,7 +108,7 @@ function getActiveCareers() {
                 //filling table
                 careerActive.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            careerActive.formSelect();
+            careersSelect2();
         },
         error: function(error) {
             console.log(error);

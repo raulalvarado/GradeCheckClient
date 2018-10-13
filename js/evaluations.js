@@ -6,12 +6,18 @@ var newModalEva = $("#nuevaEvaluacion");
 var updateModalEva = $("#actualizarEvaluacion");
 var deleteModalEva = $("#eliminarEvaluacion");
 var courseId = $(".courseId");
+var updLabels = $(".updLabel");
 
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     careerId = params.get("id");
     courseId.val(careerId);
     getEvaluations();
+    $("select").formSelect();
     $('.datepicker').datepicker({ format: "yyyy-mm-dd" });
 });
 
@@ -61,7 +67,7 @@ function getEvaluations() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestEvaluation(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteEvaluation(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteEvaluation(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             newEvaFrm.trigger("reset");
@@ -98,6 +104,7 @@ function requestEvaluation(id) {
                 $("#uStateI").prop("checked", true);
             }
             updateModalEva.modal("open");
+            updLabels.addClass("active");
         },
         error: function(error) {
             showError(error.responseText);

@@ -6,10 +6,41 @@ var newModalCourse = $("#nuevaMateria");
 var deleteModalCourse = $("#eliminarMateria");
 var faculties = $(".cCourseFaculty");
 var prerequisite = $(".cCoursePrerequisite");
+var updLabels = $(".updLabel");
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     getCourses();
 });
+
+//Initialize prerrequisite selects as select2
+function prerrequisitesSelect2() {
+    $("#CoursePrerequisite").select2({
+        dropdownParent: newModalCourse,
+        width: "100%"
+    });
+    
+    $("#uCoursePrerequisite").select2({
+        dropdownParent: updateModalCourse,
+        width: "100%"
+    });
+}
+
+//Initialize faculty selects as select2
+function facultiesSelect2() {
+    $("#CourseFaculty").select2({
+        dropdownParent: newModalCourse,
+        width: "100%"
+    });
+    
+    $("#uCourseFaculty").select2({
+        dropdownParent: updateModalCourse,
+        width: "100%"
+    });
+}
 
 //ajax request to get faculties
 function getCourses() {
@@ -70,9 +101,9 @@ function getCourses() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='" + 'evaluations.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons'>mode_edit</i></a></td>" +
+                    "<td><a href='" + 'evaluations.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons green-text'>ballot</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCourse(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCourse(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             getFaculties();
@@ -104,7 +135,7 @@ function getFaculties() {
                 //filling table
                 faculties.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            faculties.formSelect();
+            facultiesSelect2()
         },
         error: function(error) {
             console.log(error);
@@ -131,7 +162,7 @@ function getActiveCarreers() {
                 //filling table
                 prerequisite.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            prerequisite.formSelect();
+            prerrequisitesSelect2()
         },
         error: function(error) {
             console.log(error);
@@ -194,14 +225,15 @@ function requestCourse(id) {
             $("#uUvMateria").val(result.uv);
             $('#uCoursePrerequisite option[value="' + idPre + '"]').prop('selected', true)
             $('#uCourseFaculty option[value="' + result["faculty"].id + '"]').prop('selected', true)
-            $("#uCoursePrerequisite").formSelect();
-            $('#uCourseFaculty').formSelect();
+            prerrequisitesSelect2()
+            facultiesSelect2()
             if (result.state === true) {
                 $("#uStateA").prop("checked", true);
             } else {
                 $("#uStateI").prop("checked", true);
             }
             updateModalCourse.modal("open");
+            updLabels.addClass("active");
         },
         error: function(error) {
             showError(error.responseText);

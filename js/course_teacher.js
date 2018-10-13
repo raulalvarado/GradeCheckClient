@@ -7,14 +7,30 @@ var updateModalCt = $("#actualizarMateriaAsig");
 var deleteModalCt = $("#eliminarMateriaAsig");
 var employeeIdForm = $(".employeeId");
 var courseActive = $("#materiaProf");
+var updLabels = $(".updLabel");
 
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     employeeId = params.get("id");
     employeeIdForm.val(employeeId);
     getCareers();
+    $("#CicloMateria").formSelect();
+    $("#uCicloMateria").formSelect();
     $('.datepicker').datepicker({ format: "yyyy-mm-dd" });
 });
+
+
+//Initialize course selects as select2
+function coursesSelect2() {
+    $("#materiaProf").select2({
+        dropdownParent: newModalCt,
+        width: "100%"
+    });
+}
 
 function getCareers() {
     $.ajax({
@@ -46,7 +62,7 @@ function getCareers() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             getActiveCourses();
@@ -75,7 +91,7 @@ function getActiveCourses() {
                 //filling table
                 courseActive.append("<option value=" + val.id + ">" + val.name + "</option>");
             });
-            courseActive.formSelect();
+            coursesSelect2();
         },
         error: function(error) {
             console.log(error);
@@ -131,6 +147,7 @@ function requestCourse(id) {
             $('#uCicloMateria option[value="' + result.semester + '"]').prop('selected', true)
             $('#uCicloMateria').formSelect();
             updateModalCt.modal("open");
+            updLabels.addClass("active");
         },
         error: function(error) {
             showError(error.responseText);

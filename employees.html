@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/select2-materialize.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -81,22 +82,22 @@
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegEmployee" autocomplete="off">
                                 <div class="input-field col s12">
+                                    <label for="EmployeeUser">Usuario</label><br/><br/>
                                     <select id="EmployeeUser" name="userId" class="users">
-                                              <option value="" disabled selected>Seleccione el usuario</option>
-                                              <option value="1">Juan Topo</option>
-                                              <option value="2">John Doe</option>
-                                              <option value="3">Jane Doe</option>
-                                            </select>
-                                    <label>Usuario</label>
+                                        <option value="" disabled selected>Seleccione el usuario</option>
+                                        <option value="1">Juan Topo</option>
+                                        <option value="2">John Doe</option>
+                                        <option value="3">Jane Doe</option>
+                                    </select>
                                 </div>
                                 <div class="input-field col s12">
+                                    <label for="EmployeeRole">Rol</label><br/><br/>
                                     <select id="EmployeeRole" name="roleId" class="roles">
-                                              <option value="" disabled selected>Seleccione el usuario</option>
-                                              <option value="1">Juan Topo</option>
-                                              <option value="2">John Doe</option>
-                                              <option value="3">Jane Doe</option>
-                                            </select>
-                                    <label>Roles</label>
+                                        <option value="" disabled selected>Seleccione el usuario</option>
+                                        <option value="1">Juan Topo</option>
+                                        <option value="2">John Doe</option>
+                                        <option value="3">Jane Doe</option>
+                                    </select>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -123,13 +124,13 @@
                                 <input id="uIdEmployee" type="hidden" name="id" value="">
                                 <div class="row">
                                     <div class="input-field col s12">
+                                        <label for="EmployeeRoleU">Rol</label><br/><br/>
                                         <select id="EmployeeRoleU" name="roleId" class="roles">
-                                                          <option value="" disabled selected>Seleccione el usuario</option>
-                                                          <option value="1">Juan Topo</option>
-                                                          <option value="2">John Doe</option>
-                                                          <option value="3">Jane Doe</option>
-                                                        </select>
-                                        <label>Roles</label>
+                                            <option value="" disabled selected>Seleccione el usuario</option>
+                                            <option value="1">Juan Topo</option>
+                                            <option value="2">John Doe</option>
+                                            <option value="3">Jane Doe</option>
+                                        </select>
                                     </div>
                                     <h6 class="center">Seleccione el estado del docente:</h6>
                                     <div class="input-field col s6 push-s1">
@@ -179,6 +180,7 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/select2.min.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
         <script type="text/javascript" src="js/employee.js"></script>
 </body>

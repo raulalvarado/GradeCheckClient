@@ -8,6 +8,10 @@ var updLabels = $(".updLabel");
 
 //trying to get users from digital ocean server
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     getUsers();
 });
 
@@ -43,7 +47,7 @@ function getUsers() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestUser(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteUser(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteUser(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             formNuevoU.trigger("reset");

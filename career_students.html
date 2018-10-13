@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/select2-materialize.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -44,7 +45,7 @@
             </ul>
         </div>
         <main>
-            <h2 class="center">Carreras de estudiante</h2>
+            <h2 class="center" id="title"></h2>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
@@ -74,7 +75,7 @@
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nueva carrera asignada</h3>
+                            <h3 class="">Inscribir carrera</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -82,13 +83,15 @@
                             <form id="frmRegCS" autocomplete="off">
                                 <div class="input-field">
                                     <input type="hidden" name="studentId" class="studentId">
-                                    <select id="carreraEst" name="careerId">
-                                        <option value="" disabled selected>Seleccione carrera</option>
-                                        <option value="1">Ingenieria en Ciencias de la Computacion</option>
-                                        <option value="2">Inspeccion de patas</option>
-                                        <option value="3">Ingenieria Industrial</option>
-                                    </select>
-                                    <label>Carrera</label>
+                                    <div class="input-field">
+                                        <label for="carreraEst">Carrera</label><br/><br/>
+                                        <select id="carreraEst" name="careerId">
+                                            <option value="" disabled selected>Seleccione carrera</option>
+                                            <option value="1">Ingenieria en Ciencias de la Computacion</option>
+                                            <option value="2">Inspeccion de patas</option>
+                                            <option value="3">Ingenieria Industrial</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -149,6 +152,7 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/select2.min.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
         <script type="text/javascript" src="js/career_studens.js"></script>
 </body>

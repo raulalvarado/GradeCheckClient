@@ -11,6 +11,10 @@ var updLabels = $(".updLabel");
 
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     getCareers();
 });
 
@@ -69,9 +73,9 @@ function getCareers() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='" + 'career_courses.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons'>ballot</i></a></td>" +
+                    "<td><a href='" + 'career_courses.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons green-text'>ballot</i></a></td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareer(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             newCarFrm.trigger("reset");

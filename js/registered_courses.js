@@ -8,14 +8,52 @@ var deleteModal = $("#eliminarCursoAsi")
 var studentIdForm = $(".studentId");
 var courses = $("#materias");
 var teachers = $("#docenteMat");
+var title = $("#title");
 
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     studentId = params.get("id");
     studentIdForm.val(studentId);
     getRegisteredCourses();
+    getStudentName();
     $('.datepicker').datepicker({ format: "yyyy-mm-dd" });
 });
+
+//Initialize course selects as select2
+function coursesSelect2() {
+    $("#materias").select2({
+        dropdownParent: newModalRc,
+        width: "100%"
+    });
+}
+
+//Initialize courseTeacher selects as select2
+function courseTeachersSelect2() {
+    $("#docenteMat").select2({
+        dropdownParent: newModalRc,
+        width: "100%"
+    });
+}
+
+//ajax request to get student
+function getStudentName() {
+    $.ajax({
+        url: BASE_URL + STUDENTS_CREATE + "/" + studentId + "/users/people",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Materias registradas por " + result.user.person.name + " " + result.user.person.surname);
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
 
 function getRegisteredCourses() {
     $.ajax({
@@ -46,7 +84,7 @@ function getRegisteredCourses() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteRC(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteRC(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             newRcFrm.trigger("reset");
@@ -75,7 +113,8 @@ function getCourses() {
                 //filling table
                 courses.append("<option value='" + val.id + "'>" + val.name + "</option>");
             });
-            courses.formSelect();
+            coursesSelect2();
+            courseTeachersSelect2()
         },
         error: function(error) {
             console.log(error);
@@ -104,7 +143,7 @@ function getTeachers(id) {
                 //filling table
                 teachers.append("<option value=" + val.id + ">" + val["employee"]["user"]["person"].name + " " + val["employee"]["user"]["person"].surname + "</option>");
             });
-            teachers.formSelect();
+            courseTeachersSelect2()
         },
         error: function(error) {
             console.log(error);
@@ -148,6 +187,7 @@ function postCourse() {
             M.toast({
                 html: 'Materia agregada con exito'
             })
+            teachers.empty();
         },
         error: function(error) {
             console.log(error.responseText);

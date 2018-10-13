@@ -5,6 +5,10 @@ var updateModalFaculty = $("#actualizarFacultad");
 var deleteModalFaculty = $("#eliminarFacultad");
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
+    if (sessionStorage["logedUser"] == null) {
+        window.location.replace("login.html");
+    }
+
     getFaculties();
 });
 
@@ -36,7 +40,7 @@ function getFaculties() {
                     "</label>" +
                     "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestFaculty(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='confirmDeleteFaculty(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteFaculty(" + val.id + ")'>delete</i></a></td>" +
                     "</tr>");
             });
             newFacFrm.trigger("reset");
