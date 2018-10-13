@@ -9,7 +9,14 @@ function login() {
         success: function(result) {
             console.log(result)
             sessionStorage["logedUser"] = JSON.stringify(result);
-            window.location.replace("Docente/courses.html")
+
+            if (result.role.teach == true) {
+                window.location.replace("Docente/courses.html")
+            }
+            else {
+                window.location.replace("Index.html")
+            }
+
                 //JSON.parse(sessionStorage["logedUser"]);
         },
         error: function(error) {

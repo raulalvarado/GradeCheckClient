@@ -10,7 +10,10 @@ var careerActive = $("#carreraEst");
 var title = $("#title");
 
 $(document).ready(function() {
-    if (sessionStorage["logedUser"] == null) {
+    try {
+        JSON.parse(sessionStorage["logedUser"]).id
+    }
+    catch (error) {
         window.location.replace("login.html");
     }
 
