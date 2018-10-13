@@ -5,7 +5,12 @@ $(document).ready(function() {
     $('.datepicker').datepicker();
 });
 
-function logout() {
+function logoutAdmin() {
     sessionStorage["logedUser"] = null;
     window.location.replace("login.html")
+}
+
+function logoutTeacher() {
+    sessionStorage["logedUser"] = null;
+    window.location.replace("../login.html")
 }

@@ -9,8 +9,8 @@ function login() {
         success: function(result) {
             console.log(result)
             sessionStorage["logedUser"] = JSON.stringify(result);
-            window.location.replace("Index.html")
-            //JSON.parse(sessionStorage["logedUser"]);
+            window.location.replace("Docente/courses.html")
+                //JSON.parse(sessionStorage["logedUser"]);
         },
         error: function(error) {
             console.log(error);
