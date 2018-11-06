@@ -87,6 +87,7 @@ function requestUser(id) {
             } else {
                 $("#updateStateI").prop("checked", true);
             }
+            $('#uFotoPreview').attr('src', "data:image/png;base64," + result.imagePath);
             updateUModal.modal("open");
             updLabels.addClass("active");
         },
@@ -94,6 +95,20 @@ function requestUser(id) {
             showError(error.responseText);
         }
     });
+
+    /*$.ajax({
+        url: BASE_URL + USERS_GET + "pdf",
+        type: "GET",
+        dataType: "html",
+        success: function(result) {
+            console.log(result)
+            $('#uFotoPreview').attr('src', "data:image/png;base64," + result);
+        },
+        error: function(error) {
+            console.log(error);
+            showError(error.responseText);
+        }
+    });*/
 }
 
 //confirm delete user
@@ -128,11 +143,14 @@ function postUser() {
     $.ajax({
         url: BASE_URL + USERS_CREATE,
         type: "POST",
-        data: formNuevoU.serialize(),
+        data: new FormData(formNuevoU[0]),
+        contentType: false,
+        processData: false,
         success: function(result) {
             console.log(result);
             getUsers();
             $("#nuevoUsuario").modal('close');
+            $('#fotoPreview').attr('src', "img/default-user.png");
             M.toast({
                 html: 'Usuario agregado con exito'
             })
@@ -155,11 +173,14 @@ function updateUser() {
     $.ajax({
         url: BASE_URL + USERS_CREATE,
         type: "PUT",
-        data: formUdapteU.serialize(),
+        data: new FormData(formUdapteU[0]),
+        contentType: false,
+        processData: false,
         success: function(result) {
             console.log(result);
             getUsers();
             updateUModal.modal('close');
+            $('#uFotoPreview').attr('src', "img/default-user.png");
             M.toast({
                 html: 'Usuario actualizado'
             })
@@ -183,3 +204,30 @@ function showError(error) {
         html: error
     })
 }
+
+
+//Actualizando preview de imagen en agregar usuario
+$("#fotoPerfil").change(function(){
+    if (this.files && this.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#fotoPreview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(this.files[0]);
+    }
+});
+
+//Actualizando preview de imagen en modificar usuario
+$("#uFotoPerfil").change(function(){
+    if (this.files && this.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#uFotoPreview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(this.files[0]);
+    }
+});

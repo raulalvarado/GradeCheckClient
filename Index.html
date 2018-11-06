@@ -82,6 +82,10 @@
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegUser" autocomplete="off">
                                 <div class="input-field">
+                                    <img id="fotoPreview" class="profileImg" src="img/default-user.png">
+                                    <input id="fotoPerfil" name="imagePath" type="file" accept=".jpg,.jpeg,.png" required>
+                                </div>
+                                <div class="input-field">
                                     <input id="nombreUsuario" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="nombreUsuario">Nombre:</label>
                                 </div>
@@ -136,6 +140,10 @@
 
                             <form id="frmUpdtUser" autocomplete="off">
                                 <input id="uIdUser" type="hidden" name="id" value="">
+                                <div class="input-field">
+                                    <img id="uFotoPreview" class="profileImg" src="img/default-user.png">
+                                    <input id="uFotoPerfil" name="imagePath" type="file" accept=".jpg,.jpeg,.png">
+                                </div>
                                 <div class="input-field">
                                     <input value=" " id="uNombreUsuario" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="uNombreUsuario" class="updLabel">Nombre:</label>
