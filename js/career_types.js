@@ -7,7 +7,11 @@ var deleteModalCareerType = $("#eliminarTipoCarrera");
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
     try {
-        JSON.parse(sessionStorage["logedUser"]).id
+        $.ajaxSetup({
+            headers: {
+              token: JSON.parse(sessionStorage["logedUser"]).token
+            }
+        });
     }
     catch (error) {
         window.location.replace("login.html");

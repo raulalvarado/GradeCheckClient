@@ -6,6 +6,9 @@ function login() {
         type: "POST",
         dataType: "json",
         data: loginForm.serialize(),
+        headers: {
+            token: ""
+        },
         success: function(result) {
             console.log(result)
             sessionStorage["logedUser"] = JSON.stringify(result);

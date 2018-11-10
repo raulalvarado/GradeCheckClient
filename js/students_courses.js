@@ -2,8 +2,11 @@ var courseId;
 var table = $("#studentsTable")
 $(document).ready(function() {
     try {
-        id = JSON.parse(sessionStorage["logedUser"]).id
-        console.log(id + "goli")
+        $.ajaxSetup({
+            headers: {
+              token: JSON.parse(sessionStorage["logedUser"]).token
+            }
+        });
     } catch (error) {
         location.replace("../login.html")
     }
