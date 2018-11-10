@@ -15,6 +15,7 @@ $(document).ready(function() {
     console.log(courseId);
 
     getStudents();
+    
 });
 
 function getStudents() {

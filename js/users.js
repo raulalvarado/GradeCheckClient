@@ -7,7 +7,7 @@ var deleteUModal = $("#eliminarUsuario");
 var updLabels = $(".updLabel");
 
 //trying to get users from digital ocean server
-$(document).ready(function() {
+(document).ready(function() {
     try {
         $.ajaxSetup({
             headers: {
@@ -21,6 +21,7 @@ $(document).ready(function() {
 
     getUsers();
 });
+
 
 //ajax request to get students
 function getUsers() {

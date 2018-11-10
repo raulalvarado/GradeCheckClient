@@ -39,6 +39,23 @@
     display: inline-block;
 }
 
+.flv{
+    float: left;
+}
+
+.rolediv
+{
+    display: inline-block;
+    text-align: left;
+}
+
+.rolediv2
+{
+    margin-left: 70px;
+    display: inline-block;
+    text-align: left;
+}
+
 .grade
 {
     font-weight: 500;

@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Correcciones</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/materialize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
@@ -25,30 +25,144 @@
             <ul id="slide-out" class="sidenav sidenav-fixed">
                 <div class="separator">
                 </div>
-                <li><a class="waves-effect waves-light" href="Index.html"><i class="material-icons">person</i>Usuarios</a></li>
-                <li><a class="waves-effect waves-light" href="faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
-                <li><a class="waves-effect waves-light" href="students.html"><i class="material-icons">school</i>Estudiantes</a></li>
-                <li><a class="waves-effect waves-light" href="employees.html"><i class="material-icons">assignment_ind</i>Docentes</a></li>
-                <li><a class="waves-effect waves-light" href="careertype.html"><i class="material-icons">folder</i>Tipos de carrera</a></li>
-                <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
-                <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
-                <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li><div class="blokk"></div></li>
-                <li><a class="waves-effect waves-light" href="grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
-                <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
+                <li><a class="waves-effect waves-light" href="../Docente/courses.html"><i class="material-icons">assignment_ind</i>Docentes</a></li>
+                <li><a class="waves-effect waves-light" href="#" onclick="logoutTeacher();"><i class="material-icons">arrow_back</i>Cerrar sesion</a></li>
  
             </ul>
         </div>
-        <main>
+<main>
                 <h2 class="center">Correcciones</h2>
+
+                <div class="tabla">
+                    <table class="striped centered responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Solicitante</th>
+                                <th>Materia</th>
+                                <th>Descargar archivo</th>
+                                <th>Procesar correccion</th>
+                                <th>Abrir nota</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody id="correctionsTable">
+                            <td>Juan Topo</td>
+                            <td>Matematica II</td>
+                            <td><a href='#'><i class='material-icons blue-text' onclick=''>file_download</i></a></td>
+                            <td><a href='#infoEvaluacion' class='modal-trigger'><i class='material-icons blue-text' onclick=''>dvr</i></a></td>
+                            <td><a href='#CorrectCalificarEvaluacion' class='modal-trigger'><i class='material-icons blue-text' onclick=''>grade</i></a></td>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="infoEvaluacion" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header row blue darken-3 white-text">
+                            <div class="col m10 s9">
+                                <h3 class="">Informacion de la evaluacion</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m8 offset-m2 center-align">
+                                <form id="frmInfoEval" autocomplete="off">
+                                    <input type="hidden" name="registeredCourseId" id="registeredCourseId">
+                                    <input type="hidden" name="evaluationId" id="evaluationId">
+                                    <div class="col s6 input-field">
+                                        <input disabled value="Examen parcial" id="cNombreEvaluacion" name="name" type="text"  required>
+                                        <label class="active" for="notaEvaluacion">Nombre:</label>
+                                    </div>
+                                    <div class="input-field aldiv">
+                                        <select disabled id="cPeriodoEvaluacion">
+                                                    <option value="">Seleccione periodo</option>
+                                                    <option selected value="1">I</option>
+                                                    <option value="2">II</option>
+                                                    <option value="3">III</option>
+                                                </select>
+                                        <label>Periodo</label>
+                                    </div>
+      
+                                    <div class="col s12 input-field">
+                                        <input disabled value="Descripcion de la evaluacion " type="text" id="cObsEcaluacion" name="observations" class="materialize-textarea"></textarea>
+                                        <label class="active" for="obsEcaluacion">Descripcion:</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>
+                                            <label>
+                                                <input disabled id="cLabEvaluacion" type="checkbox" name="laboratory" checked value="true"/>
+                                                <span>Laboratorio</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field aldiv">
+                                        <input disabled id="cFechaInicio" name="startDate" format="yyyy/mm/dd" type="text" value="nov 11,2018" class="datepicker">
+                                        <label for="fechaInicio">Fecha de inicio:
+                                            </label>
+                                    </div>
+                                    <div class="input-field aldiv2">
+                                        <input disabled id="cFechaFin" name="endDate" type="text" value="nov 20, 2018" class="datepicker">
+                                        <label for="fechaFin">Fecha final:
+                                                </label>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <select id="estadoPeticion">
+                                                    <option selected value="1">Enviar</option>
+                                                    <option value="2">Denegada</option>
+                                                </select>
+                                        <label>Estado de peticion</label>
+                                    </div>
+    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Aceptar</button>
+                            <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div id="CorrectCalificarEvaluacion" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header row blue darken-3 white-text">
+                            <div class="col m10 s9">
+                                <h3 class="">Calificar evaluacion</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m8 offset-m2 center-align">
+                                <form id="frmCorrectCalificar" autocomplete="off">
+                                    <input type="hidden" name="registeredCourseId" id="registeredCourseId">
+                                    <input type="hidden" name="evaluationId" id="evaluationId">
+                                    <div class="col s6 input-field">
+                                        <input value="0" id="cNotaEvaluacion" name="grade" type="number" min="0" max="10" pattern="^[0-9]{1}[.]{1}[0-9]{1,2}$" title="Solo se permiten números y dos decimales" required>
+                                        <label class="active" for="cNotaEvaluacion">Nota:</label>
+                                    </div>
+                                    <div class="col s12 input-field">
+                                        <input value=" " type="text" id="cObsEcaluacion" name="observations" class="materialize-textarea"></textarea>
+                                        <label class="active" for="cObsEcaluacion">Observacion:
+                                                    </label>
+                                    </div>
+    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Calificar</button>
+                            <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
             
         </main>
 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/materialize.js"></script>
-        <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript" src="../js/materialize.js"></script>
+        <script type="text/javascript" src="../js/server.js"></script>
+        <script type="text/javascript" src="../js/corrections.js"></script>
 </body>
 
 </html>
