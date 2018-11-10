@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Estudiantes inscritos</title>
+    <title>Lista de alumnos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
@@ -32,27 +32,30 @@
             </ul>
         </div>
         <main>
-            <h3 class="center">Matematica II</h3>
+            <h2 class="center">Alumnos a calificar</h2>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
                         <tr>
                             <th>Nombre</th>
                             <th>Apellido</th>
-                            <th>Ver notas</th>
-                            <th>Ver inasistencias</th>
+                            <th>Nota</th>
+                            <th>Observacion</th>
                         </tr>
                     </thead>
 
-                    <tbody id="studentsTable">
+                    <tbody id="evalStudentsTable">
                         <td>Juan</td>
                         <td>Topo</td>
-                        <td><a href='student_grades.html'><i class='material-icons'>check_circle</i></a></td>
-                        <td><a href='absences.html'><i class='material-icons'>event_busy</i></a></td>
+                        <td><input value="0" id="evalNota" name="grade" type="number" min="0" max="10" pattern="^[0-9]{1}[.]{1}[0-9]{1,2}$" title="Solo se permiten números y dos decimales" required></td>
+                        <td><input value=" " type="text" id="evalObservacion" name="observations" class="materialize-textarea"></textarea></td>
                     </tbody>
+                    
                 </table>
+                <div class="row flv">
+                    <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Enviar</button>
+                </div>
             </div>
-
 
 
 
@@ -64,7 +67,6 @@
         <script type="text/javascript" src="../js/main.js"></script>
         <script type="text/javascript" src="../js/materialize.js"></script>
         <script type="text/javascript" src="../js/server.js"></script>
-        <script type="text/javascript" src="../js/students_courses.js"></script>
 </body>
 
 </html>

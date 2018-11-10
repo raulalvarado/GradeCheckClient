@@ -9,7 +9,7 @@ var prerequisite = $(".cCoursePrerequisite");
 var updLabels = $(".updLabel");
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
-    try {
+   try {
         JSON.parse(sessionStorage["logedUser"]).id
     }
     catch (error) {
