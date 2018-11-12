@@ -57,5 +57,17 @@ var COURSE_TEACHERS_CREATE = "courseTeachers";
 var COURSE_TEACHERS_BYEMPLOYEE = "courseTeachers/byEmployee/";
 
 var EVALUATIONS_BYREGISTEREDCOURSE = "evaluations/byRegisteredCourse/"
+var EVALUATIONS_BYCOURSE = "evaluations/byCourse/"
 
 var GRADES_CREATE = "grades"
+var GRADES_CREATE_BYEVALUATION = "grades/byEvaluation"
+
+var ROLES = "roles/"
+
+var UNATTENDANCES = "unattendances/"
+var UNATTENDANCES_BYREGISTEREDCOURSE = "unattendances/byRegisteredCourse/"
+
+var CORRECTIONS = "corrections/"
+var CORRECTIONS_BYEMPLOYEE = "corrections/byEmployee/"
+var CORRECTIONS_BYGRADE = "corrections/byGrade/"
+var CORRECTIONS_DOWNLOAD = "corrections/file/"

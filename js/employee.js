@@ -20,6 +20,11 @@ $(document).ready(function() {
     catch (error) {
         window.location.replace("login.html");
     }
+    
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.manageEmployees != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
 
     getEmployees();
 });
@@ -47,6 +52,9 @@ function rolesSelect2() {
 
 //ajax request to get students
 function getEmployees() {
+    //Id del empleado logeado
+    var employeeId = JSON.parse(sessionStorage["logedUser"]).id
+
     $.ajax({
         url: BASE_URL + EMPLOYEES_READ,
         type: "GET",
@@ -80,8 +88,10 @@ function getEmployees() {
                     "</label>" +
                     "</td>" +
                     "<td>" + courses + "</td>" +
+                    (val.id == 1 || val.id == employeeId ? "<td></td><td></td>" :
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestEmployee(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteEmployee(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteEmployee(" + val.id + ")'>delete</i></a></td>"
+                     ) +
                     "</tr>");
             });
             formNuevoE.trigger("reset");

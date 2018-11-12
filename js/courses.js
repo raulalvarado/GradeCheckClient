@@ -7,6 +7,10 @@ var deleteModalCourse = $("#eliminarMateria");
 var faculties = $(".cCourseFaculty");
 var prerequisite = $(".cCoursePrerequisite");
 var updLabels = $(".updLabel");
+
+var coursePermission;
+var evaluationPermission;
+
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
     try {
@@ -18,6 +22,23 @@ $(document).ready(function() {
     }
     catch (error) {
         window.location.replace("login.html");
+    }
+
+    coursePermission = JSON.parse(sessionStorage["logedUser"]).role.manageCourses;
+    evaluationPermission = JSON.parse(sessionStorage["logedUser"]).role.manageEvaluations;
+
+    //Validating permissions
+    if (coursePermission != true && evaluationPermission != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
+    //Removing modals if user does not have careers permision
+    if (coursePermission != true) {
+        $(".permissionProtected").remove();
+    }
+    //Removing th if user does not have pensums permision
+    if (evaluationPermission != true) {
+        $(".evaluationPermissionProtected").remove();
     }
 
     getCourses();
@@ -108,9 +129,9 @@ function getCourses() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='" + 'evaluations.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons green-text'>ballot</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCourse(" + val.id + ")'>delete</i></a></td>" +
+                    (evaluationPermission == true ? "<td><a href='" + 'evaluations.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons green-text'>ballot</i></a></td>" : "") +
+                    (coursePermission == true ? "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val.id + ")'>mode_edit</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCourse(" + val.id + ")'>delete</i></a></td>" : "") +
                     "</tr>");
             });
             getFaculties();

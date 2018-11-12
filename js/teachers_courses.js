@@ -8,9 +8,16 @@ $(document).ready(function() {
               token: JSON.parse(sessionStorage["logedUser"]).token
             }
         });
+        id = JSON.parse(sessionStorage["logedUser"]).id
     } catch (error) {
         location.replace("../login.html")
     }
+
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.teach != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
     getCourses();
 });
 
@@ -40,6 +47,7 @@ function getCourses() {
                     "<td>" + val.classCount + "</td>" +
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCourse(" + val["course"].id + ")'>remove_red_eye</i></a></td>" +
                     "<td><a href='students_courses.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>person</i></a></td>" +
+                    "<td><a href='course_evaluations.html?courseTeacherId=" + val.id + "&courseId=" + val.course.id + "'><i class='material-icons'>assignment</i></a></td>" +
                     "</tr>");
             });
             //newFacFrm.trigger("reset");
@@ -47,7 +55,7 @@ function getCourses() {
         error: function(error) {
             console.log(error);
             M.toast({
-                html: 'Error al solicitar todas las facultades'
+                html: 'Error al solicitar todas las materias impartidas'
             })
         }
     });

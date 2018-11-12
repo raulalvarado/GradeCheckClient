@@ -8,6 +8,8 @@ var faculties = $(".cCarrerFaculty");
 var career_type = $(".cCareerType");
 var updLabels = $(".updLabel");
 
+var careerPermission;
+var pensumPermission;
 
 //trying to get faculties from digital ocean server
 $(document).ready(function() {
@@ -21,6 +23,25 @@ $(document).ready(function() {
     catch (error) {
         window.location.replace("login.html");
     }
+
+
+    careerPermission = JSON.parse(sessionStorage["logedUser"]).role.manageCareers;
+    pensumPermission = JSON.parse(sessionStorage["logedUser"]).role.managePensums;
+
+    //Validating permissions
+    if (careerPermission != true && pensumPermission != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
+    //Removing modals if user does not have careers permision
+    if (careerPermission != true) {
+        $(".permissionProtected").remove();
+    }
+    //Removing th if user does not have pensums permision
+    if (pensumPermission != true) {
+        $(".pensumPermissionProtected").remove();
+    }
+
     getCareers();
 });
 
@@ -79,9 +100,9 @@ function getCareers() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
-                    "<td><a href='" + 'career_courses.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons green-text'>ballot</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareer(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" +
+                    (pensumPermission == true ? "<td><a href='" + 'career_courses.html?id=' + val.id + "' class='modal-trigger'><i class='material-icons green-text'>ballot</i></a></td>" : "") +
+                    (careerPermission == true ? "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestCareer(" + val.id + ")'>mode_edit</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteCareer(" + val.id + ")'>delete</i></a></td>" : "") +
                     "</tr>");
             });
             newCarFrm.trigger("reset");

@@ -175,11 +175,11 @@
                                 <input type="hidden" name="registeredCourseId" id="registeredCourseId">
                                 <input type="hidden" name="evaluationId" id="evaluationId">
                                 <div class="col s6 input-field">
-                                    <input value="0" id="notaEvaluacion" name="grade" type="number" min="0" max="10" pattern="^[0-9]{1}[.]{1}[0-9]{1,2}$" title="Solo se permiten números y dos decimales" required>
+                                    <input value="0" id="notaEvaluacion" name="grade" type="number" min="0" max="10" step="0.01" pattern="^[0-9]{1}[.]{1}[0-9]{1,2}$" title="Solo se permiten números y dos decimales" required>
                                     <label class="active" for="notaEvaluacion">Nota:</label>
                                 </div>
                                 <div class="col s12 input-field">
-                                    <input value=" " type="text" id="obsEcaluacion" name="observations" class="materialize-textarea"></textarea>
+                                    <textarea value=" " type="text" id="obsEcaluacion" name="observations" class="materialize-textarea"></textarea>
                                     <label class="active" for="obsEcaluacion">Observacion:
                                                 </label>
                                 </div>

@@ -67,8 +67,8 @@
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegAbs" autocomplete="off">
                                 <div class="input-field">
-                                    <input id="fechaFin" name="endDate" type="text" class="datepicker">
-                                    <label for="fechaFin">Fecha final:
+                                    <input id="fecha" name="unattendanceDate" type="text" class="datepicker" required>
+                                    <label for="fecha">Fecha de inasistencia:
                                             </label>
                                 </div>
                                 <div class="row">
@@ -80,7 +80,18 @@
                     </div>
                 </div>
             </div>
-            
+            <!-- Modal de eliminar inasistencia-->
+            <div id="eliminarInasistencia" class="modal">
+                <div class="modal-content">
+                    <h4>Eliminar inasistencia</h4>
+                    <p>¿Seguro que deseas eliminar esta inasistencia?</p>
+                    <input id="dId" type="hidden" name="id" value="">
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarInasistencia" onclick="deleteUnattendance();">Eliminar</a>
+                </div>
+            </div>
         </main>
 
         <script type="text/javascript" src="../js/jquery.min.js"></script>

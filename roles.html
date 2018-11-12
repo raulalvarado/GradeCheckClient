@@ -22,24 +22,6 @@
         </div>
 
         <div class="sidebar">
-            <ul id="slide-out" class="sidenav sidenav-fixed">
-                <div class="separator">
-
-                </div>
-                <li><a class="waves-effect waves-light" href="Index.html"><i class="material-icons">person</i>Usuarios</a></li>
-                <li><a class="waves-effect waves-light" href="faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
-                <li><a class="waves-effect waves-light" href="students.html"><i class="material-icons">school</i>Estudiantes</a></li>
-                <li><a class="waves-effect waves-light" href="employees.html"><i class="material-icons">assignment_ind</i>Empleados</a></li>
-                <li><a class="waves-effect waves-light" href="careertype.html"><i class="material-icons">folder</i>Tipos de carrera</a></li>
-                <li><a class="waves-effect waves-light" href="careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
-                <li><a class="waves-effect waves-light" href="courses.html"><i class="material-icons">book</i>Materias</a></li>
-                <li><a class="waves-effect waves-light" href="roles.html"><i class="material-icons">group</i>Roles</a></li>
-                <li>
-                    <div class="blokk"></div>
-                </li>
-                <li><a class="waves-effect waves-light" href="Docente/grades.html"><i class="material-icons">check_circle</i>Mis materias</a></li>
-                <li><a class="waves-effect waves-light" href="corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
-            </ul>
         </div>
         <main>
             <h2 class="center">Roles</h2>
@@ -77,94 +59,73 @@
                         <div class="col s12 m8 offset-m2 center-align">
                             <form id="frmRegRole" autocomplete="off">
                                 <div class="input-field">
-                                    <input id="nombreRol" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <input id="nombreRol" name="role" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
                                     <label for="nombreRol">Nombre:</label>
                                 </div>
                                 <div class="rolediv input-field">
                                     <p>
                                         <label>
-                                          <input id="teach" type="checkbox" />
+                                          <input id="teach" name="teach" class="newCheckBox" type="checkbox" />
                                           <span>Docente</span>
                                         </label>
                                     </p>
                                     <p>
                                         <label>
-                                              <input id="mng_users" type="checkbox" />
-                                              <span>Gest.usuarios</span>
-                                            </label>
+                                            <input id="mng_users" name="manageUsers" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.usuarios</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                  <input id="mng_students" type="checkbox" />
-                                                  <span>Gest.estudiantes</span>
-                                                </label>
+                                            <input id="mng_students" name="manageStudents" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.estudiantes</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                      <input id="mng_employees" type="checkbox" />
-                                                      <span>Gest.Empleados</span>
-                                                    </label>
+                                            <input id="mng_employees" name="manageEmployees" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.Empleados</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                          <input id="mng_faculties" type="checkbox" />
-                                                          <span>Gest.Facultades</span>
-                                                        </label>
+                                            <input id="mng_faculties" name="manageFaculties" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.Facultades</span>
+                                        </label>
                                     </p>
                                 </div>
                                 <div class="rolediv2 input-field">
 
                                     <p>
                                         <label>
-                                                              <input id="mng_Careers" type="checkbox" />
-                                                              <span>Gest.carreras</span>
-                                                            </label>
+                                            <input id="mng_Careers" name="manageCareers" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.carreras</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                  <input id="mng_Roles" type="checkbox" />
-                                                                  <span>Gest.roles</span>
-                                                                </label>
+                                            <input id="mng_Roles" name="manageRoles" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.roles</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                      <input id="mng_Courses" type="checkbox" />
-                                                                      <span>Gest.materias</span>
-                                                                    </label>
+                                            <input id="mng_Courses" name="manageCourses" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.materias</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                          <input id="mng_Pensum" type="checkbox" />
-                                                                          <span>Gest.pensum</span>
-                                                                        </label>
+                                            <input id="mng_Pensum" name="managePensums" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.pensum</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                              <input id="mng_Evaluations" type="checkbox" />
-                                                                              <span>Gest.evaluaciones</span>
-                                                                            </label>
+                                            <input id="mng_Evaluations" name="manageEvaluations" class="newCheckBox" type="checkbox" />
+                                            <span>Gest.evaluaciones</span>
+                                        </label>
                                     </p>
-                                </div>
-                                <div class="row">
-                                    <h6 class="center">Seleccione el estado del rol:</h6>
-                                    <div class="input-field col s6 push-s1">
-                                        <div class="col s12 m6 push-m5">
-                                            <p>
-                                                <label>
-                                                                                        <input id="SateA" name="state" value="1" type="radio"/>
-                                                                                        <span>Activo</span>
-                                                                                    </label>
-                                            </p>
-                                        </div>
-                                        <div class="col s12 m6 push-m4">
-                                            <p>
-                                                <label>
-                                                                                        <input id="StateI" name="state" value="0" type="radio" />
-                                                                                        <span>Inactivo</span>
-                                                                                    </label>
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -177,84 +138,84 @@
             </div>
 
             <!--Modal de modificacion de rol-->
-            <div id="actualizarFacultad" class="modal">
+            <div id="actualizarRol" class="modal">
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar facultad</h3>
+                            <h3 class="">Actualizar rol</h3>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12 m8 offset-m2 center-align">
+                        <div class="col s12 m8 offset-m2">
                             <form id="frmUpdtRol" autocomplete="off">
                                 <input id="uIdRoles" type="hidden" name="rolesId" value="">
                                 <div class="input-field">
-                                    <input id="uNombreRol" name="name" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
-                                    <label for="uNombreRol">Nombre:</label>
+                                    <input id="uNombreRol" name="role" type="text" minlength="1" maxlength="50" pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,50}$" title="Solo se permiten números y letras" required>
+                                    <label for="uNombreRol" class="updLabel">Nombre:</label>
                                 </div>
                                 <div class="aldiv input-field">
                                     <p>
                                         <label>
-                                                  <input id="uTeach" type="checkbox" />
-                                                  <span>Docente</span>
-                                                </label>
+                                            <input id="uTeach" class="updateCheckBox" name="teach" type="checkbox" />
+                                            <span>Docente</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                      <input id="uMng_users" type="checkbox" />
-                                                      <span>Gest.usuarios</span>
-                                                    </label>
+                                            <input id="uMng_users" class="updateCheckBox" name="manageUsers" type="checkbox" />
+                                            <span>Gest.usuarios</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                          <input id="uMng_students" type="checkbox" />
-                                                          <span>Gest.estudiantes</span>
-                                                        </label>
+                                            <input id="uMng_students" class="updateCheckBox" name="manageStudents" type="checkbox" />
+                                            <span>Gest.estudiantes</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                              <input id="uMng_employees" type="checkbox" />
-                                                              <span>Gest.Empleados</span>
-                                                            </label>
+                                            <input id="uMng_employees" class="updateCheckBox" name="manageEmployees" type="checkbox" />
+                                            <span>Gest.Empleados</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                  <input id="uMng_faculties" type="checkbox" />
-                                                                  <span>Gest.Facultades</span>
-                                                                </label>
+                                            <input id="uMng_faculties" class="updateCheckBox" name="manageFaculties" type="checkbox" />
+                                            <span>Gest.Facultades</span>
+                                        </label>
                                     </p>
                                 </div>
                                 <div class="aldiv2 input-field">
 
                                     <p>
                                         <label>
-                                                                      <input id="uMngCareers" type="checkbox" />
-                                                                      <span>Gest.carreras</span>
-                                                                    </label>
+                                            <input id="uMngCareers" class="updateCheckBox" name="manageCareers" type="checkbox" />
+                                            <span>Gest.carreras</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                          <input id="uMng_Roles" type="checkbox" />
-                                                                          <span>Gest.roles</span>
-                                                                        </label>
+                                            <input id="uMng_Roles" class="updateCheckBox" name="manageRoles" type="checkbox" />
+                                            <span>Gest.roles</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                              <input id="uMng_Courses" type="checkbox" />
-                                                                              <span>Gest.materias</span>
-                                                                            </label>
+                                            <input id="uMng_Courses" class="updateCheckBox" name="manageCourses" type="checkbox" />
+                                            <span>Gest.materias</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                                  <input id="uMng_Pensum" type="checkbox" />
-                                                                                  <span>Gest.pensum</span>
-                                                                                </label>
+                                            <input id="uMng_Pensum" class="updateCheckBox" name="managePensums" type="checkbox" />
+                                            <span>Gest.pensum</span>
+                                        </label>
                                     </p>
                                     <p>
                                         <label>
-                                                                                      <input id="uMng_Evaluations" type="checkbox" />
-                                                                                      <span>Gest.evaluaciones</span>
-                                                                                    </label>
+                                            <input id="uMng_Evaluations" class="updateCheckBox" name="manageEvaluations" type="checkbox" />
+                                            <span>Gest.evaluaciones</span>
+                                        </label>
                                     </p>
                                 </div>
                                 <div class="row">
@@ -263,17 +224,17 @@
                                         <div class="col s12 m6 push-m5">
                                             <p>
                                                 <label>
-                                                                                                <input id="uSateA" name="state" value="1" type="radio"/>
-                                                                                                <span>Activo</span>
-                                                                                            </label>
+                                                    <input id="uStateA" name="state" value="1" type="radio"/>
+                                                    <span>Activo</span>
+                                                </label>
                                             </p>
                                         </div>
                                         <div class="col s12 m6 push-m4">
                                             <p>
                                                 <label>
-                                                                                                <input id="uStateI" name="state" value="0" type="radio" />
-                                                                                                <span>Inactivo</span>
-                                                                                            </label>
+                                                    <input id="uStateI" name="state" value="0" type="radio" />
+                                                    <span>Inactivo</span>
+                                                </label>
                                             </p>
                                         </div>
                                     </div>
@@ -289,15 +250,15 @@
             </div>
 
             <!-- Modal de eliminar facultad-->
-            <div id="eliminarFacultad" class="modal">
+            <div id="eliminarRol" class="modal">
                 <div class="modal-content">
-                    <h4>Eliminar facultad</h4>
-                    <p>¿Seguro que deseas eliminar esta facultad?</p>
+                    <h4>Eliminar rol</h4>
+                    <p>¿Seguro que deseas eliminar este rol?</p>
                     <input id="dIdRoles" type="hidden" name="rolesId" value="">
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="waves-effect waves-red btn-flat modal-close">Cancelar</a>
-                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarFacultad" onclick="deleteFaculty();">Eliminar</a>
+                    <a href="#" class="waves-effect waves-green btn-flat modal-close" id="btnEliminarRol" onclick="deleteRole();">Eliminar</a>
                 </div>
             </div>
         </main>
@@ -308,6 +269,7 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/roles.js"></script>
 </body>
 
 </html>

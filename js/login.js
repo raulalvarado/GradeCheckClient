@@ -13,12 +13,8 @@ function login() {
             console.log(result)
             sessionStorage["logedUser"] = JSON.stringify(result);
 
-            if (result.role.teach == true) {
-                window.location.replace("Docente/courses.html")
-            }
-            else {
-                window.location.replace("Index.html")
-            }
+            window.location.replace("Index.html")
+            
 
                 //JSON.parse(sessionStorage["logedUser"]);
         },

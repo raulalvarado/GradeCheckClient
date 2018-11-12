@@ -3,14 +3,24 @@ $(document).ready(function() {
     $('.modal').modal();
    // $('select').formSelect();
     $('.datepicker').datepicker();
+
+    try {
+        $.ajaxSetup({
+            headers: {
+              token: JSON.parse(sessionStorage["logedUser"]).token
+            }
+        });
+    }
+    catch (error) {
+        window.location.replace("/GradeCheckClient/login.html");
+    }
+
+    $('.sidebar').load('/GradeCheckClient/includes/sidebarAdmin.html');
+
+    
 });
 
-function logoutAdmin() {
+function logout() {
     sessionStorage["logedUser"] = null;
-    window.location.replace("login.html")
-}
-
-function logoutTeacher() {
-    sessionStorage["logedUser"] = null;
-    window.location.replace("../login.html")
+    window.location.replace("/GradeCheckClient/login.html")
 }

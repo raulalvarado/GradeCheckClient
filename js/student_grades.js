@@ -12,6 +12,12 @@ $(document).ready(function() {
     } catch (error) {
         location.replace("../login.html")
     }
+
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.teach != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     registeredId = params.get("id");
     console.log(registeredId);
@@ -37,6 +43,10 @@ function getEvaluations() {
                 if (val.description != null) {
                     desc = val.description
                 }
+                var obs = " ";
+                if (val["grades"][0].observations != null) {
+                    obs = val["grades"][0].observations
+                }
                 //filling table
                 table.append("<div class='row'>" +
                     "<div class='col s12'>" +
@@ -47,7 +57,7 @@ function getEvaluations() {
                     "</div>" +
                     "<div class='card-action red white-text'>" +
                     "<div class='col s9 aldiv'>" +
-                    "<a id='link' class='modal-trigger' onclick='getEva(" + val.id + ",\"" + desc + "\"," + val["grades"][0].grade + ");'>Calificar</a>" +
+                    "<a id='link' class='modal-trigger' onclick='getEva(" + val.id + ",\"" + obs + "\"," + val["grades"][0].grade + ");'>Calificar</a>" +
                     "</div>" +
                     "<div class='aldiv'>" +
                     "<span>CALIFICADA: <span class='grade'>" + grade + "</span></span>" +
@@ -67,11 +77,11 @@ function getEvaluations() {
     });
 }
 
-function getEva(id, description, grade) {
+function getEva(id, observation, grade) {
     $("#registeredCourseId").val(registeredId);
     $("#evaluationId").val(id);
     $("#notaEvaluacion").val(grade);
-    $("#obsEcaluacion").val(description);
+    $("#obsEcaluacion").val(observation);
     updateEvaModal.modal("open")
 }
 

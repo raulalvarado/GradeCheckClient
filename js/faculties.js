@@ -16,6 +16,11 @@ $(document).ready(function() {
         window.location.replace("login.html");
     }
 
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.manageFaculties != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
     getFaculties();
 });
 

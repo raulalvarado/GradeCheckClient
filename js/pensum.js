@@ -20,6 +20,11 @@ $(document).ready(function() {
         window.location.replace("login.html");
     }
 
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.managePensums != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     careerId = params.get("id");
     plan = params.get("plan");

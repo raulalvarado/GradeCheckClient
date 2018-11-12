@@ -1,0 +1,65 @@
+
+    <ul id="slide-out" class="sidenav sidenav-fixed">
+        <div class="separator">
+            <span style="display:inline-flex;vertical-align:middle" id="menuEmployeeName"></span>
+        </div>
+        <li id="userItem"><a class="waves-effect waves-light" href="/GradeCheckClient/users.html"><i class="material-icons">person</i>Usuarios</a></li>
+        <li id="facultyItem"><a class="waves-effect waves-light" href="/GradeCheckClient/faculties.html"><i class="material-icons">dashboard</i>Facultades</a></li>
+        <li id="studentItem"><a class="waves-effect waves-light" href="/GradeCheckClient/students.html"><i class="material-icons">school</i>Estudiantes</a></li>
+        <li id="employeeItem"><a class="waves-effect waves-light" href="/GradeCheckClient/employees.html"><i class="material-icons">assignment_ind</i>Empleados</a></li>
+        <li id="careerTypeItem"><a class="waves-effect waves-light" href="/GradeCheckClient/careertype.html"><i class="material-icons">collections_bookmark</i>Tipos de carrera</a></li>
+        <li id="careerItem"><a class="waves-effect waves-light" href="/GradeCheckClient/careers.html"><i class="material-icons">folder_shared</i>Carreras</a></li>
+        <li id="courseItem"><a class="waves-effect waves-light" href="/GradeCheckClient/courses.html"><i class="material-icons">book</i>Materias</a></li>
+        <li id="roleItem"><a class="waves-effect waves-light" href="/GradeCheckClient/roles.html"><i class="material-icons">group</i>Roles</a></li>
+        <li class="teachItem">
+            <div class="blokk teacherHeader"><span>Funciones de docente</span></div>
+        </li>
+        <li class="teachItem"><a class="waves-effect waves-light" href="/GradeCheckClient/Docente/courses.html"><i class="material-icons">assignment_ind</i>Mis materias</a></li>
+        <li class="teachItem"><a class="waves-effect waves-light" href="/GradeCheckClient/Docente/corrections.html"><i class="material-icons">assignment_late</i>Correccion de notas</a></li>
+        <li>
+            <div class="blokk"></div>
+        </li>
+        <li><a class="waves-effect waves-light" href="#" onclick="logout();"><i class="material-icons">arrow_back</i>Cerrar sesion</a></li>
+    </ul>
+
+    <script>
+        try {
+        //Setting user name and surname to nav
+        var name = JSON.parse(sessionStorage["logedUser"]).user.person.name
+        var surname = JSON.parse(sessionStorage["logedUser"]).user.person.surname
+        $("#menuEmployeeName").html("<i style='padding-right:5px' class='material-icons'>label_important</i>Usuario: " + name + " " + surname)
+
+        //Removing menu items according to user's permission set
+        if (JSON.parse(sessionStorage["logedUser"]).role.teach != true) {
+            $(".teachItem").remove();
+        }
+        if (JSON.parse(sessionStorage["logedUser"]).role.manageUsers != true) {
+            $("#userItem").remove();
+        }
+        if (JSON.parse(sessionStorage["logedUser"]).role.manageStudents != true) {
+            $("#studentItem").remove();
+        }
+        if (JSON.parse(sessionStorage["logedUser"]).role.manageEmployees != true) {
+            $("#employeeItem").remove();
+        }
+        if (JSON.parse(sessionStorage["logedUser"]).role.manageFaculties != true) {
+            $("#facultyItem").remove();
+        }
+        //los permisos de carreras y de pensum permiten visualizar las carreras
+        if (JSON.parse(sessionStorage["logedUser"]).role.manageCareers != true && JSON.parse(sessionStorage["logedUser"]).role.managePensums != true) {
+            $("#careerItem").remove();
+        }
+        if (JSON.parse(sessionStorage["logedUser"]).role.manageCareers != true) {
+            $("#careerTypeItem").remove();
+        }
+        //los permisos de materias y de evaluaciones permiten visualizar las materias
+        if (JSON.parse(sessionStorage["logedUser"]).role.manageCourses != true && JSON.parse(sessionStorage["logedUser"]).role.manageEvaluations != true) {
+            $("#courseItem").remove();
+        }
+        if (JSON.parse(sessionStorage["logedUser"]).role.manageRoles != true) {
+            $("#roleItem").remove();
+        }
+    }
+    catch (error) {
+    }
+    </script>

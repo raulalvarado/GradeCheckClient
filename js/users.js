@@ -7,7 +7,7 @@ var deleteUModal = $("#eliminarUsuario");
 var updLabels = $(".updLabel");
 
 //trying to get users from digital ocean server
-(document).ready(function() {
+$(document).ready(function() {
     try {
         $.ajaxSetup({
             headers: {
@@ -19,12 +19,20 @@ var updLabels = $(".updLabel");
         window.location.replace("login.html");
     }
 
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.manageUsers != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
     getUsers();
 });
 
 
 //ajax request to get students
 function getUsers() {
+    //Id del rol del usuario logeado
+    var userId = JSON.parse(sessionStorage["logedUser"]).user.id
+
     $.ajax({
         url: BASE_URL + USERS_READ,
         type: "GET",
@@ -54,8 +62,10 @@ function getUsers() {
                     "<span></span>" +
                     "</label>" +
                     "</td>" +
+                    ((val.id == 1) && userId != 1 ? "<td></td><td></td>" :
                     "<td><a href='#' class='modal-trigger'><i class='material-icons' onclick='requestUser(" + val.id + ")'>mode_edit</i></a></td>" +
-                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteUser(" + val.id + ")'>delete</i></a></td>" +
+                    "<td><a href='#' class='modal-trigger'><i class='material-icons red-text' onclick='confirmDeleteUser(" + val.id + ")'>delete</i></a></td>" 
+                    )+
                     "</tr>");
             });
             formNuevoU.trigger("reset");

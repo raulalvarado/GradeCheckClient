@@ -20,6 +20,11 @@ $(document).ready(function() {
         window.location.replace("login.html");
     }
 
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.manageEvaluations != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     careerId = params.get("id");
     courseId.val(careerId);
@@ -110,6 +115,7 @@ function requestEvaluation(id) {
             } else {
                 $("#uStateI").prop("checked", true);
             }
+            $("select").formSelect();
             updateModalEva.modal("open");
             updLabels.addClass("active");
         },

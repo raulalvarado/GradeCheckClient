@@ -10,6 +10,12 @@ $(document).ready(function() {
     } catch (error) {
         location.replace("../login.html")
     }
+
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.teach != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     courseId = params.get("id");
     console.log(courseId);
@@ -33,6 +39,7 @@ function getStudents() {
                     "<td>" + val["student"]["user"]["person"].name + "</td>" +
                     "<td>" + val["student"]["user"]["person"].surname + "</td>" +
                     "<td><a href='student_grades.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>person</i></a></td>" +
+                    "<td><a href='absences.html?id=" + val.id + "'><i class='material-icons'>event_busy</i></a></td>" +
                     "</tr>");
             });
         },

@@ -21,6 +21,11 @@ $(document).ready(function() {
         window.location.replace("login.html");
     }
 
+    //Validating permissions
+    if (JSON.parse(sessionStorage["logedUser"]).role.manageEmployees != true) {
+        window.location.replace("/GradeCheckClient/Index.html");
+    }
+
     let params = new URLSearchParams(window.location.search)
     employeeId = params.get("id");
     employeeIdForm.val(employeeId);
