@@ -54,7 +54,7 @@ function getStudentName() {
         dataType: "json",
         success: function(result) {
             console.log(result);
-            title.html("Carreras de " + result.user.person.name + " " + result.user.person.surname);
+            title.html("Carreras inscritas por " + result.user.person.name + " " + result.user.person.surname);
         },
         error: function(error) {
             showError(error.responseText);
@@ -69,6 +69,7 @@ function getCareers() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val["career"].name);
@@ -96,6 +97,11 @@ function getCareers() {
             });
             getActiveCareers();
             newCarFrm.trigger("reset");
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#studentItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

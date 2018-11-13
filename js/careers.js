@@ -79,6 +79,7 @@ function getCareers() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val.name);
@@ -109,6 +110,11 @@ function getCareers() {
             updateCarFrm.trigger("reset");
             getFaculties();
             getCareerTypes();
+            
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#careerItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

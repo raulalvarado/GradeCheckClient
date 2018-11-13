@@ -41,6 +41,8 @@ $(document).ready(function() {
         $(".evaluationPermissionProtected").remove();
     }
 
+    $(".normalSelect").formSelect();
+
     getCourses();
 });
 
@@ -78,6 +80,7 @@ function getCourses() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val.laboratory);
@@ -103,11 +106,13 @@ function getCourses() {
                     key = val["course"].name;
                 }
 
+                var semester = (val.semester == "1" ? "I" : (val.semester == "2" ? "II" : "Ambos"))
+
                 //filling table
                 table.append("<tr>" +
                     "<td>" + val.name + "</td>" +
                     "<td>" + val.courseCode + "</td>" +
-                    "<td>" + val.semester + "</td>" +
+                    "<td>" + semester + "</td>" +
                     "<td>" +
                     "<label>" +
                     inter +
@@ -138,6 +143,11 @@ function getCourses() {
             getActiveCarreers();
             newCourseFrm.trigger("reset");
             updateCourseFrm.trigger("reset");
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#courseItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);
@@ -247,14 +257,15 @@ function requestCourse(id) {
             }
             $("#uIdCourse").val(result.id);
             $("#uNombreMateria").val(result.name);
-            $("#uSemestreMateria").val(result.semester);
+            $('#uSemestreMateria option[value="' + result.semester + '"]').prop('selected', true)
             $("#uInterMateria").prop('checked', result.inter);
             $("#uLabMateria").prop('checked', result.laboratory);
-            $("#uUvMateria").val(result.uv);
+            $('#uUvMateria option[value="' + result.uv + '"]').prop('selected', true)
             $('#uCoursePrerequisite option[value="' + idPre + '"]').prop('selected', true)
             $('#uCourseFaculty option[value="' + result["faculty"].id + '"]').prop('selected', true)
             prerrequisitesSelect2()
             facultiesSelect2()
+            $(".normalSelect").formSelect()
             if (result.state === true) {
                 $("#uStateA").prop("checked", true);
             } else {

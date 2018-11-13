@@ -29,6 +29,7 @@ function getCourses() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val.id);
@@ -51,6 +52,11 @@ function getCourses() {
                     "</tr>");
             });
             //newFacFrm.trigger("reset");
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#teachCourseItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);
@@ -68,25 +74,18 @@ function requestCourse(id) {
         dataType: "json",
         success: function(result) {
             console.log(result);
-            var idPre = "0"
+            var prerrequisite = "Sin prerrequisito"
             if (result["course"] != null) {
-                idPre = result["course"].id;
+                prerrequisite = result["course"].name;
             }
-            $("#uIdCourse").val(result.id);
+            var semester = (result.semester == "1" ? "I" : (result.semester == "2" ? "II" : "Ambos"))
             $("#uNombreMateria").val(result.name);
-            $("#uSemestreMateria").val(result.semester);
+            $("#uSemestreMateria").val(semester);
             $("#uInterMateria").prop('checked', result.inter);
             $("#uLabMateria").prop('checked', result.laboratory);
             $("#uUvMateria").val(result.uv);
-            $('#uCoursePrerequisite option[value="' + idPre + '"]').prop('selected', true)
-            $('#uCourseFaculty option[value="' + result["faculty"].id + '"]').prop('selected', true)
-            $("#uCoursePrerequisite").formSelect();
-            $('#uCourseFaculty').formSelect();
-            if (result.state === true) {
-                $("#uStateA").prop("checked", true);
-            } else {
-                $("#uStateI").prop("checked", true);
-            }
+            $('#uCoursePrerequisite').val(prerrequisite);
+            $('#uCourseFaculty').val(result["faculty"].name);
             updateModalCourse.modal("open");
         },
         error: function(error) {

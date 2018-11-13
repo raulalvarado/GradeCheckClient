@@ -1,6 +1,7 @@
 var courseId;
 var courseTeacherId;
-var table = $("#content")
+var table = $("#content");
+var title = $("#title");
 
 $(document).ready(function() {
     $('.modal').modal();
@@ -25,8 +26,25 @@ $(document).ready(function() {
     courseId = params.get("courseId");
     courseTeacherId = params.get("courseTeacherId");
 
+    getCourseName();
     getEvaluations();
 });
+
+//ajax request to get course name
+function getCourseName() {
+    $.ajax({
+        url: BASE_URL + COURSES_CREATE + "/" + courseId + "/faculties/prerrequisite ",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Evaluaciones de " + result.name + " (" + result.courseCode + ")");
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
 
 function getEvaluations() {
     $.ajax({
@@ -47,7 +65,7 @@ function getEvaluations() {
                     "</div>" +
                     "<div class='card-action red white-text'>" +
                     "<div class='col s9 aldiv'>" +
-                    "<a id='link' href='evaluation_students.html?courseTeacherId=" + courseTeacherId  + "&evaluationId=" + val.id + "' class='modal-trigger'>Calificar estudiantes</a>" +
+                    "<a id='link' href='evaluation_students.html?courseTeacherId=" + courseTeacherId  + "&evaluationId=" + val.id + "&courseId=" + courseId + "' class='modal-trigger'>Calificar estudiantes</a>" +
                     "</div>" +
                     "<div class='aldiv'>" +
                     "<span><span class='grade'></span></span>" +
@@ -57,6 +75,9 @@ function getEvaluations() {
                     "</div>" +
                     "</div>");
             });
+
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#teachCourseItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

@@ -4,6 +4,7 @@ var table = $("#absencesTable");
 var newFacFrm = $("#frmRegAbs");
 var newModalAbsence = $("#nuevaInasistencia");
 var deleteModalAbsence = $("#eliminarInasistencia");
+var title = $("#title");
 
 $(document).ready(function() {
     $('.modal').modal();
@@ -34,8 +35,29 @@ $(document).ready(function() {
     let params = new URLSearchParams(window.location.search)
     regCourseId = params.get("id");
 
+    //Setting breadcrumb href
+    $("#secondBread").prop("href", "students_courses.html?id=" + params.get("courseTeacherId"))
+
+
+    getStudentName();
     getUnattendances();
 });
+
+//ajax request to get student name
+function getStudentName() {
+    $.ajax({
+        url: BASE_URL + STUDENTS_BYREGISTEREDCOURSE + regCourseId + "/users/people ",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Inasistencias de " + result.user.person.name + " " + result.user.person.surname);
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
 
 //ajax request to get unattendances
 function getUnattendances() {
@@ -45,6 +67,7 @@ function getUnattendances() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 var date = new Date(val.unattendanceDate);
@@ -56,6 +79,11 @@ function getUnattendances() {
                     "</tr>");
             });
             newFacFrm.trigger("reset");
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#teachCourseItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

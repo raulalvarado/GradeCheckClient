@@ -4,6 +4,7 @@ var EMPLOYEES_LOGIN = "employees/login"
 var USERS_READ = "users/people"
 var USERS_CREATE = "users"
 var USERS_GET = "users/"
+var VERIFY_TOKEN = "users/verifyToken"
 
 var CAREER_COURSES_PLAN = "careerCourses/planByCareer/"
 var CAREER_COURSES_BY_CAREER = "careerCourses/byCareer/"
@@ -32,6 +33,7 @@ var COURSE_SINGLE = "courses"
 var STUDENTS_READ = "students/users/people"
 var STUDENTS_CREATE = "students";
 var STUDENTS_BYCOURSETEACHER = "students/byCourseTeacher/";
+var STUDENTS_BYREGISTEREDCOURSE = "students/byRegisteredCourse/";
 var STUDENTS_READ_SINGLE = "students"
 var STUDENTS_READ_AVAILABLE = "users/people/noStudent";
 

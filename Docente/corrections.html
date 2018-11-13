@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../css/dataTables.min.css" rel="stylesheet">
+    <link href="../css/dataTableMaterialize.css" rel="stylesheet">
 
 </head>
 
@@ -33,7 +35,13 @@
             </ul>
         </div>
             <main>
-                <h2 class="center">Correcciones</h2>
+                <div class="row">
+                    <div class="col s12 breadContainer">
+                        <span>Correcciones</span>
+                        <span>/</span>
+                    </div>
+                </div>
+                <h3 class="center">Solicitudes de corrección de notas</h3>
 
                 <div class="tabla">
                     <table class="striped centered responsive-table">
@@ -68,55 +76,51 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m8 offset-m2 center-align">
-                                
-                                <div class="col s6 input-field">
-                                    <input disabled value="Examen parcial" id="cNombreEvaluacion" name="name" type="text"  required>
-                                    <label class="active" for="notaEvaluacion">Nombre:</label>
-                                </div>
-                                <div class="input-field aldiv">
-                                    <select disabled id="cPeriodoEvaluacion">
-                                                <option value="">Seleccione periodo</option>
-                                                <option value="1">I</option>
-                                                <option value="2">II</option>
-                                                <option value="3">III</option>
-                                            </select>
-                                    <label>Periodo</label>
-                                </div>
-    
-                                <div class="col s12 input-field">
-                                    <input disabled value="Descripcion de la evaluacion " type="text" id="cDesEcaluacion" name="observations" class="materialize-textarea"></textarea>
-                                    <label class="active" for="cDesEcaluacion">Descripcion:</label>
-                                </div>
-                                <div class="input-field">
-                                    <p>
-                                        <label>
-                                            <input disabled id="cLabEvaluacion" type="checkbox" name="laboratory" checked value="true"/>
-                                            <span>Laboratorio</span>
-                                        </label>
-                                    </p>
-                                </div>
-                                <div class="input-field aldiv">
-                                    <input disabled id="cFechaInicio" name="startDate" format="yyyy/mm/dd" type="text" value="nov 11,2018" class="datepicker">
-                                    <label for="fechaInicio">Fecha de inicio:
-                                        </label>
-                                </div>
-                                <div class="input-field aldiv2">
-                                    <input disabled id="cFechaFin" name="endDate" type="text" value="nov 20, 2018" class="datepicker">
-                                    <label for="fechaFin">Fecha final:
+                                <div class="grey lighten-2">
+                                    <div class="col s6 input-field">
+                                        <label class="active" for="notaEvaluacion">Evaluación:</label>
+                                        <p id="cNombreEvaluacion"></p>
+                                    </div>
+                                    <div class="input-field aldiv">
+                                        <label class="active">Período</label>
+                                        <p id="cPeriodoEvaluacion"></p>
+                                    </div>
+        
+                                    <div class="col s12 input-field">
+                                        <label class="active" for="cDesEcaluacion">Descripción de la evaluación:</label>
+                                        <p id="cDesEcaluacion"></p>
+                                    </div>
+                                    <div class="input-field">
+                                        <p>
+                                            <label>
+                                                <input disabled id="cLabEvaluacion" type="checkbox" name="laboratory" checked value="true"/>
+                                                <span class="black-text">¿Evaluación de Laboratorio?</span>
                                             </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field aldiv">
+                                        <input disabled id="cFechaInicio" name="startDate" type="text" class="black-text" value=" "/>
+                                        <label for="cFechaInicio" class="active">Fecha de inicio:</label>
+                                    </div>
+                                    <div class="input-field aldiv2">
+                                        <input disabled id="cFechaFin" name="endDate" type="text" class="black-text" value=" "/>
+                                        <label for="cFechaFin">Fecha final:</label>
+                                    </div>
                                 </div>
+                                <h5>Datos de solicitud</h5>
                                 <form id="frmCorrecion" autocomplete="off">
                                     <input type="hidden" name="id" id="correctionId">
+                                    <label>Descripción de la solicitud</label>
+                                    <p id="correctionDescription"></p>
+                                    <br>
                                     <div class="input-field">
                                         <select id="estadoPeticion" name="correctionState">
                                                     <option value="Pendiente" disabled>Seleccione una opción</option>
                                                     <option value="Aprobada">Aprobada</option>
                                                     <option value="Denegada">Denegada</option>
                                                 </select>
-                                        <label>Estado de peticion</label>
+                                        <label>Estado de solicitud</label>
                                     </div>
-                                    <label>Descripción de la solicitud</label>
-                                    <p id="correctionDescription"></p>
                                     <div class="row">
                                         <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Aceptar</button>
                                         <button type="reset" class="btn waves-effect blue darken-3 right modal-close">Cancelar</button>
@@ -163,6 +167,7 @@
 
         <script type="text/javascript" src="../js/jquery.min.js"></script>
         <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/dataTables.min.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
         <script type="text/javascript" src="../js/materialize.js"></script>
         <script type="text/javascript" src="../js/server.js"></script>

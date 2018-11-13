@@ -59,6 +59,7 @@ function getPlans() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
 
@@ -68,6 +69,11 @@ function getPlans() {
                     "<td><a href='" + "pensum.html?id=" + careerId + "&plan=" + val.year + "' class='modal-trigger'><i class='material-icons'>visibility</i></a></td>" +
                     "</tr>");
             });
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#careerItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

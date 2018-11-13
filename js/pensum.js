@@ -30,6 +30,7 @@ $(document).ready(function() {
     plan = params.get("plan");
     $("#careerId").val(careerId);
     $("#plan").val(plan);
+    $("#breadLink1").prop("href", "career_courses.html?id=" + careerId);
     getCareerName();
     fillTable();
     getCourses();

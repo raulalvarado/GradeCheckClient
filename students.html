@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/select2-materialize.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/dataTables.min.css" rel="stylesheet">
+    <link href="css/dataTableMaterialize.css" rel="stylesheet">
 
 </head>
 
@@ -25,7 +27,13 @@
         <div class="sidebar">
         </div>
         <main>
-            <h2 class="center">Estudiantes</h2>
+            <div class="row">
+                <div class="col s12 breadContainer">
+                    <span>Estudiantes</span>
+                    <span>/</span>
+                </div>
+            </div>
+            <h3 class="center">Lista de estudiantes</h3>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
@@ -72,6 +80,7 @@
                                         <option value="2">John Doe</option>
                                         <option value="3">Jane Doe</option>
                                     </select>
+                                    <br/><br/><br/><br/><br/><br/>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -146,6 +155,7 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/select2.min.js"></script>
+        <script type="text/javascript" src="js/dataTables.min.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
         <script type="text/javascript" src="js/students.js"></script>
 </body>

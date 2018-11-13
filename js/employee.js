@@ -61,6 +61,7 @@ function getEmployees() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val["user"]["person"].email);
@@ -97,6 +98,11 @@ function getEmployees() {
             formNuevoE.trigger("reset");
             getRoles();
             getUsers();
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#employeeItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

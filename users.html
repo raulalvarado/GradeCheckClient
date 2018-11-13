@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/dataTables.min.css" rel="stylesheet">
+    <link href="css/dataTableMaterialize.css" rel="stylesheet">
 
 </head>
 
@@ -25,7 +27,13 @@
         <div class="sidebar">
         </div>
         <main>
-            <h2 class="center">Usuarios</h2>
+            <div class="row">
+                <div class="col s12 breadContainer">
+                    <span>Usuarios</span>
+                    <span>/</span>
+                </div>
+            </div>
+            <h3 class="center">Lista de usuarios</h3>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
@@ -84,7 +92,7 @@
                                     <label for="telUsuario">Telefono</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="direccionUsuario" name="address" type="text" required pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,100}$" title="Ingrese una direccion">
+                                    <input id="direccionUsuario" name="address" type="text" required title="Ingrese una direccion">
                                     <label for="direccionUsuario">Direccion</label>
                                 </div>
                                 <div class="input-field">
@@ -143,7 +151,7 @@
                                     <label for="uTelUsuario" class="updLabel">Telefono</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="uDireccionUsuario" name="address" type="text" required pattern="^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\.]{1,100}$" title="Ingrese una direccion">
+                                    <input id="uDireccionUsuario" name="address" type="text" required title="Ingrese una direccion">
                                     <label for="uDireccionUsuario" class="updLabel">Direccion</label>
                                 </div>
                                 <div class="input-field">
@@ -208,6 +216,7 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
+        <script type="text/javascript" src="js/dataTables.min.js"></script>
         <script type="text/javascript" src="js/server.js"></script>
         <script type="text/javascript" src="js/users.js"></script>
 </body>

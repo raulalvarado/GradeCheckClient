@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/dataTables.min.css" rel="stylesheet">
+    <link href="css/dataTableMaterialize.css" rel="stylesheet">
 
 </head>
 
@@ -24,7 +26,13 @@
         <div class="sidebar">
         </div>
         <main>
-            <h2 class="center">Tipos de carrera</h2>
+            <div class="row">
+                <div class="col s12 breadContainer">
+                    <span>Tipos de carrera</span>
+                    <span>/</span>
+                </div>
+            </div>
+            <h3 class="center">Lista de tipos de carrera</h3>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
@@ -136,6 +144,7 @@
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/dataTables.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>

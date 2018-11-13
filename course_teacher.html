@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/select2-materialize.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/dataTables.min.css" rel="stylesheet">
+    <link href="css/dataTableMaterialize.css" rel="stylesheet">
 
 </head>
 
@@ -25,7 +27,15 @@
         <div class="sidebar">
         </div>
         <main>
-            <h2 class="center">Materias de docente</h2>
+            <div class="row">
+                <div class="col s12 breadContainer">
+                    <a href="employees.html">Empleados</a>
+                    <span>/</span>
+                    <span>Materias impartidas por docente</span>
+                    <span>/</span>
+                </div>
+            </div>
+            <h3 class="center" id="title"></h3>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
@@ -56,7 +66,7 @@
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Nueva materia asignada</h3>
+                            <h3 class="">Nueva materia impartida</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -103,7 +113,7 @@
                 <div class="modal-content">
                     <div class="modal-header row blue darken-3 white-text">
                         <div class="col m10 s9">
-                            <h3 class="">Actualizar materia asignada</h3>
+                            <h3 class="">Actualizar materia impartida</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -140,7 +150,7 @@
             <div id="eliminarMateriaAsig" class="modal">
                 <div class="modal-content">
                     <h4>Eliminar clase</h4>
-                    <p>¿Seguro que deseas eliminar esta clase?</p>
+                    <p>¿Seguro que deseas eliminar esta clase impartida por el docente?</p>
                     <input id="dIdCTeachers" type="hidden" name="id" value="">
                 </div>
                 <div class="modal-footer">
@@ -153,6 +163,7 @@
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/dataTables.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/select2.min.js"></script>

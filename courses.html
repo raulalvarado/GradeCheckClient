@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/select2-materialize.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/dataTables.min.css" rel="stylesheet">
+    <link href="css/dataTableMaterialize.css" rel="stylesheet">
 
 
 
@@ -27,7 +29,13 @@
         <div class="sidebar">
         </div>
         <main>
-            <h2 class="center">Materias</h2>
+            <div class="row">
+                <div class="col s12 breadContainer">
+                    <span>Materias</span>
+                    <span>/</span>
+                </div>
+            </div>
+            <h3 class="center">Lista de materias</h3>
             <div class="tabla">
                 <table class="striped centered responsive-table">
                     <thead>
@@ -37,7 +45,7 @@
                             <th>Semestre</th>
                             <th>Inter</th>
                             <th>Laboratorio</th>
-                            <th>U.Valorativas</th>
+                            <th>UV</th>
                             <th>Prerrequisito</th>
                             <th>Facultad</th>
                             <th>Estado</th>
@@ -74,31 +82,7 @@
                                     <label for="nombreMateria">Nombre:</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="semestreMateria" name="semester" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}$" required>
-                                    <label for="semestreMateria">Semestre:</label>
-                                </div>
-                                <div class="input-field aldiv">
-                                    <p>
-                                        <label>
-                                            <input id="interMateria" type="checkbox" name="inter" value="true"/>
-                                            <span>Interciclo</span>
-                                        </label>
-                                    </p>
-                                </div>
-                                <div class="input-field aldiv">
-                                    <p>
-                                        <label>
-                                            <input id="labMateria" type="checkbox" name="laboratory" value="true"/>
-                                            <span>Laboratorio</span>
-                                        </label>
-                                    </p>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uvMateria" name="uv" type="text" minlength="1" maxlength="1" pattern="^[0-9]$" title="Solo se permiten números" required>
-                                    <label for="uvMateria">Unidades valorativas:</label>
-                                </div>
-                                <div>
-                                    <label for="CoursePrerequisite">Prerrequisito</label><br/><br/>
+                                    <label>Prerrequisito</label><br/><br/>
                                     <select id="CoursePrerequisite" class="cCoursePrerequisite" name="prerrequisiteId">
                                         <option value="" disabled selected>Seleccione el prerrequisito</option>
                                         <option value="1">Matematica I</option>
@@ -107,13 +91,47 @@
                                     </select>
                                 </div>
                                 <div class="input-field">
-                                    <label for="CourseFaculty">Facultad</label><br/><br/>
+                                    <label>Facultad</label><br/><br/>
                                     <select id="CourseFaculty" class="cCourseFaculty" name="facultyId">
                                         <option value="" disabled selected>Seleccione la facultad</option>
                                         <option value="1">Ingenieria</option>
                                         <option value="2">Medicina</option>
                                         <option value="3">Derecho</option>
                                     </select>
+                                </div>
+                                <div class="input-field">
+                                    <label>Ciclos en los que está disponible:</label><br/><br/>
+                                    <select id="semestreMateria" class="normalSelect" name="semester">
+                                        <option value="1">I</option>
+                                        <option value="2">II</option>
+                                        <option value="12">Ambos</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label>Unidades valorativas:</label><br/>
+                                    <select id="uvMateria" class="normalSelect" name="uv">
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <p>
+                                        <label>
+                                            <input id="interMateria" type="checkbox" name="inter" value="true"/>
+                                            <span>Disponible en interciclo</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <p>
+                                        <label>
+                                            <input id="labMateria" type="checkbox" name="laboratory" value="true"/>
+                                            <span>Posee laboratorio</span>
+                                        </label>
+                                    </p>
                                 </div>
                                 <div class="row">
                                     <button type="submit" class="modal-submit btn blue darken-3 waves-effect right">Ingresar</button>
@@ -143,30 +161,6 @@
                                     <label for="uNombreMateria" class="updLabel">Nombre:</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="uSemestreMateria" name="semester" type="text" minlength="1" maxlength="2" pattern="^[0-9]{1,2}$" required>
-                                    <label for="uSemestreMateria" class="updLabel">Semestre:</label>
-                                </div>
-                                <div class="input-field aldiv">
-                                    <p>
-                                        <label>
-                                                <input id="uInterMateria" name="inter" type="checkbox" value="true"/>
-                                                <span>Interciclo</span>
-                                            </label>
-                                    </p>
-                                </div>
-                                <div class="input-field aldiv">
-                                    <p>
-                                        <label>
-                                                <input id="uLabMateria" name="laboratory" type="checkbox" value="true"/>
-                                                <span>Laboratorio</span>
-                                            </label>
-                                    </p>
-                                </div>
-                                <div class="input-field">
-                                    <input id="uUvMateria" name="uv" type="text" minlength="1" maxlength="1" pattern="^[0-9]$" title="Solo se permiten números" required>
-                                    <label for="uUvMateria" class="updLabel">Unidades valorativas:</label>
-                                </div>
-                                <div class="input-field">
                                     <label for="uCoursePrerequisite">Prerrequisito</label><br/><br/>
                                     <select id="uCoursePrerequisite" class="cCoursePrerequisite" name="prerrequisiteId">
                                         <option value="" disabled selected>Seleccione el prerrequisito</option>
@@ -183,6 +177,40 @@
                                         <option value="2">Medicina</option>
                                         <option value="3">Derecho</option>
                                     </select>
+                                </div>
+                                <div class="input-field">
+                                    <label>Ciclos en los que está disponible:</label><br/><br/>
+                                    <select id="uSemestreMateria" class="normalSelect" name="semester">
+                                        <option value="1">I</option>
+                                        <option value="2">II</option>
+                                        <option value="12">Ambos</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label>Unidades valorativas:</label><br/>
+                                    <select id="uUvMateria" class="normalSelect" name="uv">
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <p>
+                                        <label>
+                                                <input id="uInterMateria" name="inter" type="checkbox" value="true"/>
+                                                <span>Disponible en interciclo</span>
+                                            </label>
+                                    </p>
+                                </div>
+                                <div class="input-field aldiv">
+                                    <p>
+                                        <label>
+                                                <input id="uLabMateria" name="laboratory" type="checkbox" value="true"/>
+                                                <span>Posee laboratorio</span>
+                                            </label>
+                                    </p>
                                 </div>
                                 <div class="row">
                                     <h6 class="center">Seleccione el estado de la materia:</h6>
@@ -232,6 +260,7 @@
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/dataTables.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/server.js"></script>

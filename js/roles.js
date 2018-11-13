@@ -37,6 +37,7 @@ function getRoles() {
         type: "GET",
         dataType: "json",
         success: function(result) {
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
 
@@ -63,6 +64,11 @@ function getRoles() {
             });
             formNuevoR.trigger("reset");
             formUpdateR.trigger("reset");
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#roleItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

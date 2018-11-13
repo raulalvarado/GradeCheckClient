@@ -41,6 +41,7 @@ function getCorrections() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
 
@@ -63,12 +64,17 @@ function getCorrections() {
                     "<td>" + val.grade.evaluation.course.name + "</td>" +
                     "<td>" + val.correctionState + "</td>" +
                     (val.filePath == null ? "<td></td>" :
-                    "<td><a href='#'><i class='material-icons blue-text' onclick='downloadFile(\"" + BASE_URL + CORRECTIONS_DOWNLOAD + val.id + "\", \"" + filename + "\")'>file_download</i></a></td>"
+                    "<td><a href='#'><i class='material-icons green-text' onclick='downloadFile(\"" + BASE_URL + CORRECTIONS_DOWNLOAD + val.id + "\", \"" + filename + "\")'>file_download</i></a></td>"
                     ) +
                     "<td><a href='#actualizarCorreccion' class='modal-trigger'><i class='material-icons blue-text' onclick='requestCorrection(" + val.grade.id + ")'>dvr</i></a></td>" +
-                    "<td><a href='#CorrectCalificarEvaluacion' class='modal-trigger' onclick='getEva(" + val.grade.evaluation.id + "," + val.registeredCourseId + ",\"" + observation + "\"," + val.grade.grade + ");'><i class='material-icons blue-text' onclick=''>grade</i></a></td>" +
+                    "<td><a href='#CorrectCalificarEvaluacion' class='modal-trigger' onclick='getEva(" + val.grade.evaluation.id + "," + val.registeredCourseId + ",\"" + observation + "\"," + val.grade.grade + ");'><i class='material-icons yellow-text' onclick=''>grade</i></a></td>" +
                     "</tr>");
             });
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#correctionItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);
@@ -94,16 +100,17 @@ function requestCorrection(gradeId) {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            var period = (result.grade.evaluation.period == "1" ? "I" : (result.grade.evaluation.period == "2" ? "II" : "III"))
             var startDate = new Date(result.grade.evaluation.startDate);
             var endDate = new Date(result.grade.evaluation.endDate);
             $("#cIdEval").val(result.grade.evaluation.id);
-            $("#cNombreEvaluacion").val(result.grade.evaluation.name);
-            $("#cDesEcaluacion").val(result.grade.evaluation.description);
+            $("#cNombreEvaluacion").html(result.grade.evaluation.name);
+            $("#cDesEcaluacion").html(result.grade.evaluation.description);
             //$("#cPorcEvaluacion").val(result.grade.evaluation.percentage);
-            $('#cPeriodoEvaluacion option[value="' + result.grade.evaluation.period + '"]').prop('selected', true)
+            $('#cPeriodoEvaluacion').html(period)
             $("#cLabEvaluacion").prop("checked", result.grade.evaluation.laboratory);
-            $("#cFechaInicio").val(startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate())
-            $("#cFechaFin").val(endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate())
+            $("#cFechaInicio").val(startDate.getDate() + "/" + (startDate.getMonth() + 1) + "/" + startDate.getFullYear())
+            $("#cFechaFin").val(endDate.getDate() + "/" + (endDate.getMonth() + 1) + "/" + endDate.getFullYear())
             
             $('#estadoPeticion option[value="' + result.correctionState + '"]').prop('selected', true)
             $('#correctionDescription').html(result.description)

@@ -33,6 +33,7 @@ function usersSelect2() {
     //Cuando un select2 está dentro de un modal, es necesario especificarlo
     $("#StudentUser").select2({
         dropdownParent: newModal,
+        container: 'body',
         width: "100%"
     });
 }
@@ -45,6 +46,7 @@ function getStudents() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val["user"]["person"].email);
@@ -74,6 +76,11 @@ function getStudents() {
             });
             formNuevoEst.trigger("reset");
             getAvailableStudents();
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#studentItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

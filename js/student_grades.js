@@ -2,6 +2,7 @@ var registeredId;
 var table = $("#content")
 var updateEvaFrm = $("#frmCalificar");
 var updateEvaModal = $("#calificarEvaluacion")
+var title = $("#title");
 $(document).ready(function() {
     try {
         $.ajaxSetup({
@@ -22,8 +23,29 @@ $(document).ready(function() {
     registeredId = params.get("id");
     console.log(registeredId);
 
+    //Setting breadcrumb href
+    $("#secondBread").prop("href", "students_courses.html?id=" + params.get("courseTeacherId"))
+
+
+    getStudentName();
     getEvaluations();
 });
+
+//ajax request to get student name
+function getStudentName() {
+    $.ajax({
+        url: BASE_URL + STUDENTS_BYREGISTEREDCOURSE + registeredId + "/users/people ",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Notas de " + result.user.person.name + " " + result.user.person.surname);
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
 
 function getEvaluations() {
     $.ajax({

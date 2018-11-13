@@ -32,6 +32,7 @@ function getFaculties() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val.name);
@@ -56,6 +57,10 @@ function getFaculties() {
                     "</tr>");
             });
             newFacFrm.trigger("reset");
+
+            initDataTable();
+    
+            $("#facultyItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

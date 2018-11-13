@@ -8,6 +8,7 @@ var deleteModalCt = $("#eliminarMateriaAsig");
 var employeeIdForm = $(".employeeId");
 var courseActive = $("#materiaProf");
 var updLabels = $(".updLabel");
+var title = $("#title");
 
 $(document).ready(function() {
     try {
@@ -29,6 +30,7 @@ $(document).ready(function() {
     let params = new URLSearchParams(window.location.search)
     employeeId = params.get("id");
     employeeIdForm.val(employeeId);
+    getEmployeeName();
     getCareers();
     $("#CicloMateria").formSelect();
     $("#uCicloMateria").formSelect();
@@ -44,6 +46,23 @@ function coursesSelect2() {
     });
 }
 
+//ajax request to get employee name
+function getEmployeeName() {
+    $.ajax({
+        url: BASE_URL + EMPLOYEES_CREATE + "/" + employeeId + "/users/people/roles",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Materias impartidas por " + result.user.person.name + " " + result.user.person.surname);
+        },
+        error: function(error) {
+            console.log(error)
+            showError(error.responseText);
+        }
+    });
+}
+
 function getCareers() {
     $.ajax({
         url: BASE_URL + COURSE_TEACHERS_BYEMPLOYEE + employeeId + "/courses",
@@ -51,6 +70,7 @@ function getCareers() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val["course"].name);
@@ -79,6 +99,11 @@ function getCareers() {
             });
             getActiveCourses();
             newCtFrm.trigger("reset");
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#employeeItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

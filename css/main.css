@@ -21,7 +21,7 @@
 {
     color: white;
     font-weight: bold;
-    background-color: #D32F2F;
+    background-color: #536dfe;
     padding: 10px;
 }
 
@@ -112,6 +112,14 @@
 #welcome {
     color: #757575;
     margin-top: 20%;
+}
+
+.selectedItem {
+    background: #FFCDD2
+}
+
+.breadContainer {
+    font-size: 20px
 }
 
 header, main, footer {

@@ -1,6 +1,7 @@
 var table = $("#evalStudentsTable");
 var courseTeacherId;
 var evaluationId;
+var title = $("#title");
 
 $(document).ready(function() {
     try {
@@ -23,8 +24,29 @@ $(document).ready(function() {
     courseTeacherId = params.get("courseTeacherId");
     evaluationId = params.get("evaluationId");
 
+    //Setting breadcrumb href
+    $("#secondBread").prop("href", "course_evaluations.html?courseTeacherId=" + courseTeacherId + "&courseId=" + params.get("courseId"))
+
+    getEvaluationName()
     getStudents();
 });
+
+
+//ajax request to get course name
+function getEvaluationName() {
+    $.ajax({
+        url: BASE_URL + EVALUATIONS_CREATE + "/" + evaluationId,
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Calificar " + result.name);
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
 
 function getStudents() {
     $.ajax({

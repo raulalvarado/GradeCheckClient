@@ -1,5 +1,6 @@
 var courseId;
 var table = $("#studentsTable")
+var title = $("#title");
 $(document).ready(function() {
     try {
         $.ajaxSetup({
@@ -20,9 +21,26 @@ $(document).ready(function() {
     courseId = params.get("id");
     console.log(courseId);
 
+    getCourseName();
     getStudents();
     
 });
+
+//ajax request to get course name
+function getCourseName() {
+    $.ajax({
+        url: BASE_URL + COURSE_TEACHERS_CREATE + "/" + courseId + "/courses ",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Estudiantes de " + result.course.name);
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
 
 function getStudents() {
     $.ajax({
@@ -31,6 +49,7 @@ function getStudents() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val.id);
@@ -38,10 +57,15 @@ function getStudents() {
                 table.append("<tr>" +
                     "<td>" + val["student"]["user"]["person"].name + "</td>" +
                     "<td>" + val["student"]["user"]["person"].surname + "</td>" +
-                    "<td><a href='student_grades.html?id=" + val.id + "' class='modal-trigger'><i class='material-icons'>person</i></a></td>" +
-                    "<td><a href='absences.html?id=" + val.id + "'><i class='material-icons'>event_busy</i></a></td>" +
+                    "<td><a href='student_grades.html?id=" + val.id + "&courseTeacherId=" + courseId + "' class='modal-trigger'><i class='material-icons'>person</i></a></td>" +
+                    "<td><a href='absences.html?id=" + val.id + "&courseTeacherId=" + courseId + "'><i class='material-icons red-text'>event_busy</i></a></td>" +
                     "</tr>");
             });
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#teachCourseItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);

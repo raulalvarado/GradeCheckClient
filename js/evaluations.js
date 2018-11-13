@@ -7,6 +7,7 @@ var updateModalEva = $("#actualizarEvaluacion");
 var deleteModalEva = $("#eliminarEvaluacion");
 var courseId = $(".courseId");
 var updLabels = $(".updLabel");
+var title = $("#title");
 
 $(document).ready(function() {
     try {
@@ -28,11 +29,30 @@ $(document).ready(function() {
     let params = new URLSearchParams(window.location.search)
     careerId = params.get("id");
     courseId.val(careerId);
+    getCourseName();
     getEvaluations();
     $("select").formSelect();
-    $('.datepicker').datepicker({ format: "yyyy-mm-dd" });
+    $('.datepicker').datepicker({
+        container:'body',
+        format: "yyyy-mm-dd"
+    });
 });
 
+//ajax request to get course name
+function getCourseName() {
+    $.ajax({
+        url: BASE_URL + COURSES_CREATE + "/" + careerId + "/faculties/prerrequisite ",
+        type: "GET",
+        dataType: "json",
+        success: function(result) {
+            console.log(result);
+            title.html("Evaluaciones de " + result.name + " (" + result.courseCode + ")");
+        },
+        error: function(error) {
+            showError(error.responseText);
+        }
+    });
+}
 
 function getEvaluations() {
     $.ajax({
@@ -41,6 +61,7 @@ function getEvaluations() {
         dataType: "json",
         success: function(result) {
             console.log(result);
+            destDataTable();
             table.empty();
             $.each(result, function(i, val) {
                 console.log(val.name);
@@ -83,6 +104,11 @@ function getEvaluations() {
                     "</tr>");
             });
             newEvaFrm.trigger("reset");
+
+            initDataTable();
+    
+            //Está aquí y no en el doc ready porque sino no funciona esto
+            $("#courseItem").addClass("selectedItem");
         },
         error: function(error) {
             console.log(error);
